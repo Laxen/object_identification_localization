@@ -4,6 +4,10 @@ JNI_Helper::JNI_Helper() {
 
 }
 
+/**
+	Initialize the class_path to the VM
+	@param class_path The class path
+*/
 JNI_Helper::JNI_Helper(std::string class_path) {
 	initialize(class_path);
 }

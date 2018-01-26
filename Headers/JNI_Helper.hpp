@@ -15,6 +15,10 @@ class JNI_Helper {
 		JNI_Helper(std::string class_path);
 		~JNI_Helper();
 
+		/**
+			Initialize the class_path to the VM
+			@param class_path The class path
+		*/
 		void
 		initialize(std::string class_path);
 
@@ -62,6 +66,11 @@ class JNI_Helper {
 			env->CallStaticDoubleMethod(class_j, mid, args...);
 		}
 
+		/**
+			Creates a jstring object
+			@param str The string
+			@return The jstring object
+		*/
 		jstring 
 		create_string(std::string str);
 };

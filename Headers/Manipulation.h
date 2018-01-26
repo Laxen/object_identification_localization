@@ -28,21 +28,21 @@ class Manipulation {
 			@param search_surface The cloud to be used when searching for neighbors
 		 */
 		void
-			compute_normals(Point_Cloud_N::Ptr cloud, Point_Cloud_N::Ptr search_surface, double radius_search);
+		compute_normals(Point_Cloud_N::Ptr cloud, Point_Cloud_N::Ptr search_surface, double radius_search);
 
 		/*
 			 Uses RANSAC to find the largest plane
 			 @param cloud The cloud to find the plane in
 		 */
 		pcl::ModelCoefficients::Ptr
-			find_plane(Point_Cloud_N::Ptr cloud, int max_iterations, double distance_threshold);
+		find_plane(Point_Cloud_N::Ptr cloud, int max_iterations, double distance_threshold);
 
 		/*
 			 Uses RANSAC to remove the largest plane
 			 @param cloud The cloud to remove the plane in
 		 */
 		pcl::ModelCoefficients::Ptr
-			remove_plane(Point_Cloud_N::Ptr cloud, int max_iterations, double distance_threshold);
+		remove_plane(Point_Cloud_N::Ptr cloud, int max_iterations, double distance_threshold);
 
 		/**
 			Extracts clusters from the cloud and returns them in a vector
@@ -50,7 +50,7 @@ class Manipulation {
 			@return A vector of clusters
 		 */
 		std::vector<Point_Cloud_N::Ptr>
-			extract_clusters(Point_Cloud_N::Ptr cloud, double tolerance, int min_size, int max_size);
+		extract_clusters(Point_Cloud_N::Ptr cloud, double tolerance, int min_size, int max_size);
 
 		/**
 			Joins clusters into a single point cloud
@@ -58,7 +58,7 @@ class Manipulation {
 			@return Point cloud with all clusters
 		 */
 		Point_Cloud_N::Ptr
-			join_clusters(std::vector<Point_Cloud_N::Ptr> clusters);
+		join_clusters(std::vector<Point_Cloud_N::Ptr> clusters);
 
 		/**
 			Downsamples a cloud
@@ -67,7 +67,7 @@ class Manipulation {
 			@return The downsampled cloud
 		 */
 		Point_Cloud_N::Ptr
-			downsample_cloud(Point_Cloud_N::Ptr cloud, double leaf_size);
+		downsample_cloud(Point_Cloud_N::Ptr cloud, double leaf_size);
 
 		/**
 			Subtracts one cloud from the other using octree
@@ -77,7 +77,7 @@ class Manipulation {
 			@return The subtracted point cloud
 		 */
 		Point_Cloud_N::Ptr
-			subtract_clouds(Point_Cloud_N::Ptr cloud1, Point_Cloud_N::Ptr cloud2, double leaf_size);
+		subtract_clouds(Point_Cloud_N::Ptr cloud1, Point_Cloud_N::Ptr cloud2, double leaf_size);
 
 		/**
 			Removes statistical outliers from cloud
@@ -86,7 +86,7 @@ class Manipulation {
 			@param std_dev_mul The multiplier to use for std dev
 		 */
 		void
-			remove_statistical_outliers(Point_Cloud_N::Ptr cloud, int mean_k, double std_dev_mul);
+		remove_statistical_outliers(Point_Cloud_N::Ptr cloud, int mean_k, double std_dev_mul);
 
 		/**
 			Splits a cloud into two clouds, one that is visible to the viewpoint and one that is occluded
@@ -98,7 +98,7 @@ class Manipulation {
 			@param occluded_indices[out] The indices of the occluded points
 		 */
 		void
-			compute_occlusion(Point_Cloud_N::Ptr cloud, double leaf_size, Eigen::Vector3d viewpoint, Point_Cloud_N::Ptr visible_cloud, Point_Cloud_N::Ptr occluded_cloud, std::vector<int>* occluded_indices);
+		compute_occlusion(Point_Cloud_N::Ptr cloud, double leaf_size, Eigen::Vector3d viewpoint, Point_Cloud_N::Ptr visible_cloud, Point_Cloud_N::Ptr occluded_cloud, std::vector<int>* occluded_indices);
 
 		/**
 			Computes the inliers of cloud target in cloud source, using the distance_threshold
@@ -109,28 +109,34 @@ class Manipulation {
 			@param outliers[out] The vector of outliers
 		 */
 		void
-			compute_inliers(Point_Cloud_N::Ptr source, Point_Cloud_N::Ptr target, double distance_threshold, std::vector<int>* inliers, std::vector<int>* outliers);
+		compute_inliers(Point_Cloud_N::Ptr source, Point_Cloud_N::Ptr target, double distance_threshold, std::vector<int>* inliers, std::vector<int>* outliers);
 
+		/**
+			Checks if a cluster is in the center of the viewpoint
+			@param cluster The cluster to check
+			@param dist_thr The distance threshold to the center axis
+			@return True if cluster is in the center, false otherwise
+		*/
 		bool
-			is_centered (Point_Cloud_N::Ptr cluster, double dist_thr);
+		is_centered (Point_Cloud_N::Ptr cluster, double dist_thr);
 
-	/**
-		Loads a point cloud
-		@param path The path to the cloud
-		@param cloud The cloud pointer to use for storing the cloud
-		@return 0 if error, 1 if successful
-	 */
-	int
-	load_cloud(std::string path, Point_Cloud_N::Ptr cloud);
+		/**
+			Loads a point cloud
+			@param path The path to the cloud
+			@param cloud The cloud pointer to use for storing the cloud
+			@return 0 if error, 1 if successful
+		 */
+		int
+		load_cloud(std::string path, Point_Cloud_N::Ptr cloud);
 
-	/**
-		Loads a point cloud with RGB data
-		@param path The path to the cloud
-		@param cloud The cloud pointer to use for storing the cloud
-		@return 0 if error, 1 if successful
-	 */
-	int
-	load_cloud_rgba(std::string path, Point_Cloud_RGBA::Ptr cloud);
+		/**
+			Loads a point cloud with RGB data
+			@param path The path to the cloud
+			@param cloud The cloud pointer to use for storing the cloud
+			@return 0 if error, 1 if successful
+		 */
+		int
+		load_cloud_rgba(std::string path, Point_Cloud_RGBA::Ptr cloud);
 };
 
 #endif

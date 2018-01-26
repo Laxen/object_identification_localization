@@ -95,7 +95,11 @@ class Pose_Class {
 			@param transformations[out] Vector of vector of transformations for each cluster
 		 */
 		void
-		estimate_poses_for_clusters(Point_Cloud_N::Ptr object, Feature_Cloud::Ptr object_features, std::vector<Point_Cloud_N::Ptr> clusters, bool object_to_cluster, std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations);
+		estimate_poses_for_clusters(	Point_Cloud_N::Ptr object, 
+						Feature_Cloud::Ptr object_features, 
+						std::vector<Point_Cloud_N::Ptr> clusters, 
+						bool object_to_cluster, 
+						std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations);
 
 		/**
 			Match clusters to object, and match object to passed clusters
@@ -105,7 +109,10 @@ class Pose_Class {
 			@param transformations[out] Vector of vector of transformations for each cluster
 		 */
 		void
-		match_cluster_to_object_to_cluster(Point_Cloud_N::Ptr object, Feature_Cloud::Ptr object_features, std::vector<Point_Cloud_N::Ptr> clusters, std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations);
+		match_cluster_to_object_to_cluster(	Point_Cloud_N::Ptr object, 
+							Feature_Cloud::Ptr object_features, 
+							std::vector<Point_Cloud_N::Ptr> clusters, 
+							std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations);
 
 		/**
 			Takes transformations from each scene cluster, and puts them in pose clusters
@@ -113,7 +120,8 @@ class Pose_Class {
 			@param clustered_poses[out] Rows = Pose clusters, Cols = (tr,inl) for that pose cluster. First col in each row contains (tr_avg, inl_avg) for that pose cluster.
 		 */
 		void
-		cluster_poses(std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations, std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* clustered_poses);
+		cluster_poses(	std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* transformations, 
+				std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* clustered_poses);
 
 		/**
 			Takes the average pose of each pose cluster, compares it to the other average poses and computes an accuracy based on a couple of parameters between them.
@@ -122,7 +130,8 @@ class Pose_Class {
 			@param filtered_poses[out] The filtered poses ((pose, inliers), accuracy)
 		 */
 		void
-		filter_clustered_poses(std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* clustered_poses, std::vector<std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double> >* filtered_poses);
+		filter_clustered_poses(	std::vector<std::vector<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double> > >* clustered_poses, 
+					std::vector<std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double> >* filtered_poses);
 
 		/**
 			Finds points with persistent features in cloud
@@ -136,7 +145,8 @@ class Pose_Class {
 			Compares two filtered poses in regards to inliers (first.second is inliers)
 		 */
 		static bool
-		filtered_poses_compare(const std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double>& firstElem, const std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double>& secondElem);
+		filtered_poses_compare(	const std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double>& firstElem, 
+					const std::pair<std::pair<Eigen::Matrix<float,4,4,Eigen::DontAlign>, double>, double>& secondElem);
 
 		/**
 			Compares pose structures
