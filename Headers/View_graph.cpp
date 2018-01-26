@@ -1,7 +1,7 @@
 #include "View_graph.h"
 
 /**
-  Returns the path to Data in /masters_thesis
+  Returns the path to Data in /object_identification_localization
 */
 boost::filesystem::path 
 View_graph::path_to_model_in_model_data (std::string model)
@@ -9,12 +9,12 @@ View_graph::path_to_model_in_model_data (std::string model)
 	// Current path
 	boost::filesystem::path p(boost::filesystem::current_path());
 	
-	// Search parent directories for masters_thesis
+	// Search parent directories for object_identification_localization
 	while (true) 
 	{
 		p = p.parent_path();
 		
-		if (p.filename() == "masters_thesis")
+		if (p.filename() == "object_identification_localization")
 		{
 			break;
 		}
