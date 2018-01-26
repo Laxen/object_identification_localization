@@ -1,0 +1,13 @@
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.swp
+*.a
+build/
+data/results/
+system/build/simulated_share/
+tools/background_creator/build/simulated_share/
+system/build/scene_tests/
+*~
+*.swo
