@@ -101,7 +101,7 @@ main(int argc, char** argv) {
 		while(!boost::filesystem::exists(original_cloud_path)) {}; // Hang until cloud is found
 		std::cout << "Cloud found!" << '\n';
 		std::cout << "Fetching robot data..." << '\n';
-		//fetcher.fetch_data(original_robot_data_path);
+		fetcher.fetch_data(original_robot_data_path);
 		std::cout << "Waiting for robot data at " << original_robot_data_path << '\n';
 		while(!boost::filesystem::exists(original_robot_data_path)) {}; // Hang until robot data is found
 		std::cout << "Robot data found!" << '\n';

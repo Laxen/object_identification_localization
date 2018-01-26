@@ -14,7 +14,8 @@ Robot_Data_Fetcher::WriteCallback(void *contents, size_t size, size_t nmemb, voi
 */
 std::string
 Robot_Data_Fetcher::find_data(std::string readBuffer, std::string variable) {
-	int index_start = (int)readBuffer.find ("<span class=\"" + variable + "\"");
+	std::string search_string = "<span class=\"" + variable + "\"";
+	int index_start = (int)readBuffer.find (search_string);
 	int index_x = (int)readBuffer.find (">", index_start);
 	int index_y = (int)readBuffer.find ("<", index_x);
 
@@ -62,6 +63,8 @@ Robot_Data_Fetcher::fetch_data(std::string save_path) {
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 		res = curl_easy_perform(curl);
 		curl_easy_cleanup(curl);
+
+		std::cout << readBuffer << std::endl;
 
 		std::ofstream ofs;
 		ofs.open(save_path.c_str());
