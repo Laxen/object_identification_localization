@@ -6,5 +6,6 @@ Makefile
 *.a
 build/
 data/
+CAD_models/
 *~
 *.swo

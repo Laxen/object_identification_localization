@@ -56,7 +56,7 @@ class Access_Model_data
 		  Returns the path to model in /CAD_models
 		*/
 		std::string 
-		path_to_model_in_cad_models (std::string model);
+		path_to_model_in_CAD_models (std::string model);
 
 		/**
 		  Saves the view-clouds
