@@ -6,16 +6,21 @@
 class RDF_Connector : public JNI_Helper {
 	private:
 		jclass main_class;
+		bool has_class_path = false;
 
 	public:
+		RDF_Connector();
 		RDF_Connector(std::string class_path);
 		~RDF_Connector();
 
 		void
-		initialize(std::string serverID, std::string repoID);
+		set_class_path(std::string class_path);
 
 		void
 		set_class(std::string class_name);
+
+		void
+		initialize(std::string serverID, std::string repoID);
 
 		void 
 		add_scene (int scene_index);

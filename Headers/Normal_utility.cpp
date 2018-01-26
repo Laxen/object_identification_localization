@@ -275,7 +275,7 @@ void
 Normal_utility::save_normal_utilities (std::string model_name, std::vector<float> normal_utilities)
 {
 	Access_Model_data amd;
-	boost::filesystem::path p = amd.path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = amd.path_to_model_in_model_data (model_name);
 	p /= "normal_utilities.csv";
 	
 	std::ofstream utilities_file;

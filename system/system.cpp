@@ -68,8 +68,9 @@ main(int argc, char** argv) {
 	fetcher.set_auth_details(conf.web_service_username, conf.web_service_password);
 	fetcher.set_url(conf.hand_web_service_url);
 
-	RDF_Connector rdf("../../Headers/rdf4j_connector.jar");
+	RDF_Connector rdf;
 	if(conf.rdf_enabled) {
+		rdf.set_class_path("../../Headers/rdf4j_connector.jar");
 		rdf.set_class("Connector");
 		rdf.initialize(conf.rdf_url, conf.rdf_repo_name);
 	}

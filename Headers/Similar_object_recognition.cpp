@@ -196,7 +196,7 @@ Similar_object_recognition::save_similar_models_data (model_data m_source, std::
 	//
 	
 	// Get path to m_source in Model_data
-	fs::path p_source = access.path_to_model_in_Model_data (m_source.name);
+	fs::path p_source = access.path_to_model_in_model_data (m_source.name);
 	
 	// Add path to similar_models
 	p_source /= "similar_models";
@@ -250,7 +250,7 @@ Similar_object_recognition::save_similar_models_data (model_data m_source, std::
 	for (int i = 0; i < m_targets.size(); i++)
 	{
 		// Get path to m_target in Model_data
-		fs::path p_target = access.path_to_model_in_Model_data (m_targets[i].name);
+		fs::path p_target = access.path_to_model_in_model_data (m_targets[i].name);
 	
 		// Add path to similar_models
 		p_target /= "similar_models";

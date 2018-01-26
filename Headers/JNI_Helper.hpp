@@ -9,9 +9,14 @@ class JNI_Helper {
 	private:
 		JNIEnv* env;
 		JavaVM* jvm;
+
 	public:
+		JNI_Helper();
 		JNI_Helper(std::string class_path);
 		~JNI_Helper();
+
+		void
+		initialize(std::string class_path);
 
 		/*
 			Get a class from a program in the JVM

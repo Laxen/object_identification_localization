@@ -5,26 +5,26 @@
 
 	-path.string () returns a string of the path (e.g. /home/user/...)
 
-	-path.filename () returns the name of the current file (e.g. a path with string "/home/user/object_localization_identification" will 
-	 return "object_localization_identification" when calling filename () )
+	-path.filename () returns the name of the current file (e.g. a path with string "/home/user/object_identification_localization" will 
+	 return "object_identification_localization" when calling filename () )
 */
 
 
 /**
-  Returns the path to object_localization_identification
+  Returns the path to object_identification_localization
 */
 boost::filesystem::path 
-Access_Model_data::path_to_masters_thesis (void)
+Access_Model_data::path_to_root (void)
 {
 	// Current path
 	boost::filesystem::path p(boost::filesystem::current_path());
 	
-	// Search parent directories for object_localization_identification
+	// Search parent directories for object_identification_localization
 	while (true) 
 	{
 		p = p.parent_path();
 		
-		if (p.filename() == "object_localization_identification")
+		if (p.filename() == "object_identification_localization")
 		{
 			break;
 		}
@@ -34,13 +34,13 @@ Access_Model_data::path_to_masters_thesis (void)
 }
 
 /**
-  Returns the path to Data in /object_localization_identification
+  Returns the path to Data in /object_identification_localization
 */
 boost::filesystem::path 
 Access_Model_data::path_to_data (void)
 {
-	// Add path to object_localization_identification
-	boost::filesystem::path p = path_to_masters_thesis();
+	// Add path to object_identification_localization
+	boost::filesystem::path p = path_to_root();
 	
 	// Add path to directory named "data"
 	p /= "data";
@@ -48,10 +48,14 @@ Access_Model_data::path_to_data (void)
 	// Check if such path exists
 	if (!boost::filesystem::exists(p))
 	{
-		std::stringstream ss;
-		ss << "ERROR: No directory found named data!\n\n";
-		pcl::console::print_error(ss.str().c_str());
-		std::exit (EXIT_FAILURE);
+		// Path does not exist, create directory
+		if (!boost::filesystem::create_directory(p))
+		{
+			std::stringstream ss;
+			ss << "ERROR: Could not create directory " << p << "!\n\n";
+			pcl::console::print_error(ss.str().c_str());
+			std::exit (EXIT_FAILURE);
+		}
 	}
 	
 	return p;
@@ -61,7 +65,7 @@ Access_Model_data::path_to_data (void)
   Returns the path to Model_data in /Data
 */
 boost::filesystem::path 
-Access_Model_data::path_to_Model_data (void)
+Access_Model_data::path_to_model_data (void)
 {
 	// Path to Data
 	boost::filesystem::path p = path_to_data ();
@@ -72,10 +76,14 @@ Access_Model_data::path_to_Model_data (void)
 	// Check if such path exists
 	if (!boost::filesystem::exists(p))
 	{
-		std::stringstream ss;
-		ss << "ERROR: No directory found named model_data!\n\n";
-		pcl::console::print_error(ss.str().c_str());
-		std::exit (EXIT_FAILURE);
+		// Path does not exist, create directory
+		if (!boost::filesystem::create_directory(p))
+		{
+			std::stringstream ss;
+			ss << "ERROR: Could not create directory " << p << "!\n\n";
+			pcl::console::print_error(ss.str().c_str());
+			std::exit (EXIT_FAILURE);
+		}
 	}
 	
 	return p;
@@ -85,10 +93,10 @@ Access_Model_data::path_to_Model_data (void)
   Returns the path to model in /Model_data
 */
 boost::filesystem::path 
-Access_Model_data::path_to_model_in_Model_data (std::string model)
+Access_Model_data::path_to_model_in_model_data (std::string model)
 {	
 	// Add path to Model_data
-	boost::filesystem::path p = path_to_Model_data ();
+	boost::filesystem::path p = path_to_model_data ();
 	
 	// Add path to model
 	p /= model;
@@ -113,10 +121,10 @@ Access_Model_data::path_to_model_in_Model_data (std::string model)
   Returns the path to CAD_models folder
 */
 boost::filesystem::path
-Access_Model_data::path_to_CAD_models ()
+Access_Model_data::path_to_cad_models ()
 {
-	// Add path to object_localization_identification
-	boost::filesystem::path p = path_to_masters_thesis ();
+	// Add path to object_identification_localization
+	boost::filesystem::path p = path_to_root ();
 	
 	// Add path to CAD_models
 	p /= "CAD_models";
@@ -124,10 +132,14 @@ Access_Model_data::path_to_CAD_models ()
 	// Check if such path exists
 	if (!boost::filesystem::exists(p))
 	{
-		std::stringstream ss;
-		ss << "ERROR: Could not find CAD_models in masters_thesis!\n\n";
-		pcl::console::print_error(ss.str().c_str());
-		std::exit (EXIT_FAILURE);
+		// Path does not exist, create directory
+		if (!boost::filesystem::create_directory(p))
+		{
+			std::stringstream ss;
+			ss << "ERROR: Could not create directory " << p << "!\n\n";
+			pcl::console::print_error(ss.str().c_str());
+			std::exit (EXIT_FAILURE);
+		}
 	}
 	
 	return p;
@@ -137,10 +149,10 @@ Access_Model_data::path_to_CAD_models ()
   Returns the path to model in /CAD_models
 */
 std::string 
-Access_Model_data::path_to_model_in_CAD_models (std::string model)
+Access_Model_data::path_to_model_in_cad_models (std::string model)
 {	
 	// Add path to CAD_models
-	boost::filesystem::path p = path_to_CAD_models ();
+	boost::filesystem::path p = path_to_cad_models ();
 	
 	// Add path to model
 	p /= model;
@@ -171,7 +183,7 @@ Access_Model_data::save_view_clouds (	std::string model_name,
 					PointCloudT::Ptr complete_model )
 {
 	// Add path to model
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 
 	// Save point cloud of complete model
 	std::stringstream ss;
@@ -248,7 +260,7 @@ void
 Access_Model_data::save_view_utilities (std::string model_name, std::vector<float> utilities)
 {
 	// Add path to model
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	std::ofstream utilities_file;
 	p /= "view_utilities.csv";
@@ -280,7 +292,7 @@ void
 Access_Model_data::save_global_features (std::string model_name, FeatureCloudG::Ptr global_features)
 {
 	// Add path to model
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Save global feature point cloud
 	p /= "global_features.pcd";
@@ -297,7 +309,7 @@ void
 Access_Model_data::load_model_views (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
-	boost::filesystem::path p = path_to_Model_data ();
+	boost::filesystem::path p = path_to_model_data ();
 	
 	// Add path to directory named model_name
 	p /= model_name;
@@ -361,7 +373,7 @@ void
 Access_Model_data::load_model_views_original_pose (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
-	boost::filesystem::path p = path_to_Model_data ();
+	boost::filesystem::path p = path_to_model_data ();
 	
 	// Add path to directory named model_name
 	p /= model_name;
@@ -422,7 +434,7 @@ std::vector<std::string>
 Access_Model_data::get_model_names (void)
 {
 	// Add path to Model_data
-	boost::filesystem::path p = path_to_Model_data ();
+	boost::filesystem::path p = path_to_model_data ();
 	
 	std::vector<std::string> vec;
     boost::filesystem::directory_iterator end_iter;
@@ -446,7 +458,7 @@ void
 Access_Model_data::load_global_features (std::string model, FeatureCloudG::Ptr features)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model);
+	boost::filesystem::path p = path_to_model_in_model_data (model);
 	
 	std::stringstream ss;
 	ss << p.string () << "/global_features.pcd";
@@ -470,7 +482,7 @@ void
 Access_Model_data::load_complete_model (std::string model, PointCloudT::Ptr cloud)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model);
+	boost::filesystem::path p = path_to_model_in_model_data (model);
 	
 	std::stringstream ss;
 	ss << p.string () << "/complete_model.pcd";
@@ -493,7 +505,7 @@ void
 Access_Model_data::save_similar_model_data (std::string source_name, std::string target_name, std::vector<float> similar_views)
 {
 	// Get path to source in Model_data
-	boost::filesystem::path p_source = path_to_model_in_Model_data (source_name);
+	boost::filesystem::path p_source = path_to_model_in_model_data (source_name);
 	
 	// Add path to distinguish_utilities
 	p_source /= "distinguish_utilities";
@@ -551,7 +563,7 @@ void
 Access_Model_data::save_feature_utilities (std::string model_name, std::vector<double> utilities)
 {
 	// Get path to model_name in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to feature_utilities.csv
 	p /= "feature_utilities.csv";
@@ -594,7 +606,7 @@ std::vector<float>
 Access_Model_data::load_view_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to CVS file
 	p /= "view_utilities.csv";
@@ -638,7 +650,7 @@ std::vector<float>
 Access_Model_data::load_feature_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to CVS file
 	p /= "feature_utilities.csv";
@@ -683,7 +695,7 @@ std::vector<std::vector<float> >
 Access_Model_data::load_distinguish_utilities (std::string model_name, std::vector<std::string> similar_models)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to distinguish_utilities
 	p/= "distinguish_utilities";
@@ -750,7 +762,7 @@ std::vector<float>
 Access_Model_data::load_normal_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to CVS file
 	p /= "normal_utilities.csv";
@@ -851,7 +863,7 @@ void
 Access_Model_data::save_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> features)
 {
 	// Add path to model
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 
 	// Add path to directory named "local_features"
 	boost::filesystem::path p_lf = p;
@@ -889,7 +901,7 @@ void
 Access_Model_data::load_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> &local_features, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name);
 	
 	// Add path to local_features
 	p /= "local_features";

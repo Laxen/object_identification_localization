@@ -26,7 +26,7 @@ class Access_Model_data
 		  Returns the path to masters_thesis
 		*/
 		boost::filesystem::path 
-		path_to_masters_thesis (void);
+		path_to_root (void);
 
 		/**
 		  Returns the path to Data in /masters_thesis
@@ -38,25 +38,25 @@ class Access_Model_data
 		  Returns the path to Model_data in /Data
 		*/
 		boost::filesystem::path
-		path_to_Model_data (void);
+		path_to_model_data (void);
 
 		/**
 		  Returns the path to model in /Model_data
 		*/
 		boost::filesystem::path
-		path_to_model_in_Model_data (std::string model);
+		path_to_model_in_model_data (std::string model);
 		
 		/**
 		  Returns the path to CAD_models folder
 		*/
 		boost::filesystem::path
-		path_to_CAD_models ();
+		path_to_cad_models ();
 
 		/**
 		  Returns the path to model in /CAD_models
 		*/
 		std::string 
-		path_to_model_in_CAD_models (std::string model);
+		path_to_model_in_cad_models (std::string model);
 
 		/**
 		  Saves the view-clouds

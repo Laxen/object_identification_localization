@@ -53,6 +53,12 @@ Identification_class::Identification_class (void)
 	std::cout << "Loading model data for identification..." << std::endl;
 	load_model_data ();
 	std::cout << "Done\n" << std::endl;
+	if(models.size() == 0) {
+		std::stringstream ss;
+		ss << "ERROR: No models found!\n\n";
+		pcl::console::print_error(ss.str().c_str());
+		std::exit (EXIT_FAILURE);
+	}
 	std::cout << "Models loaded: " << models.size() << "\n" << std::endl;
 }
 

@@ -4,7 +4,7 @@
   Returns the path to Data in /masters_thesis
 */
 boost::filesystem::path 
-View_graph::path_to_model_in_Model_data (std::string model)
+View_graph::path_to_model_in_model_data (std::string model)
 {
 	// Current path
 	boost::filesystem::path p(boost::filesystem::current_path());
@@ -362,7 +362,7 @@ View_graph::save_graph ()
 	}
 	
 	// Add path to model
-	boost::filesystem::path p = path_to_model_in_Model_data (model_name_);
+	boost::filesystem::path p = path_to_model_in_model_data (model_name_);
 	
 	std::ofstream graph_file;
 	p /= "graph.csv";
@@ -415,7 +415,7 @@ View_graph::load_graph (std::string model)
 	set_model_name (model);
 	
 	// Add path to model in Model_data
-	boost::filesystem::path p = path_to_model_in_Model_data (model);
+	boost::filesystem::path p = path_to_model_in_model_data (model);
 	
 	std::stringstream ss;
 	ss << p.string () << "/graph.csv";

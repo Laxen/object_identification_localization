@@ -1,13 +1,15 @@
 #include "JNI_Helper.hpp"
 
-// Make JNI_Repo class that extends JNI_Helper
-// JNI_Repo has 
-// 	initialize_functions() method that gets all mids for all functions
-// 	a function for calling each Java function, with matching args
-// 		this uses the corresponding call_static_X_method in the superclass
-// system only needs to initialize JNI_Repo and can then use all functions
+JNI_Helper::JNI_Helper() {
+
+}
 
 JNI_Helper::JNI_Helper(std::string class_path) {
+	initialize(class_path);
+}
+
+void
+JNI_Helper::initialize(std::string class_path) {
 	std::string jvm_command = "-Djava.class.path=" + class_path;
 
 	const int kNumOptions = 1;

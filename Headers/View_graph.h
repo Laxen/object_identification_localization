@@ -44,7 +44,7 @@ class View_graph
 		  Returns the path to Data in /masters_thesis
 		*/
 		boost::filesystem::path 
-		path_to_model_in_Model_data (std::string model);	
+		path_to_model_in_model_data (std::string model);	
 
 	public:
 	
