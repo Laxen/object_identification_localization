@@ -149,7 +149,7 @@ Access_Model_data::path_to_cad_models ()
   Returns the path to model in /CAD_models
 */
 std::string 
-Access_Model_data::path_to_model_in_cad_models (std::string model)
+Access_Model_data::path_to_model_in_CAD_models (std::string model)
 {	
 	// Add path to CAD_models
 	boost::filesystem::path p = path_to_cad_models ();
