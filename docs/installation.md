@@ -1,5 +1,7 @@
 # Linux Installation
-This project requires PCL [LINK NEEDED], librealsense [LINK NEEDED], Java JDK, MATLAB Compiler Runtime. These will be installed in this guide.
+This project requires [PCL](https://github.com/PointCloudLibrary/pcl), [librealsense](https://github.com/IntelRealSense/librealsense), Java JDK, MATLAB Compiler Runtime. These will be installed in this guide.
+
+## Dependencies
 
 **Make sure you have the dependencies listed below before starting the installation process.**
 
@@ -37,3 +39,14 @@ The following hardware requirements are needed in order to run the entire system
 * A depth camera (Intel RealSense point cloud capturer is included in this repo)
 	* Intel RealSense SR300 and D435 have been tested for this system, but other depth cameras should work as well with a proper point cloud capturing program
 * (A USB 3.0 port for the depth camera)
+
+## librealsense
+* Follow the installation guide on the [librealsense Github page](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
+	* Compiling with examples and demos is not necessary
+	* Note that if you have a kernel with version later than 4.10, the steps in "Video4Linux backend preparation" are not necessary
+	* Regardless of kernel version you need to install the udev rules in the librealsense source folder after librealsense has been installed
+		* sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/
+		* sudo udevadm control --reload-rules && udevadm trigger
+* Test the installation by plugging in the camera and running "realsense-viewer" in a terminal
+	* This should start a graphical application that streams depth and color data from the camera
+	* If there is some error, look at the troubleshooting section in the installation guide, or at the issues posted on the Github page
