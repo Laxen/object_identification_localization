@@ -38,7 +38,13 @@ The following hardware requirements are needed in order to run the entire system
 * An ABB robot with the Robot Web Services API
 * A depth camera (Intel RealSense point cloud capturer is included in this repo)
 	* Intel RealSense SR300 and D435 have been tested for this system, but other depth cameras should work as well with a proper point cloud capturing program
-* (An USB 3.0 port for the depth camera)
+* (A USB 3.0 port for the depth camera)
+
+## Usage
+### Adding new objects
+### Calibration
+### Running the system
+### Configuration
 
 
 ## License
