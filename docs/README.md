@@ -3,7 +3,7 @@
 ## librealsense_capturer [LINK NEEDED]
 Program for capturing point cloud data from an Intel RealSense depth camera. 
 
-## camera_hand_calibration [LINK NEEDED]
+## [camera_hand_calibration](https://github.com/Laxen/object_identification_localization/tree/master/camera_hand_calibration)
 The calibration program used for finding the unknown transformation between the depth camera and the robot arm. 
 
 ## background_creator [LINK NEEDED]
