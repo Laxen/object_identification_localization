@@ -1,12 +1,12 @@
-##Overview
+## Overview
 System for object identification and localization using point clouds, developed by Alexander Ganslandt and Andreas Svensson as a master's thesis at the Institute of Computer Science at the Faculty of Engineering, Lund University. For details look at our master's thesis report [NEED LINK]. 
 
 This system identifies and localizes arbitrary objects using point clouds from a depth camera. It is intended for applications in robotics where the depth camera is mounted on a robot arm and positional data from the robot is used to merge point clouds. The system suggests where to move the camera to gain as much information as possible about the object, based on Next Best View heuristics. New objects to be identified/localized are easily added as CAD-models.
 
-##Installation
+## Installation
 Installation instructions for Linux can be found here [LINK NEEDED]. Please note that this project requires the following special dependencies. 
 * Ubuntu 14/16 with kernel newer than version 4.10
-	* A kernel patch is needed for other versions, see librealsense installation instructions [LINK NEEDED]
+	* A kernel patch is needed for other versions, see [librealsense installation instructions](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation.md)
 	* Check kernel version using "uname -r" in a terminal
 	* Upgrade to latest version using "sudo apt-get dist-upgrade"
 	* Restart
@@ -34,4 +34,11 @@ Installation instructions for Linux can be found here [LINK NEEDED]. Please note
 	* sudo apt-get install libglfw3-dev
 	* sudo apt-get install glfw3
 
-##License
+The following hardware requirements are needed in order to run the entire system
+* An ABB robot with the Robot Web Services API
+* A depth camera (Intel RealSense point cloud capturer is included in this repo)
+	* Intel RealSense SR300 and D435 have been tested for this system, but other depth cameras should work as well with a proper point cloud capturing program
+* (An USB 3.0 port for the depth camera)
+
+
+## License
