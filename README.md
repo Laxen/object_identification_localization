@@ -7,10 +7,6 @@ This system identifies and localizes arbitrary objects using point clouds from a
 Installation instructions for Linux can be found [here](https://github.com/Laxen/object_identification_localization/blob/master/docs/installation.md). Note that this project requires several special dependencies listed in the installation instructions.
 
 ## Usage
-### Adding new objects
-### Calibration
-### Running the system
-### Configuration
-
+An overview of the different parts of the system, as well as how to compile and use them can be found [here](https://github.com/Laxen/object_identification_localization/blob/master/docs/README.md).
 
 ## License
