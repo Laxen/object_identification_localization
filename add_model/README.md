@@ -20,4 +20,7 @@ execute the following command to run the program
     ./offline_data_generation example.obj
     ```
 * Edit the config.ini file in the root directory for this project in order to change the configuration parameters when adding a new model.
-* 
+* The most important configuration parameters are located under the "Add_Model-Default" section. 
+* The configuration parameters under Add_Model-Advanced are just a recommendation and does not need to be modified. 
+* However, If you are familiar with PCL and point cloud processing then feel free to change the configuration parameters under Add_Model-Advanced 
+
