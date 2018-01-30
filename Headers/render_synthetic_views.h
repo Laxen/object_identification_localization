@@ -17,7 +17,7 @@
 #include <pcl/filters/extract_indices.h>
 #include <pcl/PointIndices.h>
 #include <pcl/common/transforms.h>
-#include "View_graph.h"
+#include "view_graph.h"
 #include "access_model_data.h"
 #include "Similar_object_recognition.h"
 #include "view_feature_score.h"
@@ -398,7 +398,7 @@ class Render_Synthetic_Views
 		  @param graph The resulting graph
 		*/
 		void
-		generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_graph &graph );
+		generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_Graph &graph );
 		
 		/**
 		  Views the view-graph
@@ -406,7 +406,7 @@ class Render_Synthetic_Views
 		  @param complete_model The complete point cloud model
 		*/			
 		void
-		graph_viewer (View_graph graph, PointCloudT::Ptr complete_model);
+		graph_viewer (View_Graph graph, PointCloudT::Ptr complete_model);
 		
 		/**
 		  Generates local FPFH features

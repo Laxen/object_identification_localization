@@ -1,6 +1,6 @@
 
 #include "../../Headers/access_model_data.h"
-#include "../../Headers/View_graph.h"
+#include "../../Headers/view_graph.h"
 #include "../../Headers/normal_utility.h"
 #include <pcl/visualization/pcl_visualizer.h>
 
@@ -55,7 +55,7 @@ main (int argc, char** argv)
 			// View normal utilities
 			//
 	
-			View_graph graph;
+			View_Graph graph;
 			graph.load_graph (model_names[i]);
 			pcl::visualization::PCLVisualizer viewer ("viewer");
 			std::vector<float> r_vec (graph.get_size (), 0.0);

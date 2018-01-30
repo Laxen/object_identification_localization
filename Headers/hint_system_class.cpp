@@ -893,7 +893,7 @@ Hint_System_Class::sum_utilities ()
   @param scene_name the name of the scene
 */
 void
-Hint_System_Class::compute_new_positions (View_graph graph, std::string scene_name)
+Hint_System_Class::compute_new_positions (View_Graph graph, std::string scene_name)
 {
 	Eigen::Matrix<float,4,4,Eigen::DontAlign> t_next;
 	Eigen::Matrix3d rotation1 = graph.get_rotation (next_view_);

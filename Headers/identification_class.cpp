@@ -29,7 +29,7 @@ Identification_Class::load_model_data ()
 		m.feature_cloud = features;
 		
 		// Load model graph
-		View_graph g;
+		View_Graph g;
 		g.load_graph (model_names[i]);
 		m.graph = g;
 		

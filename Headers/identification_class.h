@@ -8,7 +8,7 @@
 #include <pcl/common/centroid.h>
 #include "access_model_data.h"
 #include "access_results.h"
-#include "View_graph.h"
+#include "view_graph.h"
 
 class Identification_Class
 {
@@ -70,7 +70,7 @@ class Identification_Class
 			std::string name;
 			PointCloudT::Ptr complete_model;
 			FeatureCloudT::Ptr feature_cloud;
-			View_graph graph;
+			View_Graph graph;
 			std::vector<pcl::Correspondence> correspondences;
 
 			bool operator < (const model_data &str) const

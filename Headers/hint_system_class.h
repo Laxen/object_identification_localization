@@ -3,7 +3,7 @@
 
 #include "access_results.h"
 #include "access_model_data.h"
-#include "View_graph.h"
+#include "view_graph.h"
 #include "pose_data.h"
 #include <pcl/common/transforms.h>
 #include <pcl/kdtree/kdtree_flann.h>
@@ -112,7 +112,7 @@ class Hint_System_Class
 			double inlier_fraction;
 			double accuracy;
 			PointT model_center;
-			View_graph graph;
+			View_Graph graph;
 			bool invalid_pose_position;
 			bool low_inlier_fraction;
 			
@@ -314,7 +314,7 @@ class Hint_System_Class
 		  @param scene_name the name of the scene
 		*/
 		void
-		compute_new_positions (View_graph graph, std::string scene_name);
+		compute_new_positions (View_Graph graph, std::string scene_name);
 		
 		/**
 		  Loads the current hand position in robot base coordinates

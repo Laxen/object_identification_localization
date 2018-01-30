@@ -8,7 +8,7 @@
 #include <vector>
 #include <queue>
 
-class View_graph
+class View_Graph
 {
 	private:
 	
@@ -51,7 +51,7 @@ class View_graph
 		/** 
 		  Empty constructor. 
 		*/
-	  	View_graph () : graph () {}
+	  	View_Graph () : graph () {}
 		  
   		/**
 		  Returns the camera viewpoint for a given view

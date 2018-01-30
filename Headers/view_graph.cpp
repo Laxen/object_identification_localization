@@ -1,10 +1,10 @@
-#include "View_graph.h"
+#include "view_graph.h"
 
 /**
   Returns the path to Data in /object_identification_localization
 */
 boost::filesystem::path 
-View_graph::path_to_model_in_model_data (std::string model)
+View_Graph::path_to_model_in_model_data (std::string model)
 {
 	// Current path
 	boost::filesystem::path p(boost::filesystem::current_path());
@@ -62,7 +62,7 @@ View_graph::path_to_model_in_model_data (std::string model)
   @param index The view-index
 */	
 pcl::PointXYZ
-View_graph::get_viewpoint (int index)
+View_Graph::get_viewpoint (int index)
 {
 	return graph[index].viewpoint_;
 }
@@ -72,7 +72,7 @@ View_graph::get_viewpoint (int index)
   @param index The view-index
 */	
 Eigen::Matrix3d
-View_graph::get_rotation (int index)
+View_Graph::get_rotation (int index)
 {
 	return graph[index].rotation_;
 }
@@ -82,7 +82,7 @@ View_graph::get_rotation (int index)
   @param index The view-index
 */	
 std::vector<int>
-View_graph::get_neighbors (int index)
+View_Graph::get_neighbors (int index)
 {
 	return graph[index].neighbors_;
 }
@@ -92,7 +92,7 @@ View_graph::get_neighbors (int index)
   @param index The view-index
 */	
 int 
-View_graph::get_size (void)
+View_Graph::get_size (void)
 {
 	return graph.size();
 }
@@ -101,7 +101,7 @@ View_graph::get_size (void)
   Returns the name of the model
 */	
 std::string
-View_graph::get_model_name (void)
+View_Graph::get_model_name (void)
 {
 	return model_name_;
 }
@@ -111,7 +111,7 @@ View_graph::get_model_name (void)
   @param model_name The name of the model
 */	
 void
-View_graph::set_model_name (std::string model_name)
+View_Graph::set_model_name (std::string model_name)
 {
 	model_name_ = model_name;
 }
@@ -123,7 +123,7 @@ View_graph::set_model_name (std::string model_name)
   @param angle_thr The angle threshold to determine if a node is invalid due to having similar z-axis as previous camera locations
 */
 void
-View_graph::find_valid_nodes (pcl::ModelCoefficients plane, std::vector<Eigen::Matrix<float,4,4,Eigen::DontAlign> > previous_positions, PointT model_center, float angle_thr)
+View_Graph::find_valid_nodes (pcl::ModelCoefficients plane, std::vector<Eigen::Matrix<float,4,4,Eigen::DontAlign> > previous_positions, PointT model_center, float angle_thr)
 {
 	// Find valid nodes above the plane
 	std::vector<bool> temp (graph.size(), false);
@@ -178,7 +178,7 @@ View_graph::find_valid_nodes (pcl::ModelCoefficients plane, std::vector<Eigen::M
   @return True if the views are neighbors and false otherwise
 */
 bool
-View_graph::is_neighbor (int view_index1, int view_index2)
+View_Graph::is_neighbor (int view_index1, int view_index2)
 {
 	for (int i = 0; i < graph[view_index1].neighbors_.size(); i++)
 	{
@@ -196,7 +196,7 @@ View_graph::is_neighbor (int view_index1, int view_index2)
   @param value True if the node is valid and false otherwise
 */
 void
-View_graph::set_valid_node (int index, bool value)
+View_Graph::set_valid_node (int index, bool value)
 {
 	valid_nodes_[index] = value;
 }
@@ -206,7 +206,7 @@ View_graph::set_valid_node (int index, bool value)
   @return The vector containing all the valid nodes
 */
 std::vector<bool>
-View_graph::get_valid_nodes (void)
+View_Graph::get_valid_nodes (void)
 {
 	return valid_nodes_;
 }
@@ -216,7 +216,7 @@ View_graph::get_valid_nodes (void)
   @return Vector containing a true value if the node was visited during the graph search.
 */
 std::vector<bool>
-View_graph::get_visited_nodes (void)
+View_Graph::get_visited_nodes (void)
 {
 	return visited_nodes_;
 }
@@ -226,7 +226,7 @@ View_graph::get_visited_nodes (void)
   @param viewpoints[out] The pointcloud containing all viewpoints in the graph
 */
 void 
-View_graph::get_all_viewpoints (PointCloudT::Ptr viewpoints)
+View_Graph::get_all_viewpoints (PointCloudT::Ptr viewpoints)
 {
 	for (int i = 0; i < get_size(); i++)
 	{
@@ -242,7 +242,7 @@ View_graph::get_all_viewpoints (PointCloudT::Ptr viewpoints)
   @param show_rotations Set if the nodes should show rotations
 */	
 void 
-View_graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu, 
+View_Graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu, 
 									double radius,
 									int viewport,
 									bool show_rotations )
@@ -290,7 +290,7 @@ View_graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu,
   @param show_rotations Set if the nodes should show rotations
 */	
 void 
-View_graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu, 
+View_Graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu, 
 									double radius, 
 									std::vector<float> r_vec,
 									std::vector<float> g_vec,
@@ -337,7 +337,7 @@ View_graph::add_graph_to_viewer (	pcl::visualization::PCLVisualizer &visu,
   @param neighbors The nearest neighbors of the node
 */	
 void 
-View_graph::add_node (PointT viewpoint, Eigen::Matrix3d rotation, std::vector<int> neighbors)
+View_Graph::add_node (PointT viewpoint, Eigen::Matrix3d rotation, std::vector<int> neighbors)
 {
 	node n;
 	n.viewpoint_ = viewpoint;
@@ -352,7 +352,7 @@ View_graph::add_node (PointT viewpoint, Eigen::Matrix3d rotation, std::vector<in
   Saves the generated view-graph to CSV-file.    
 */
 void 
-View_graph::save_graph ()
+View_Graph::save_graph ()
 {
 	// Check if model_name_ has been set
 	if (model_name_.empty ())
@@ -410,7 +410,7 @@ View_graph::save_graph ()
   @param model The name of the model 
 */
 void 
-View_graph::load_graph (std::string model)
+View_Graph::load_graph (std::string model)
 {
 	set_model_name (model);
 	
@@ -464,11 +464,11 @@ View_graph::load_graph (std::string model)
   @param utilities Vector containing the utilities 
 */
 void 
-View_graph::add_utilities (std::vector<float> utilities)
+View_Graph::add_utilities (std::vector<float> utilities)
 {
 	if (utilities.size() != graph.size())
 	{
-		std::cerr << "\nERROR: The size of the utility vector in View_graph::add_utilities is not equal to the graph size!\n" << std::endl;
+		std::cerr << "\nERROR: The size of the utility vector in View_Graph::add_utilities is not equal to the graph size!\n" << std::endl;
 		std::exit (EXIT_FAILURE);
 	}
 	
@@ -486,7 +486,7 @@ View_graph::add_utilities (std::vector<float> utilities)
   @return Vector containing the optimal view and a trajectory of views to visit in order to get to the optimal view
 */
 std::vector<int>
-View_graph::search_for_better_view (int initial_view_node)
+View_Graph::search_for_better_view (int initial_view_node)
 {
 	//
 	// Find the valid node with the highest utility
@@ -603,7 +603,7 @@ View_graph::search_for_better_view (int initial_view_node)
   @param transform The transformation
 */	
 void
-View_graph::add_transformation (Eigen::Matrix4f transform)
+View_Graph::add_transformation (Eigen::Matrix4f transform)
 {
 	// Transform all viewpoints
 	PointCloudT::Ptr viewpoint_cloud (new PointCloudT);
@@ -624,7 +624,7 @@ View_graph::add_transformation (Eigen::Matrix4f transform)
   @return The node with best alignment
 */
 int
-View_graph::find_aligned_view (Eigen::Vector3f cam_axis)
+View_Graph::find_aligned_view (Eigen::Vector3f cam_axis)
 {
 	int best_alignment;
 	float min_angle = 180.0;

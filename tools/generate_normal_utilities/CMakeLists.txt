@@ -11,13 +11,13 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable (normal_utility_test normal_utility_test.cpp)
 add_library (Normal_Utility ../../Headers/normal_utility.cpp)
-add_library (View_graph ../../Headers/View_graph.cpp)
+add_library (View_Graph ../../Headers/view_graph.cpp)
 add_library (Access_Model_Data ../../Headers/access_model_data.cpp)
 
 
 target_link_libraries (normal_utility_test ${PCL_LIBRARIES})
 target_link_libraries (normal_utility_test Normal_Utility ${PCL_LIBRARIES})
-target_link_libraries (normal_utility_test View_graph ${PCL_LIBRARIES})
+target_link_libraries (normal_utility_test View_Graph ${PCL_LIBRARIES})
 target_link_libraries (normal_utility_test Access_Model_Data ${PCL_LIBRARIES})
 
 

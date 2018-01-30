@@ -917,7 +917,7 @@ Render_Synthetic_Views::get_utilities (std::vector<PointCloud_N::Ptr> views_orig
   @param graph The resulting graph
 */
 void 
-Render_Synthetic_Views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_graph &graph )
+Render_Synthetic_Views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_Graph &graph )
 {
 	// Extract viewpoints
 	PointCloudT::Ptr viewpoint_cloud (new PointCloudT);
@@ -982,7 +982,7 @@ Render_Synthetic_Views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::ali
   @param complete_model The complete point cloud model
 */
 void
-Render_Synthetic_Views::graph_viewer (View_graph graph, PointCloudT::Ptr complete_model)
+Render_Synthetic_Views::graph_viewer (View_Graph graph, PointCloudT::Ptr complete_model)
 {
 	// Add graph to viewer
 	pcl::visualization::PCLVisualizer viewer ("Viewer");
@@ -1085,7 +1085,7 @@ Render_Synthetic_Views::start_rendering (int argc, char** argv)
 	}
 	
 	// Generate view-graph
-	View_graph graph;
+	View_Graph graph;
 	std::cout << "Generating view-graph..." << std::endl;
 	generate_graph (poses, graph);
 	std::cout << "Done\n" << std::endl;

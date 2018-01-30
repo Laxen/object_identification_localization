@@ -1,6 +1,6 @@
 
 #include "../../../Headers/access_model_data.h"
-#include "../../../Headers/View_graph.h"
+#include "../../../Headers/view_graph.h"
 
 typedef pcl::PointXYZ PointT;
 typedef pcl::PointNormal Point_N;
@@ -66,7 +66,7 @@ int
 main (int argc, char** argv)
 {
 	Access_Model_Data amd;
-	View_graph graph;
+	View_Graph graph;
 	
 	// Load all utilities 
 	std::string model_name (argv[1]);
