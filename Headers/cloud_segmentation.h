@@ -2,7 +2,7 @@
 #define CLOUD_SEGMENTATION_H_
 
 #include <pcl/io/pcd_io.h>
-#include "Manipulation.h"
+#include "manipulation.h"
 #include "access_results.h"
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/common/transforms.h>

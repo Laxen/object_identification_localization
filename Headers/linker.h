@@ -2,7 +2,7 @@
 #define LINKER_H_
 
 #include "access_results.h"
-#include "Manipulation.h"
+#include "manipulation.h"
 #include <pcl/common/transforms.h>
 #include "pose_data.h"
 

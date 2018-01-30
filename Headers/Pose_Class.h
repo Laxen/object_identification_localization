@@ -7,7 +7,7 @@
 #include "sample_consensus_prerejective.h"
 #include <pcl/common/time.h>
 #include <pcl/features/fpfh_omp.h>
-#include "Manipulation.h"
+#include "manipulation.h"
 #include "access_results.h"
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/features/multiscale_feature_persistence.h>
