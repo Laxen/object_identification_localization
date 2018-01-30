@@ -89,6 +89,13 @@ class Config_Reader
 		 */
 		void
 		capturer_load_config (const std::string &filename);
+
+		/**
+			Loads all parameters associated with the background_creator
+			@param filename The name of the config file (.ini)
+		 */
+		void
+		background_load_config (const std::string &filename);
 };
 
 #endif

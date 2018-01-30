@@ -162,6 +162,9 @@ int main(int argc, char * argv[]) try
 
 			std::cout << "Saving cloud in " << path.str() << std::endl;
 			pcl::io::savePCDFileBinaryCompressed(path.str(), *cloud);
+			std::ofstream stream;
+			stream.open(cf.save_path + "." + boost::lexical_cast<std::string>(cloud_idx) + "_flag"); 
+			stream.close();
 			save = false;
 			cloud_idx++;
 			std::cout << "Cloud saved!" << std::endl;

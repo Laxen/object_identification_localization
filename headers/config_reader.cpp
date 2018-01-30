@@ -67,7 +67,7 @@ Config_Reader::system_load_config (const std::string &filename)
 	// Parse the INI into the property tree.
 	pt::read_ini (filename, tree);
 
-	// Read all config parameters associated with adding a new model 
+	// Read all config parameters associated with the system
 	save_path = tree.get<std::string> ("System-Default.save_path");
 
 	pose_visualization_mode = tree.get<int> ("System-Advanced.pose_visualization_mode");
@@ -114,6 +114,26 @@ Config_Reader::capturer_load_config (const std::string &filename)
 	// Parse the INI into the property tree.
 	pt::read_ini (filename, tree);
 
-	// Read all config parameters associated with adding a new model 
+	// Read all config parameters
 	save_path = tree.get<std::string> ("System-Default.save_path");
+}
+
+/**
+	Loads all parameters associated with the background_creator
+	@param filename The name of the config file (.ini)
+ */
+void
+Config_Reader::background_load_config (const std::string &filename)
+{
+	// Create empty property tree object
+	pt::ptree tree;
+
+	// Parse the INI into the property tree.
+	pt::read_ini (filename, tree);
+
+	// Read all config parameters
+	save_path = tree.get<std::string> ("System-Default.save_path");
+	web_service_username = tree.get<std::string> ("System-Default.web_service_username");
+	web_service_password = tree.get<std::string> ("System-Default.web_service_password");
+	hand_web_service_url = tree.get<std::string> ("System-Default.hand_web_service_url");
 }

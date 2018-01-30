@@ -26,7 +26,6 @@ typedef pcl::PointCloud<Point_RGBA> Point_Cloud_RGBA;
 
 typedef pcl::visualization::PointCloudColorHandlerCustom<Point_N> ColorHandler_N;
 
-std::string share_path = "/home/robot/pointclouds/";
 int cloud_idx = 0;
 
 int
@@ -75,11 +74,11 @@ main(int argc, char** argv) {
 		rdf.initialize(conf.rdf_url, conf.rdf_repo_name);
 	}
 
-	if(boost::filesystem::exists(share_path + "background.pcd")) {
+	if(boost::filesystem::exists(conf.save_path + "background.pcd")) {
 		std::cout << "Background found, using it for segmentation!" << "\n";
 		Point_Cloud_N::Ptr background (new Point_Cloud_N);
-		m.load_cloud(share_path + "background.pcd", background);
-		Eigen::Matrix<float,4,4,Eigen::DontAlign> background_transformation = ar.get_robot_data_matrix(share_path + "background.csv");
+		m.load_cloud(conf.save_path + "background.pcd", background);
+		Eigen::Matrix<float,4,4,Eigen::DontAlign> background_transformation = ar.get_robot_data_matrix(conf.save_path + "background.csv");
 		Eigen::Matrix<float,4,4,Eigen::DontAlign> T_CtoH = ar.get_T_CtoH();
 		cs.set_background_data(background, background_transformation, T_CtoH);
 		std::cout << "Background data set!" << "\n\n";
@@ -90,15 +89,13 @@ main(int argc, char** argv) {
 	while(true) {
 		// Wait for point cloud in share folder
 		std::string scene_name = boost::lexical_cast<std::string>(cloud_idx);
-		/*
-		std::string original_cloud_path = share_path + scene_name + ".pcd";
-		std::string original_robot_data_path = share_path + scene_name + ".csv";
-		*/
 		std::string original_cloud_path = conf.save_path + scene_name + ".pcd";
+		std::string original_flag_path = conf.save_path + "." + scene_name + "_flag";
 		std::string original_robot_data_path = conf.save_path + scene_name + ".csv";
 
 		std::cout << "Waiting for cloud at " << original_cloud_path << '\n';
 		while(!boost::filesystem::exists(original_cloud_path)) {}; // Hang until cloud is found
+		while(!boost::filesystem::exists(original_flag_path)) {}; // Hang until flag is found
 		std::cout << "Cloud found!" << '\n';
 		std::cout << "Fetching robot data..." << '\n';
 		fetcher.fetch_data(original_robot_data_path);
@@ -116,10 +113,6 @@ main(int argc, char** argv) {
 			oss << cloud_trans;
 			rdf.add_current_position(cloud_idx, oss.str());
 		}
-
-		// Temporary stop, replace this with flag files later
-		std::cout << "Press Q to continue..." << '\n';
-		visu.spin();
 
 		// Run scene segmentation (uses background if it has been found)
 		std::cout << "Segmenting cloud..." << '\n';

@@ -9,3 +9,4 @@ data/
 CAD_models/
 *~
 *.swo
+pointclouds/
