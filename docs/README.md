@@ -9,7 +9,7 @@ The calibration program used for finding the unknown transformation between the 
 ## [background_creator](https://github.com/Laxen/object_identification_localization/tree/master/background_creator)
 The program for creating point cloud backgrounds. This background is used in the system to get more accurate segmentation.
 
-## add_model [add_model](https://github.com/Laxen/object_identification_localization/edit/master/add_model)
+## [add_model](https://github.com/Laxen/object_identification_localization/edit/master/add_model)
 The program for adding new models to be identified/localized. 
 
 ## [system](https://github.com/Laxen/object_identification_localization/tree/master/system)
