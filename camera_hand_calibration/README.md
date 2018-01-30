@@ -1,4 +1,8 @@
 # camera_hand_calibration
+This program is used to find the unknown camera-to-hand transformation matrix (for more details abot this, see our master's thesis report [LINK NEEDED]). The program works by using point picking in multiple clouds (three clouds are recommended) taken from different angles of an environment with lots of varying geometry. By picking a couple of corresponding points in these clouds (6+ recommended) the unknown transformation can be computed. Note that this only has to be done once as long as the camera doesn't move in relation to the robot hand! A good calibration is crucial to get good results when running the system, below is an image showing an example of good calibration clouds.
+
+![Point picking example](https://github.com/Laxen/object_identification_localization/blob/master/docs/images/pp.png)
+These three clouds are taken from different angles, and the environment they capture has varying geometry that makes it easy to pick corresponding points. As a rule of thumb the geometry of the environment should be varied enough such that not many points lie in the same plane. 
 
 ## Compile and run
 Execute the following command in the system directory to compile the program
