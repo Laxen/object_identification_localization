@@ -7,7 +7,7 @@
 #include "../Headers/access_model_data.h"
 #include "../Headers/identification_class.h"
 #include "../Headers/manipulation.h"
-#include "../Headers/Pose_Class.h"
+#include "../Headers/pose_class.h"
 #include "../Headers/linker.h"
 #include "../Headers/Robot_Data_Fetcher.h"
 #include "../Headers/cloud_segmentation.h"

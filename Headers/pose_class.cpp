@@ -1,4 +1,4 @@
-#include "Pose_Class.h"
+#include "pose_class.h"
 
 Pose_Class::Pose_Class() {
 	LEAF_SIZE = 0.003; // Used for downsampling (0.003 for small objects, 0.010 for large)
