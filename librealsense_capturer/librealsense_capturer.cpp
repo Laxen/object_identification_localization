@@ -11,6 +11,8 @@
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 
+#include "../headers/config_reader.h"
+
 // Struct for managing rotation of pointcloud view
 struct state {
 	state() : yaw(0.0), pitch(0.0), last_x(0.0), last_y(0.0),
@@ -23,13 +25,15 @@ void register_glfw_callbacks(window& app, state& app_state);
 void draw_pointcloud(window& app, state& app_state, rs2::points& points);
 
 bool save = false;
-std::string save_path = "/home/robot/pointclouds/";
 int cloud_idx = 0;
 
 int MAX_DEPTH = 1;
 
 int main(int argc, char * argv[]) try
 {
+	Config_Reader cf;
+	cf.capturer_load_config("../../config.ini");
+
 	// Create a simple OpenGL window for rendering:
 	window app(1280, 720, "RealSense Pointcloud Example");
 	// Construct an object to manage view state
@@ -143,14 +147,14 @@ int main(int argc, char * argv[]) try
 			}
 
 			std::ostringstream path;
-			path << save_path << cloud_idx << ".png";
+			path << cf.save_path << cloud_idx << ".png";
 
 			rs2::video_frame vf = processed_frames.get_color_frame();
 			stbi_write_png(path.str().c_str(), vf.get_width(), vf.get_height(),
 				vf.get_bytes_per_pixel(), vf.get_data(), vf.get_stride_in_bytes());
 
 			path.str("");
-			path << save_path;
+			path << cf.save_path;
 			if(!boost::filesystem::exists(path.str())) {
 				boost::filesystem::create_directory(path.str());
 			}

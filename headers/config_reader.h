@@ -82,6 +82,13 @@ class Config_Reader
 		 */
 		void
 		system_load_config (const std::string &filename);
+
+		/**
+			Loads all parameters associated with the librealsense_capturer
+			@param filename The name of the config file (.ini)
+		 */
+		void
+		capturer_load_config (const std::string &filename);
 };
 
 #endif

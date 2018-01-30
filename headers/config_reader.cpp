@@ -100,3 +100,20 @@ Config_Reader::system_load_config (const std::string &filename)
 	web_service_password = tree.get<std::string> ("System-Default.web_service_password");
 	hand_web_service_url = tree.get<std::string> ("System-Default.hand_web_service_url");
 }
+
+/**
+	Loads all parameters associated with the librealsense_capturer
+	@param filename The name of the config file (.ini)
+ */
+void
+Config_Reader::capturer_load_config (const std::string &filename)
+{
+	// Create empty property tree object
+	pt::ptree tree;
+
+	// Parse the INI into the property tree.
+	pt::read_ini (filename, tree);
+
+	// Read all config parameters associated with adding a new model 
+	save_path = tree.get<std::string> ("System-Default.save_path");
+}

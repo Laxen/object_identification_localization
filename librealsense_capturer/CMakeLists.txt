@@ -34,5 +34,9 @@ include_directories(${PCL_INCLUDE_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (librealsense_capturer librealsense_capturer.cpp)
+
+add_library(Config_Reader ../headers/config_reader.cpp)
+
+target_link_libraries (librealsense_capturer Config_Reader)
 target_link_libraries (librealsense_capturer ${DEPENDENCIES} ${PCL_LIBRARIES})
 #g++ -std=c++11 ../test_librealsense.cpp -lrealsense2 -o test_librealsense
