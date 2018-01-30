@@ -3,7 +3,7 @@
 #include <pcl/point_cloud.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/registration/ppf_registration.h>
-#include "../Headers/Access_Results.h"
+#include "../Headers/access_results.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointXYZRGB Point_RGBA;

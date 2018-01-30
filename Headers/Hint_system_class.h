@@ -1,13 +1,13 @@
 #ifndef HINT_SYSTEM_CLASS_H
 #define HINT_SYSTEM_CLASS_H
 
-#include "../Headers/Access_Results.h"
-#include "../Headers/access_model_data.h"
-#include "../Headers/View_graph.h"
-#include "../Headers/pose_data.h"
+#include "access_results.h"
+#include "access_model_data.h"
+#include "View_graph.h"
+#include "pose_data.h"
 #include <pcl/common/transforms.h>
 #include <pcl/kdtree/kdtree_flann.h>
-#include "../Headers/hint_system_data.h"
+#include "hint_system_data.h"
 
 class Hint_system_class
 {

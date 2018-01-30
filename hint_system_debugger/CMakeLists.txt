@@ -13,7 +13,7 @@ add_executable (hint_system_debugger hint_system_debugger.cpp)
 add_library (Hint_system_class ../Headers/Hint_system_class.cpp)
 add_library (View_graph ../Headers/View_graph.cpp)
 add_library (Access_Model_Data ../Headers/access_model_data.cpp)
-add_library (Access_Results ../Headers/Access_Results.cpp)
+add_library (Access_Results ../Headers/access_results.cpp)
 
 
 target_link_libraries (hint_system_debugger ${PCL_LIBRARIES})

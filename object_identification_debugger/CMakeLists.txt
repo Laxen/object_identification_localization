@@ -12,7 +12,7 @@ add_definitions(${PCL_DEFINITIONS})
 add_executable (object_identification_debugger object_identification_debugger.cpp)
 add_library (Identification_class ../Headers/Identification_class.cpp)
 add_library (View_graph ../Headers/View_graph.cpp)
-add_library (Access_Results ../Headers/Access_Results.cpp)
+add_library (Access_Results ../Headers/access_results.cpp)
 add_library (Access_Model_Data ../Headers/access_model_data.cpp)
 
 

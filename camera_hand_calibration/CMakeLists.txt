@@ -12,6 +12,6 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (camera_hand_calibration camera_hand_calibration.cpp)
-add_library(Access_Results ../Headers/Access_Results.cpp)
+add_library(Access_Results ../Headers/access_results.cpp)
 
 target_link_libraries (camera_hand_calibration Access_Results ${PCL_LIBRARIES})

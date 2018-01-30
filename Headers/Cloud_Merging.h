@@ -6,7 +6,7 @@
 #include <pcl/point_cloud.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/registration/ppf_registration.h>
-#include "Access_Results.h"
+#include "access_results.h"
 
 class Cloud_Merging {
 	private:

@@ -1,7 +1,6 @@
 
 #include "../../Headers/access_model_data.h"
 #include "../../Headers/View_graph.h"
-#include "../../Headers/Access_Results.h"
 #include "../../Headers/Normal_utility.h"
 #include <pcl/visualization/pcl_visualizer.h>
 

@@ -1,5 +1,5 @@
-#ifndef ACCESS_Results_H_
-#define ACCESS_Results_H_
+#ifndef ACCESS_RESULTS_H_
+#define ACCESS_RESULTS_H_
 
 #include <pcl/io/pcd_io.h>
 #include <pcl/ModelCoefficients.h>
