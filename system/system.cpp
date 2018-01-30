@@ -9,13 +9,12 @@
 #include "../Headers/manipulation.h"
 #include "../Headers/pose_class.h"
 #include "../Headers/linker.h"
-#include "../Headers/Robot_Data_Fetcher.h"
+#include "../Headers/robot_data_fetcher.h"
 #include "../Headers/cloud_segmentation.h"
 #include "../Headers/hint_system_class.h"
 #include "../Headers/cloud_merging.h"
 #include "../Headers/RDF_Connector.hpp"
 #include "../Headers/pose_data.h"
-#include "../Headers/Robot_Data_Fetcher.h"
 #include "../Headers/config_reader.h"
 
 typedef pcl::PointNormal Point_N;
