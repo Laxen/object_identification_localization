@@ -1,4 +1,5 @@
 # background_creator
+This program is used for creating background clouds that can be used to improve segmentation. When the full system is run and a point cloud of an object is captured, this background cloud can be subtracted to easily remove most of the background. This leaves only the objects of interest left in the cloud, which will improve identification and localization, as well as speed up the process. This is highly recommended to get good results!
 
 ## Compile and run
 Execute the following command in the system directory to compile the program
