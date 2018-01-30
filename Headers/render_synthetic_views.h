@@ -19,7 +19,7 @@
 #include <pcl/common/transforms.h>
 #include "view_graph.h"
 #include "access_model_data.h"
-#include "Similar_object_recognition.h"
+#include "similar_object_recognition.h"
 #include "view_feature_score.h"
 #include <pcl/features/fpfh_omp.h>
 #include "normal_utility.h"

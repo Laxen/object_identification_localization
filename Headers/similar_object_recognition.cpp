@@ -1,16 +1,16 @@
 
-#include "Similar_object_recognition.h"
+#include "similar_object_recognition.h"
 
 /** 
   Constructor. 
 */
-Similar_object_recognition::Similar_object_recognition (void)
+Similar_Object_Recognition::Similar_Object_Recognition (void)
 {
 	similarity_threshold_ = 0.2;
 }
 
 void
-Similar_object_recognition::load_target_model_data (std::string source_name, std::vector<model_data> &m_targets)
+Similar_Object_Recognition::load_target_model_data (std::string source_name, std::vector<model_data> &m_targets)
 {
 	// Get all models
 	Access_Model_Data access;
@@ -36,7 +36,7 @@ Similar_object_recognition::load_target_model_data (std::string source_name, std
 }
 
 float 
-Similar_object_recognition::l1_norm (FeatureT f1, FeatureT f2)
+Similar_Object_Recognition::l1_norm (FeatureT f1, FeatureT f2)
 {
 	float sum = 0.0f;
 	for (int i = 0; i < 640; i++)
@@ -48,7 +48,7 @@ Similar_object_recognition::l1_norm (FeatureT f1, FeatureT f2)
 
 /*
 void 
-Similar_object_recognition::normalize (sim_mod &sm)
+Similar_Object_Recognition::normalize (sim_mod &sm)
 {
 	sim_mod sm_temp = sm;	
 		
@@ -65,7 +65,7 @@ Similar_object_recognition::normalize (sim_mod &sm)
 */
 
 void 
-Similar_object_recognition::search_for_similar_views (model_data &m_source, std::vector<model_data> &m_targets)
+Similar_Object_Recognition::search_for_similar_views (model_data &m_source, std::vector<model_data> &m_targets)
 {	
 	//
 	// Match m_source to m_targets
@@ -155,7 +155,7 @@ Similar_object_recognition::search_for_similar_views (model_data &m_source, std:
 }
 
 void 
-Similar_object_recognition::save_similar_models_data (model_data m_source, std::vector<model_data> m_targets)
+Similar_Object_Recognition::save_similar_models_data (model_data m_source, std::vector<model_data> m_targets)
 {
 	Access_Model_Data access;
 	
@@ -301,7 +301,7 @@ Similar_object_recognition::save_similar_models_data (model_data m_source, std::
 }
 
 void 
-Similar_object_recognition::warning_log (model_data model)
+Similar_Object_Recognition::warning_log (model_data model)
 {
 	bool warn = false;
 	for (int i = 0; i < model.similar_models.size(); i++)
@@ -330,7 +330,7 @@ Similar_object_recognition::warning_log (model_data model)
 }
 
 void
-Similar_object_recognition::add_model (std::string source_name, FeatureCloudT::Ptr source_features)
+Similar_Object_Recognition::add_model (std::string source_name, FeatureCloudT::Ptr source_features)
 {
 	model_data m_source;
 	m_source.name = source_name;

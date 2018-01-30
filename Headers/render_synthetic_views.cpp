@@ -1126,7 +1126,7 @@ Render_Synthetic_Views::start_rendering (int argc, char** argv)
 	
 	// Search for similar objects
 	std::cout << "Searching for similar objects..." << std::endl;
-	Similar_object_recognition sim_obj;
+	Similar_Object_Recognition sim_obj;
 	sim_obj.add_model (model_name, global_features);
 	std::cout << "Done\n" << std::endl;
 	

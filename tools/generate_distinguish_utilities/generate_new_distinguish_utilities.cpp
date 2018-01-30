@@ -1,5 +1,5 @@
 
-#include "../../Headers/Similar_object_recognition.h"
+#include "../../Headers/similar_object_recognition.h"
 #include "../../Headers/access_model_data.h"
 
 typedef pcl::ESFSignature640 FeatureT;
@@ -8,7 +8,7 @@ typedef pcl::PointCloud<FeatureT> FeatureCloudT;
 int main (int argc, char** argv)
 {
 	Access_Model_Data access;
-	Similar_object_recognition sor;
+	Similar_Object_Recognition sor;
 	
 	std::vector<std::string> model_names = access.get_model_names ();
 	std::vector<FeatureCloudT::Ptr> model_features;

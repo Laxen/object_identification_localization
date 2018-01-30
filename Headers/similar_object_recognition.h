@@ -6,7 +6,7 @@
 #include "access_model_data.h"
 
 
-class Similar_object_recognition
+class Similar_Object_Recognition
 {	
 	private:
 	
@@ -73,7 +73,7 @@ class Similar_object_recognition
 		/** 
 		  Empty constructor. 
 	  	*/
-		Similar_object_recognition (void);
+		Similar_Object_Recognition (void);
 	
 		void
 		add_model (std::string source_name, FeatureCloudT::Ptr source_features);
