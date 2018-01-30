@@ -1,4 +1,4 @@
-#include "Linker.h"
+#include "linker.h"
 
 bool
 Linker::poses_comparator(const Pose_Data& pose1, const Pose_Data& pose2) {
