@@ -23,7 +23,7 @@
 #include "Similar_object_recognition.h"
 #include "View_Feature_Score.h"
 #include <pcl/features/fpfh_omp.h>
-#include "Normal_utility.h"
+#include "normal_utility.h"
 #include <unistd.h>
 
 

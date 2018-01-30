@@ -6,7 +6,7 @@
 #include <numeric>
 #include "access_model_data.h"
 
-class Normal_utility
+class Normal_Utility
 {
 	private:
 		typedef pcl::PointXYZ PointT;

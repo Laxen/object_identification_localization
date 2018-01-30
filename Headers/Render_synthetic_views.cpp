@@ -1145,7 +1145,7 @@ Render_synthetic_views::start_rendering (int argc, char** argv)
 	
 	// Generate normal utilities
 	std::cout << "Generating normal utilities..." << std::endl;
-	Normal_utility nu;
+	Normal_Utility nu;
 	std::vector<float> normal_utilities;
 	PointT v_p;
 	v_p.x = 0.0;

@@ -1,5 +1,5 @@
 
-#include "Normal_utility.h"
+#include "normal_utility.h"
 
 /**
   Saturate the value so that it does not go below 90
@@ -7,7 +7,7 @@
   @return The saturated value
 */
 float 
-Normal_utility::saturate (float value)
+Normal_Utility::saturate (float value)
 {
 	if (value < 90)
 	{
@@ -23,7 +23,7 @@ Normal_utility::saturate (float value)
   @return The vector containing all the normal-utilities for all views
 */
 std::vector<float>
-Normal_utility::compute_normal_utilities (std::vector<PointCloud_N::Ptr> views)
+Normal_Utility::compute_normal_utilities (std::vector<PointCloud_N::Ptr> views)
 {
 	std::vector<float> normal_utilities;
 	
@@ -54,7 +54,7 @@ Normal_utility::compute_normal_utilities (std::vector<PointCloud_N::Ptr> views)
   @return The vector containing all the normal-utilities for all views
 */
 std::vector<float>
-Normal_utility::compute_normal_utilities_2 (std::vector<PointCloud_N::Ptr> views, PointT viewpoint, float bad_normal_thr)
+Normal_Utility::compute_normal_utilities_2 (std::vector<PointCloud_N::Ptr> views, PointT viewpoint, float bad_normal_thr)
 {
 	std::vector<float> normal_utilities;
 	
@@ -135,7 +135,7 @@ Normal_utility::compute_normal_utilities_2 (std::vector<PointCloud_N::Ptr> views
   @param vec The vector to be normalized
 */
 void
-Normal_utility::normalize (std::vector<float> &vec)
+Normal_Utility::normalize (std::vector<float> &vec)
 {
 	/*
 	// Sort vec
@@ -163,7 +163,7 @@ Normal_utility::normalize (std::vector<float> &vec)
   @param utilities The normal-utility vector
 */
 void
-Normal_utility::new_utilities (std::vector<float> &utilities)
+Normal_Utility::new_utilities (std::vector<float> &utilities)
 {
 	for (int i = 0; i < utilities.size(); i++)
 	{
@@ -222,7 +222,7 @@ Normal_utility::new_utilities (std::vector<float> &utilities)
   @return The normal-utility vector
 */
 std::vector<float>
-Normal_utility::generate_normal_utilities (std::vector<PointCloud_N::Ptr> views, PointT viewpoint, float bad_normal_thr, int mode)
+Normal_Utility::generate_normal_utilities (std::vector<PointCloud_N::Ptr> views, PointT viewpoint, float bad_normal_thr, int mode)
 {	
 	std::vector<float> normal_utilities;
 	if (mode == 1)
@@ -272,7 +272,7 @@ Normal_utility::generate_normal_utilities (std::vector<PointCloud_N::Ptr> views,
   @param model_name The name of the model
 */
 void
-Normal_utility::save_normal_utilities (std::string model_name, std::vector<float> normal_utilities)
+Normal_Utility::save_normal_utilities (std::string model_name, std::vector<float> normal_utilities)
 {
 	Access_Model_Data amd;
 	boost::filesystem::path p = amd.path_to_model_in_model_data (model_name);

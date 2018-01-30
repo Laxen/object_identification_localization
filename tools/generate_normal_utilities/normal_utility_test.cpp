@@ -1,7 +1,7 @@
 
 #include "../../Headers/access_model_data.h"
 #include "../../Headers/View_graph.h"
-#include "../../Headers/Normal_utility.h"
+#include "../../Headers/normal_utility.h"
 #include <pcl/visualization/pcl_visualizer.h>
 
 typedef pcl::PointXYZ PointT;
@@ -39,7 +39,7 @@ main (int argc, char** argv)
 		
 		// Generate normal utilities
 		std::cout << "Generating normal utilities..." << std::endl;
-		Normal_utility nu;
+		Normal_Utility nu;
 		std::vector<float> normal_utilities;
 		PointT v_p;
 		v_p.x = 0.0;
