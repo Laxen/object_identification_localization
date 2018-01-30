@@ -1,6 +1,6 @@
 
 #include "../../Headers/access_model_data.h"
-#include "../../Headers/View_Feature_Score.h"
+#include "../../Headers/view_feature_score.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointCloud<Point_N> PointCloud_N;

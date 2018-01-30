@@ -1,4 +1,3 @@
-
 #include "render_synthetic_views.h"
 
 /** 

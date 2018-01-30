@@ -20,7 +20,7 @@
 #include "View_graph.h"
 #include "access_model_data.h"
 #include "Similar_object_recognition.h"
-#include "View_Feature_Score.h"
+#include "view_feature_score.h"
 #include <pcl/features/fpfh_omp.h>
 #include "normal_utility.h"
 #include <unistd.h>

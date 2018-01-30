@@ -15,7 +15,7 @@ add_library (View_graph ../Headers/View_graph.cpp)
 add_library (Access_Model_Data ../Headers/access_model_data.cpp)
 add_library (Similar_object_recognition ../Headers/Similar_object_recognition.cpp)
 add_library (Render_Views_Tesselated_Sphere_Modified ../Headers/render_views_tesselated_sphere_modified.cpp)
-add_library (View_Feature_Score ../Headers/View_Feature_Score.cpp)
+add_library (View_Feature_Score ../Headers/view_feature_score.cpp)
 add_library (Config_Reader ../Headers/config_reader.cpp)
 
 

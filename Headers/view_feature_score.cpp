@@ -1,4 +1,4 @@
-#include "View_Feature_Score.h"
+#include "view_feature_score.h"
 
 /**
   Finds points with persistent features in cloud
