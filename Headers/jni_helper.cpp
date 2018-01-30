@@ -1,4 +1,4 @@
-#include "JNI_Helper.hpp"
+#include "jni_helper.hpp"
 
 JNI_Helper::JNI_Helper() {
 

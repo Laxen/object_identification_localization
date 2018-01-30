@@ -1,7 +1,7 @@
 #ifndef RDF_CONNECTOR_H
 #define RDF_CONNECTOR_H
 
-#include "JNI_Helper.hpp"
+#include "jni_helper.hpp"
 
 class RDF_Connector : public JNI_Helper {
 	private:
