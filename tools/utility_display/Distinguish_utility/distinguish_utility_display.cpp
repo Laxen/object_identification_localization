@@ -1,5 +1,5 @@
 
-#include "../../../Headers/Access_Model_data.h"
+#include "../../../Headers/access_model_data.h"
 #include "../../../Headers/View_graph.h"
 
 typedef pcl::PointXYZ PointT;
@@ -28,7 +28,7 @@ normalize (std::vector<float> vec)
 int 
 main (int argc, char** argv)
 {
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	View_graph graph;
 	
 	// Load distinguish utilities 

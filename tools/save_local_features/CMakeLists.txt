@@ -10,10 +10,10 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (save_local_features save_local_features.cpp)
-add_library (Access_Model_data ../../../Headers/Access_Model_data.cpp)
+add_library (Access_Model_Data ../../../Headers/access_model_data.cpp)
 
 target_link_libraries (save_local_features ${PCL_LIBRARIES})
-target_link_libraries (save_local_features Access_Model_data ${PCL_LIBRARIES})
+target_link_libraries (save_local_features Access_Model_Data ${PCL_LIBRARIES})
 
 
 

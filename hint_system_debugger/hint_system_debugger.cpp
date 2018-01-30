@@ -1,5 +1,5 @@
 
-#include "../Headers/Hint_system_class.h"
+#include "../Headers/hint_system_class.h"
 #include "../Headers/pose_data.h"
 
 
@@ -19,7 +19,7 @@ int main (int argc, char** argv)
 	pcl::visualization::PCLVisualizer visu("Visu");
 	
 	// Create object for hint system and receive a new camera position
-	Hint_system_class hint_system;
+	Hint_System_Class hint_system;
 	hint_system.set_weights (weights);
 	hint_system.set_below_plane_threshold (0.01);
 	hint_system.set_misalignment_angle_threshold (30);
@@ -36,7 +36,7 @@ int main (int argc, char** argv)
 	
 	/*
 	// Create object for hint system and receive a new camera position
-	Hint_system_class hint_system;
+	Hint_System_Class hint_system;
 	float weights[] = {0.33, 0.33, 0.33};
 	pcl::visualization::PCLVisualizer visu("Visu");
 	hint_system.set_weights (weights);

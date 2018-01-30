@@ -1,4 +1,4 @@
-#include "../../Headers/Access_Model_data.h"
+#include "../../Headers/access_model_data.h"
 #include <pcl/features/fpfh_omp.h>
 
 typedef pcl::PointNormal Point_N;
@@ -9,7 +9,7 @@ typedef pcl::PointCloud<FeatureT> FeatureCloudT;
 int main (int argc, char** argv)
 {
 	// Load models
-	Access_Model_data access;
+	Access_Model_Data access;
 	std::vector<std::string> model_names = access.get_model_names ();
 	//std::vector<std::string> model_names;
 	//model_names.push_back ("wood_object");

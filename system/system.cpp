@@ -3,19 +3,19 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <signal.h>
-#include "../Headers/Access_Results.h"
-#include "../Headers/Identification_class.h"
-#include "../Headers/Manipulation.h"
-#include "../Headers/Pose_Class.h"
-#include "../Headers/Linker.h"
-#include "../Headers/Robot_Data_Fetcher.h"
-#include "../Headers/Cloud_Segmentation.h"
-#include "../Headers/Hint_system_class.h"
-#include "../Headers/Cloud_Merging.h"
+#include "../Headers/access_results.h"
+#include "../Headers/access_model_data.h"
+#include "../Headers/identification_class.h"
+#include "../Headers/manipulation.h"
+#include "../Headers/pose_class.h"
+#include "../Headers/linker.h"
+#include "../Headers/robot_data_fetcher.h"
+#include "../Headers/cloud_segmentation.h"
+#include "../Headers/hint_system_class.h"
+#include "../Headers/cloud_merging.h"
 #include "../Headers/RDF_Connector.hpp"
 #include "../Headers/pose_data.h"
-#include "../Headers/Robot_Data_Fetcher.h"
-#include "../Headers/Config_reader.h"
+#include "../Headers/config_reader.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointXYZ Point_XYZ;
@@ -33,7 +33,7 @@ int
 main(int argc, char** argv) {
 	Access_Results ar;
 	Manipulation m;
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	Linker linker;
 	bool merge = false;
 
@@ -41,7 +41,7 @@ main(int argc, char** argv) {
 
 	pcl::visualization::PCLVisualizer visu("Visu");
 
-	Config_reader conf;
+	Config_Reader conf;
 	conf.system_load_config("../../config.ini");
 
 	Pose_Class pc;
@@ -52,7 +52,7 @@ main(int argc, char** argv) {
 	Cloud_Segmentation cs;
 	cs.set_visualizer(&visu);
 
-	Hint_system_class hs;
+	Hint_System_Class hs;
 	float weights[] = {conf.hint_view_weight, conf.hint_normal_weight, conf.hint_feature_weight, conf.hint_distinguish_weight};
 	hs.set_weights (weights);
 	hs.set_below_plane_threshold(conf.hint_below_plane_threshold);
@@ -175,7 +175,7 @@ main(int argc, char** argv) {
 
 		// Run object identification on latest cloud
 		std::cout << "Running object identification..." << '\n';
-		Identification_class ident;
+		Identification_Class ident;
 		for(int i = 0; i < single_clusters.size(); i++) {
 			ident.identify(scene_name, i, single_clusters[i]);
 		}

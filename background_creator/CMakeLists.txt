@@ -7,7 +7,7 @@ find_package(PCL 1.8 REQUIRED)
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
-add_library(Access_Results ../../Headers/Access_Results.cpp)
+add_library(Access_Results ../../Headers/access_results.cpp)
 
 add_executable (background_creator background_creator.cpp)
 target_link_libraries (background_creator Access_Results ${PCL_LIBRARIES})
