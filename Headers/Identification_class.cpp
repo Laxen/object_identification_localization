@@ -7,7 +7,7 @@
 void
 Identification_class::load_model_data ()
 {
-	Access_Model_data access;
+	Access_Model_Data access;
 	
 	// Get all models
 	std::vector<std::string> model_names = access.get_model_names ();
@@ -229,7 +229,7 @@ Identification_class::results_viewer (cluster_data cluster)
 	// Create a viewer with graph information
 	//
 	
-	Access_Model_data access;
+	Access_Model_Data access;
 	
 	// Add graph
 	pcl::visualization::PCLVisualizer viewer1 ("Viewer1");

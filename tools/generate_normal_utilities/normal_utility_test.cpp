@@ -1,5 +1,5 @@
 
-#include "../../Headers/Access_Model_data.h"
+#include "../../Headers/access_model_data.h"
 #include "../../Headers/View_graph.h"
 #include "../../Headers/Access_Results.h"
 #include "../../Headers/Normal_utility.h"
@@ -18,7 +18,7 @@ float sphere_radius = 0.35;
 int 
 main (int argc, char** argv)
 {
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	std::vector<std::string> model_names;
 	
 	if (argc > 1)

@@ -13,7 +13,7 @@ void
 Similar_object_recognition::load_target_model_data (std::string source_name, std::vector<model_data> &m_targets)
 {
 	// Get all models
-	Access_Model_data access;
+	Access_Model_Data access;
 	std::vector<std::string> model_names = access.get_model_names ();
 	
 	for (int i = 0; i < model_names.size(); i++)
@@ -157,7 +157,7 @@ Similar_object_recognition::search_for_similar_views (model_data &m_source, std:
 void 
 Similar_object_recognition::save_similar_models_data (model_data m_source, std::vector<model_data> m_targets)
 {
-	Access_Model_data access;
+	Access_Model_Data access;
 	
 	//
 	// Save similar object data in m_source

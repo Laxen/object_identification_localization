@@ -6,7 +6,7 @@
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/common/centroid.h>
-#include "Access_Model_data.h"
+#include "access_model_data.h"
 #include "Access_Results.h"
 #include "View_graph.h"
 

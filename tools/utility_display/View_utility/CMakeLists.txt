@@ -11,12 +11,12 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable (view_utility_display view_utility_display.cpp)
 add_library (View_graph ../../../../Headers/View_graph.cpp)
-add_library (Access_Model_data ../../../../Headers/Access_Model_data.cpp)
+add_library (Access_Model_Data ../../../../Headers/access_model_data.cpp)
 
 
 target_link_libraries (view_utility_display ${PCL_LIBRARIES})
 target_link_libraries (view_utility_display View_graph ${PCL_LIBRARIES})
-target_link_libraries (view_utility_display Access_Model_data ${PCL_LIBRARIES})
+target_link_libraries (view_utility_display Access_Model_Data ${PCL_LIBRARIES})
 
 
 

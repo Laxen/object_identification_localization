@@ -1,5 +1,5 @@
 
-#include "../../Headers/Access_Model_data.h"
+#include "../../Headers/access_model_data.h"
 #include "../../Headers/View_Feature_Score.h"
 
 typedef pcl::PointNormal Point_N;
@@ -8,7 +8,7 @@ typedef pcl::PointCloud<Point_N> PointCloud_N;
 int main (int argc, char** argv) {
 
 	// Get all model names in Model_data
-	Access_Model_data access;
+	Access_Model_Data access;
 	std::vector<std::string> model_names = access.get_model_names ();
 	
 	View_Feature_Score vfs;

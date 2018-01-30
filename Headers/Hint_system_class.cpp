@@ -205,7 +205,7 @@ Hint_system_class::compute_model_center (std::string model_name, Eigen::Matrix<f
 			std::cout << "Model not loaded!" << std::endl;
 		}
 		
-		Access_Model_data amd;
+		Access_Model_Data amd;
 		PointCloudT::Ptr complete_model (new PointCloudT);
 		amd.load_complete_model (model_name, complete_model);
 		pcl::transformPointCloud (*complete_model, *complete_model, pose);
@@ -361,7 +361,7 @@ Hint_system_class::view_valid_nodes (	std::string scene_name,
 	visu_ptr->addCoordinateSystem (0.1, a, "rotation_initial_view");
 	
 	// Add complete model
-	Access_Model_data access_model_data;
+	Access_Model_Data access_model_data;
 	PointCloudT::Ptr complete_model (new PointCloudT);
 	access_model_data.load_complete_model (per.name, complete_model);
 	pcl::transformPointCloud (*complete_model, *complete_model, per.pose);
@@ -395,7 +395,7 @@ bool
 Hint_system_class::model_below_plane (Pose_estimation_results per, pcl::ModelCoefficients plane)
 {
 	// Load and transform complete model
-	Access_Model_data access_model_data;
+	Access_Model_Data access_model_data;
 	PointCloudT::Ptr complete_model (new PointCloudT);
 	access_model_data.load_complete_model (per.name, complete_model);
 	pcl::transformPointCloud (*complete_model, *complete_model, per.pose);
@@ -611,7 +611,7 @@ bool
 Hint_system_class::low_inlier_fraction (Pose_estimation_results &per, std::string scene_name, int cluster_index)
 {
 	Access_Results ar;
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	double inlier_thr = 0.1;
 	
 	// Load source cloud
@@ -1050,7 +1050,7 @@ void
 Hint_system_class::add_segmentation_results_to_viewer (pcl::visualization::PCLVisualizer &viewer, std::string scene_name, Pose_estimation_results per)
 {
 	Access_Results access_results;
-	Access_Model_data access_model_data;
+	Access_Model_Data access_model_data;
 
 	if (scene_name == "0")
 	{
@@ -1158,7 +1158,7 @@ Hint_system_class::add_segmentation_results_to_viewer (pcl::visualization::PCLVi
 void
 Hint_system_class::view_search_results (std::string scene_name, Pose_estimation_results &per)
 {
-	Access_Model_data access_model_data;
+	Access_Model_Data access_model_data;
 	std::vector<float> r_vec_search (per.graph.get_size (), 0.1);
 	std::vector<float> g_vec_search (per.graph.get_size (), 0.1);
 	std::vector<float> b_vec_search (per.graph.get_size (), 0.1);
@@ -1764,7 +1764,7 @@ Hint_system_class::find_new_view (std::string scene_name, int cluster_index)
 	}
 	
 	// Load utilities from Model_data
-	Access_Model_data access_model_data;
+	Access_Model_Data access_model_data;
 	view_utilities_ = access_model_data.load_view_utilities (best_pose_result.name);
 	feature_utilities_ = access_model_data.load_feature_utilities (best_pose_result.name);
 	normal_utilities_ = access_model_data.load_normal_utilities (best_pose_result.name);

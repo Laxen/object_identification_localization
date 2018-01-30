@@ -1,5 +1,5 @@
 
-#include "../../../Headers/Access_Model_data.h"
+#include "../../../Headers/access_model_data.h"
 #include "../../../Headers/View_graph.h"
 
 typedef pcl::PointXYZ PointT;
@@ -11,7 +11,7 @@ typedef pcl::PointCloud<Point_N> PointCloud_N;
 int 
 main (int argc, char** argv)
 {
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	View_graph graph;
 	
 	// Load feature utilities 

@@ -7,7 +7,7 @@
 #include <pcl/filters/voxel_grid.h>
 
 
-class Access_Model_data
+class Access_Model_Data
 {
   	private:
 		typedef pcl::PointXYZ PointT;

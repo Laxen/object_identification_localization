@@ -4,6 +4,7 @@
 #include <pcl/visualization/pcl_visualizer.h>
 #include <signal.h>
 #include "../Headers/Access_Results.h"
+#include "../Headers/access_model_data.h"
 #include "../Headers/Identification_class.h"
 #include "../Headers/Manipulation.h"
 #include "../Headers/Pose_Class.h"
@@ -33,7 +34,7 @@ int
 main(int argc, char** argv) {
 	Access_Results ar;
 	Manipulation m;
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	Linker linker;
 	bool merge = false;
 

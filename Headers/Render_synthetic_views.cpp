@@ -434,7 +434,7 @@ Render_synthetic_views::load_polydata (vtkSmartPointer<vtkPolyData> &polydata, i
 	std::vector<int> obj_file_indices = pcl::console::parse_file_extension_argument (argc, argv, ".obj");
 	std::vector<int> stl_file_indices = pcl::console::parse_file_extension_argument (argc, argv, ".stl");
 	std::vector<int> ply_file_indices = pcl::console::parse_file_extension_argument (argc, argv, ".ply");
-	Access_Model_data amd;
+	Access_Model_Data amd;
 	std::string model_name (argv[1]);
 	if (obj_file_indices.size () == 1)
 	{
@@ -1069,7 +1069,7 @@ Render_synthetic_views::start_rendering (int argc, char** argv)
 	
 	// Save rendered point clouds
 	std::cout << "Saving point clouds..." << std::endl;
-	Access_Model_data access;
+	Access_Model_Data access;
 	access.save_view_clouds (model_name, views_N, views_original_pose_N, complete_model);
 	std::cout << "Done\n" << std::endl;
 	

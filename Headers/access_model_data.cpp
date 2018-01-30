@@ -1,4 +1,4 @@
-#include "Access_Model_data.h"
+#include "access_model_data.h"
 
 /**
   Useful commands:
@@ -14,7 +14,7 @@
   Returns the path to object_identification_localization
 */
 boost::filesystem::path 
-Access_Model_data::path_to_root (void)
+Access_Model_Data::path_to_root (void)
 {
 	// Current path
 	boost::filesystem::path p(boost::filesystem::current_path());
@@ -37,7 +37,7 @@ Access_Model_data::path_to_root (void)
   Returns the path to Data in /object_identification_localization
 */
 boost::filesystem::path 
-Access_Model_data::path_to_data (void)
+Access_Model_Data::path_to_data (void)
 {
 	// Add path to object_identification_localization
 	boost::filesystem::path p = path_to_root();
@@ -65,7 +65,7 @@ Access_Model_data::path_to_data (void)
   Returns the path to Model_data in /Data
 */
 boost::filesystem::path 
-Access_Model_data::path_to_model_data (void)
+Access_Model_Data::path_to_model_data (void)
 {
 	// Path to Data
 	boost::filesystem::path p = path_to_data ();
@@ -93,7 +93,7 @@ Access_Model_data::path_to_model_data (void)
   Returns the path to model in /Model_data
 */
 boost::filesystem::path 
-Access_Model_data::path_to_model_in_model_data (std::string model)
+Access_Model_Data::path_to_model_in_model_data (std::string model)
 {	
 	// Add path to Model_data
 	boost::filesystem::path p = path_to_model_data ();
@@ -121,7 +121,7 @@ Access_Model_data::path_to_model_in_model_data (std::string model)
   Returns the path to CAD_models folder
 */
 boost::filesystem::path
-Access_Model_data::path_to_cad_models ()
+Access_Model_Data::path_to_cad_models ()
 {
 	// Add path to object_identification_localization
 	boost::filesystem::path p = path_to_root ();
@@ -149,7 +149,7 @@ Access_Model_data::path_to_cad_models ()
   Returns the path to model in /CAD_models
 */
 std::string 
-Access_Model_data::path_to_model_in_CAD_models (std::string model)
+Access_Model_Data::path_to_model_in_CAD_models (std::string model)
 {	
 	// Add path to CAD_models
 	boost::filesystem::path p = path_to_cad_models ();
@@ -177,7 +177,7 @@ Access_Model_data::path_to_model_in_CAD_models (std::string model)
   @param complete_model Complete model obtained by merging all the views in original pose
 */
 void
-Access_Model_data::save_view_clouds (	std::string model_name,
+Access_Model_Data::save_view_clouds (	std::string model_name,
 					std::vector<PointCloud_N::Ptr> views_N, 
 					std::vector<PointCloud_N::Ptr> views_original_pose, 
 					PointCloudT::Ptr complete_model )
@@ -257,7 +257,7 @@ Access_Model_data::save_view_clouds (	std::string model_name,
   @param utilities Vector containing the view-utilities 
 */
 void 
-Access_Model_data::save_view_utilities (std::string model_name, std::vector<float> utilities)
+Access_Model_Data::save_view_utilities (std::string model_name, std::vector<float> utilities)
 {
 	// Add path to model
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -289,7 +289,7 @@ Access_Model_data::save_view_utilities (std::string model_name, std::vector<floa
   @param global_features Point cloud containing the global features 
 */
 void 
-Access_Model_data::save_global_features (std::string model_name, FeatureCloudG::Ptr global_features)
+Access_Model_Data::save_global_features (std::string model_name, FeatureCloudG::Ptr global_features)
 {
 	// Add path to model
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -306,7 +306,7 @@ Access_Model_data::save_global_features (std::string model_name, FeatureCloudG::
   @param indices Vector containing the view indices to be loaded. If empty then all views will be loaded
 */
 void 
-Access_Model_data::load_model_views (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
+Access_Model_Data::load_model_views (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
 	boost::filesystem::path p = path_to_model_data ();
@@ -370,7 +370,7 @@ Access_Model_data::load_model_views (std::string model_name, std::vector<PointCl
   @param indices Vector containing the view indices to be loaded. If empty then all views will be loaded
 */
 void 
-Access_Model_data::load_model_views_original_pose (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
+Access_Model_Data::load_model_views_original_pose (std::string model_name, std::vector<PointCloud_N::Ptr> &views, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
 	boost::filesystem::path p = path_to_model_data ();
@@ -431,7 +431,7 @@ Access_Model_data::load_model_views_original_pose (std::string model_name, std::
   Returns a vector of all models in Model_data
 */
 std::vector<std::string> 
-Access_Model_data::get_model_names (void)
+Access_Model_Data::get_model_names (void)
 {
 	// Add path to Model_data
 	boost::filesystem::path p = path_to_model_data ();
@@ -455,7 +455,7 @@ Access_Model_data::get_model_names (void)
   @param models Empty point cloud. Adds the global features in model 
 */
 void 
-Access_Model_data::load_global_features (std::string model, FeatureCloudG::Ptr features)
+Access_Model_Data::load_global_features (std::string model, FeatureCloudG::Ptr features)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model);
@@ -479,7 +479,7 @@ Access_Model_data::load_global_features (std::string model, FeatureCloudG::Ptr f
   @param models Empty point cloud. Adds the complete point cloud model 
 */
 void 
-Access_Model_data::load_complete_model (std::string model, PointCloudT::Ptr cloud)
+Access_Model_Data::load_complete_model (std::string model, PointCloudT::Ptr cloud)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model);
@@ -502,7 +502,7 @@ Access_Model_data::load_complete_model (std::string model, PointCloudT::Ptr clou
   @param similar_views Vector containing the matching scores 
 */
 void 
-Access_Model_data::save_similar_model_data (std::string source_name, std::string target_name, std::vector<float> similar_views)
+Access_Model_Data::save_similar_model_data (std::string source_name, std::string target_name, std::vector<float> similar_views)
 {
 	// Get path to source in Model_data
 	boost::filesystem::path p_source = path_to_model_in_model_data (source_name);
@@ -560,7 +560,7 @@ Access_Model_data::save_similar_model_data (std::string source_name, std::string
   @param utilities The feature utilities 
 */
 void
-Access_Model_data::save_feature_utilities (std::string model_name, std::vector<double> utilities)
+Access_Model_Data::save_feature_utilities (std::string model_name, std::vector<double> utilities)
 {
 	// Get path to model_name in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -603,7 +603,7 @@ Loads the view utilities
 @return a vector containing all view-utilities
 */
 std::vector<float>
-Access_Model_data::load_view_utilities (std::string model_name)
+Access_Model_Data::load_view_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -647,7 +647,7 @@ Loads the feature utilities
 @return a vector containing all feature-utilities
 */
 std::vector<float>
-Access_Model_data::load_feature_utilities (std::string model_name)
+Access_Model_Data::load_feature_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -692,7 +692,7 @@ Access_Model_data::load_feature_utilities (std::string model_name)
   @return a vector containing the distinguish utilities for all similar models
 */
 std::vector<std::vector<float> >
-Access_Model_data::load_distinguish_utilities (std::string model_name, std::vector<std::string> similar_models)
+Access_Model_Data::load_distinguish_utilities (std::string model_name, std::vector<std::string> similar_models)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -759,7 +759,7 @@ Loads the normal-utilities
 @return a vector containing all normal-utilities
 */
 std::vector<float>
-Access_Model_data::load_normal_utilities (std::string model_name)
+Access_Model_Data::load_normal_utilities (std::string model_name)
 {
 	// Add path to model in Model_data
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -804,7 +804,7 @@ Access_Model_data::load_normal_utilities (std::string model_name)
   @param merged_cloud The merged cloud
 */
 void 
-Access_Model_data::load_merged_views (std::string model_name, std::vector<int> indices, PointCloud_N::Ptr merged_cloud)
+Access_Model_Data::load_merged_views (std::string model_name, std::vector<int> indices, PointCloud_N::Ptr merged_cloud)
 {
 	// Load views
 	std::vector<PointCloud_N::Ptr> views;
@@ -830,7 +830,7 @@ Access_Model_data::load_merged_views (std::string model_name, std::vector<int> i
   @param merged_cloud The merged cloud
 */
 void
-Access_Model_data::merge_views (std::vector<PointCloud_N::Ptr> views, PointCloud_N::Ptr merged_cloud)
+Access_Model_Data::merge_views (std::vector<PointCloud_N::Ptr> views, PointCloud_N::Ptr merged_cloud)
 {
 	if (views.size() < 2)
 	{
@@ -860,7 +860,7 @@ Access_Model_data::merge_views (std::vector<PointCloud_N::Ptr> views, PointCloud
   @param features The local feature clouds
 */
 void 
-Access_Model_data::save_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> features)
+Access_Model_Data::save_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> features)
 {
 	// Add path to model
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);
@@ -898,7 +898,7 @@ Access_Model_data::save_local_features (std::string model_name, std::vector<Feat
   @param indices Vector containing the view indices to be loaded. If empty then all views will be loaded
 */
 void 
-Access_Model_data::load_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> &local_features, std::vector<int> indices)
+Access_Model_Data::load_local_features (std::string model_name, std::vector<FeatureCloudL::Ptr> &local_features, std::vector<int> indices)
 {
 	// Add path to directory named "Model_data"
 	boost::filesystem::path p = path_to_model_in_model_data (model_name);

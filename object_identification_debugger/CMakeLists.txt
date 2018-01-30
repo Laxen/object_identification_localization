@@ -13,14 +13,14 @@ add_executable (object_identification_debugger object_identification_debugger.cp
 add_library (Identification_class ../Headers/Identification_class.cpp)
 add_library (View_graph ../Headers/View_graph.cpp)
 add_library (Access_Results ../Headers/Access_Results.cpp)
-add_library (Access_Model_data ../Headers/Access_Model_data.cpp)
+add_library (Access_Model_Data ../Headers/access_model_data.cpp)
 
 
 target_link_libraries (object_identification_debugger ${PCL_LIBRARIES})
 target_link_libraries (object_identification_debugger Identification_class)
 target_link_libraries (object_identification_debugger View_graph)
 target_link_libraries (object_identification_debugger Access_Results ${PCL_LIBRARIES})
-target_link_libraries (object_identification_debugger Access_Model_data)
+target_link_libraries (object_identification_debugger Access_Model_Data)
 
 
 
