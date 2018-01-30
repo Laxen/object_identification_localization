@@ -104,6 +104,8 @@ main(int argc, char** argv) {
 		std::cout << "Robot data found!" << '\n';
 
 		Eigen::Matrix<float,4,4,Eigen::DontAlign> cloud_trans = ar.get_robot_data_matrix(original_robot_data_path);
+		Eigen::Matrix<float,4,4,Eigen::DontAlign> T_CtoH = ar.get_T_CtoH();
+		ar.save_current_camera_position(scene_name, cloud_trans, T_CtoH);
 
 		// Add scene and current position to RDF-DB
 		if(conf.rdf_enabled) {
