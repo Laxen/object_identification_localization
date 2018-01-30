@@ -10,7 +10,7 @@
 #include "../Headers/Pose_Class.h"
 #include "../Headers/Linker.h"
 #include "../Headers/Robot_Data_Fetcher.h"
-#include "../Headers/Cloud_Segmentation.h"
+#include "../Headers/cloud_segmentation.h"
 #include "../Headers/Hint_system_class.h"
 #include "../Headers/cloud_merging.h"
 #include "../Headers/RDF_Connector.hpp"

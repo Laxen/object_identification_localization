@@ -1,4 +1,4 @@
-#include "Cloud_Segmentation.h"
+#include "cloud_segmentation.h"
 
 Cloud_Segmentation::Cloud_Segmentation() {
 	LEAF_SIZE = 0.003; // Used for downsampling (0.003 for small objects, 0.010 for large)
