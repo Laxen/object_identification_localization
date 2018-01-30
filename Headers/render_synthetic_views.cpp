@@ -485,7 +485,7 @@ Render_Synthetic_Views::render_views (	vtkSmartPointer<vtkPolyData> &polydata,
 										std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > &poses, 
 										std::vector <Eigen::Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > &cam_pos )
 {
-	Render_views_tesselated_sphere_modified view_render;
+	Render_Views_Tesselated_Sphere_Modified view_render;
 	view_render.addModelFromPolyData (polydata);
 	view_render.setResolution (resolution_);
 	view_render.setUseVertices (false);

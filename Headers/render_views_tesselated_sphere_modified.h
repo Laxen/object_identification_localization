@@ -47,7 +47,7 @@
  * \author Aitor Aldoma
  * \ingroup apps
  */
-class Render_views_tesselated_sphere_modified
+class Render_Views_Tesselated_Sphere_Modified
 {
 private:
   std::vector<Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses_; // MODIFIED CODE
@@ -79,7 +79,7 @@ private:
   };
 
 public:
-  Render_views_tesselated_sphere_modified ()
+  Render_Views_Tesselated_Sphere_Modified ()
   {
     use_vertices_ = false;
     compute_entropy_ = false;

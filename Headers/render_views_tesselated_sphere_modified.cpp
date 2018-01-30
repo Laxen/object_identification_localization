@@ -8,10 +8,10 @@
  *		By: Andreas
  */
 
-#include "Render_views_tesselated_sphere_modified.h"
+#include "render_views_tesselated_sphere_modified.h"
 
 void
-Render_views_tesselated_sphere_modified::generateViews() {
+Render_Views_Tesselated_Sphere_Modified::generateViews() {
   
   //center object
   double CoM[3];

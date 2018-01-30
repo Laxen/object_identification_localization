@@ -14,7 +14,7 @@ add_library (Render_Synthetic_Views ../Headers/render_synthetic_views.cpp)
 add_library (View_graph ../Headers/View_graph.cpp)
 add_library (Access_Model_Data ../Headers/access_model_data.cpp)
 add_library (Similar_object_recognition ../Headers/Similar_object_recognition.cpp)
-add_library (Render_views_tesselated_sphere_modified ../Headers/Render_views_tesselated_sphere_modified.cpp)
+add_library (Render_Views_Tesselated_Sphere_Modified ../Headers/render_views_tesselated_sphere_modified.cpp)
 add_library (View_Feature_Score ../Headers/View_Feature_Score.cpp)
 add_library (Config_Reader ../Headers/config_reader.cpp)
 
@@ -24,7 +24,7 @@ target_link_libraries (offline_data_generation Render_Synthetic_Views ${PCL_LIBR
 target_link_libraries (offline_data_generation View_graph)
 target_link_libraries (offline_data_generation Access_Model_Data)
 target_link_libraries (offline_data_generation Similar_object_recognition)
-target_link_libraries (offline_data_generation Render_views_tesselated_sphere_modified)
+target_link_libraries (offline_data_generation Render_Views_Tesselated_Sphere_Modified)
 target_link_libraries (offline_data_generation View_Feature_Score)
 target_link_libraries (offline_data_generation Config_Reader)
 

@@ -19,7 +19,6 @@
 #include <pcl/common/transforms.h>
 #include "View_graph.h"
 #include "access_model_data.h"
-#include "Render_views_tesselated_sphere_modified.h"
 #include "Similar_object_recognition.h"
 #include "View_Feature_Score.h"
 #include <pcl/features/fpfh_omp.h>
