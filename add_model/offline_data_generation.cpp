@@ -1,5 +1,5 @@
 
-#include "../Headers/Render_synthetic_views.h"
+#include "../Headers/render_synthetic_views.h"
 #include "../Headers/config_reader.h"
 
 /**
@@ -17,7 +17,7 @@ int main (int argc, char** argv)
 	cr.add_model_load_config ("../../config.ini");
 	
 	// Create render object
-	Render_synthetic_views render;
+	Render_Synthetic_Views render;
 	
 	// Set synthetic view properties
 	render.set_resolution (cr.resolution);

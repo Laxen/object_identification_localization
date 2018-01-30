@@ -1,10 +1,10 @@
 
-#include "Render_synthetic_views.h"
+#include "render_synthetic_views.h"
 
 /** 
   Constructor. 
 */
-Render_synthetic_views::Render_synthetic_views (void)
+Render_Synthetic_Views::Render_Synthetic_Views (void)
 {
 	optimal_view_angle_ = false;
 	largest_cluster_extraction_ = false;
@@ -25,7 +25,7 @@ Render_synthetic_views::Render_synthetic_views (void)
   @param resolution The resolution
 */	
 void 
-Render_synthetic_views::set_resolution (int resolution)
+Render_Synthetic_Views::set_resolution (int resolution)
 {
 	resolution_ = resolution;
 }
@@ -35,7 +35,7 @@ Render_synthetic_views::set_resolution (int resolution)
   @param tessellation_level The tessellation level
 */
 void 
-Render_synthetic_views::set_tessellation_level (int tessellation_level)
+Render_Synthetic_Views::set_tessellation_level (int tessellation_level)
 {
 	tessellation_level_ = tessellation_level;
 }
@@ -44,7 +44,7 @@ Render_synthetic_views::set_tessellation_level (int tessellation_level)
   Enables the program to use the optimal filed of view for the camera
 */
 void
-Render_synthetic_views::set_use_optimal_view_angle ()
+Render_Synthetic_Views::set_use_optimal_view_angle ()
 {
 	optimal_view_angle_ = true;
 }
@@ -54,7 +54,7 @@ Render_synthetic_views::set_use_optimal_view_angle ()
   @param view_angle The view angle
 */
 void 
-Render_synthetic_views::set_view_angle (double view_angle)
+Render_Synthetic_Views::set_view_angle (double view_angle)
 {
 	view_angle_ = view_angle;
 }
@@ -64,7 +64,7 @@ Render_synthetic_views::set_view_angle (double view_angle)
   @param radius_tesselated_sphere
 */
 void
-Render_synthetic_views::set_radius_tessellated_sphere (double radius_tessellated_sphere)
+Render_Synthetic_Views::set_radius_tessellated_sphere (double radius_tessellated_sphere)
 {
 	radius_tessellated_sphere_ = radius_tessellated_sphere;
 }
@@ -74,7 +74,7 @@ Render_synthetic_views::set_radius_tessellated_sphere (double radius_tessellated
   @param scale_factor The scaling factor
 */
 void 
-Render_synthetic_views::set_scale (double scale_factor)
+Render_Synthetic_Views::set_scale (double scale_factor)
 {
 	scale_factor_ = scale_factor;
 }
@@ -84,7 +84,7 @@ Render_synthetic_views::set_scale (double scale_factor)
   @param bad_normals_threshold The bad normal threshold (degrees). 
 */
 void 
-Render_synthetic_views::set_bad_normals_threshold (float bad_normals_threshold)
+Render_Synthetic_Views::set_bad_normals_threshold (float bad_normals_threshold)
 {
 	bad_normals_threshold_ = bad_normals_threshold;
 }
@@ -97,7 +97,7 @@ Render_synthetic_views::set_bad_normals_threshold (float bad_normals_threshold)
   @param max_cluster_size The maximum cluster size
 */
 void 
-Render_synthetic_views::set_use_largest_cluster_extraction (bool largest_cluster_extraction, 
+Render_Synthetic_Views::set_use_largest_cluster_extraction (bool largest_cluster_extraction, 
 															double cluster_tolerance, 
 															int min_cluster_size, 
 															int max_cluster_size )
@@ -114,7 +114,7 @@ Render_synthetic_views::set_use_largest_cluster_extraction (bool largest_cluster
   @param leaf_size The voxel size
 */
 void 
-Render_synthetic_views::set_use_downsample (bool downsample, float leaf_size)
+Render_Synthetic_Views::set_use_downsample (bool downsample, float leaf_size)
 {
 	downsample_ = downsample;
 	leaf_size_ = leaf_size;
@@ -126,7 +126,7 @@ Render_synthetic_views::set_use_downsample (bool downsample, float leaf_size)
   @param search_radius_mls The radius used for smoothing
 */
 void 
-Render_synthetic_views::set_use_smoothing (bool smooth, double search_raduis_mls)
+Render_Synthetic_Views::set_use_smoothing (bool smooth, double search_raduis_mls)
 {
 	smooth_ = smooth;
 	search_raduis_mls_ = search_raduis_mls;
@@ -137,7 +137,7 @@ Render_synthetic_views::set_use_smoothing (bool smooth, double search_raduis_mls
   @param view_complete_model True if view complete model, false otherwise
 */
 void
-Render_synthetic_views::set_view_complete_model (bool view_complete_model)
+Render_Synthetic_Views::set_view_complete_model (bool view_complete_model)
 {
 	view_complete_model_ = view_complete_model;
 }
@@ -149,7 +149,7 @@ Render_synthetic_views::set_view_complete_model (bool view_complete_model)
   @param std_dev_mul_thresh The standard deviation multiplier for the distance threshold calculation
 */
 void 
-Render_synthetic_views::set_use_outlier_removal (bool outlier_removal, int mean_k, double std_dev_mul_thresh)
+Render_Synthetic_Views::set_use_outlier_removal (bool outlier_removal, int mean_k, double std_dev_mul_thresh)
 {
 	outlier_removal_ = outlier_removal;
 	mean_k_ = mean_k;
@@ -161,7 +161,7 @@ Render_synthetic_views::set_use_outlier_removal (bool outlier_removal, int mean_
   @param k_search_normals The number of nearest neighbors
 */
 void 
-Render_synthetic_views::set_k_search_normals (int k_search_normals)
+Render_Synthetic_Views::set_k_search_normals (int k_search_normals)
 {
 	use_k_search_ = true;
 	k_search_normals_ = k_search_normals;
@@ -172,7 +172,7 @@ Render_synthetic_views::set_k_search_normals (int k_search_normals)
   @param radius_search_normals The serach radius
 */
 void 
-Render_synthetic_views::set_radius_search_normals (double radius_search_normals)
+Render_Synthetic_Views::set_radius_search_normals (double radius_search_normals)
 {
 	use_radius_search_ = true;
 	radius_search_normals_ = radius_search_normals;
@@ -183,7 +183,7 @@ Render_synthetic_views::set_radius_search_normals (double radius_search_normals)
   @param view_processed_clouds True if view processed clouds, false otherwise
 */
 void
-Render_synthetic_views::set_view_processed_clouds (bool view_processed_clouds)
+Render_Synthetic_Views::set_view_processed_clouds (bool view_processed_clouds)
 {
 	view_processed_clouds_ = view_processed_clouds;
 }
@@ -194,7 +194,7 @@ Render_synthetic_views::set_view_processed_clouds (bool view_processed_clouds)
   @param normal_magnitude The magnitude of the displayed normal vectors (length)
 */
 void 
-Render_synthetic_views::set_view_normals (bool view_normals, float normal_magnitude)
+Render_Synthetic_Views::set_view_normals (bool view_normals, float normal_magnitude)
 {
 	normal_magnitude_ = normal_magnitude;
 	view_normals_ = view_normals;
@@ -205,7 +205,7 @@ Render_synthetic_views::set_view_normals (bool view_normals, float normal_magnit
   @param view_graph True if show view-graph, false otherwise
 */
 void
-Render_synthetic_views::set_view_graph (bool view_graph)
+Render_Synthetic_Views::set_view_graph (bool view_graph)
 {
 	view_graph_ = view_graph;
 }
@@ -215,7 +215,7 @@ Render_synthetic_views::set_view_graph (bool view_graph)
   @param global_feature_avg True if use average gloabl feature, false otherwise
 */
 void
-Render_synthetic_views::set_use_average_global_feature (bool global_feature_avg)
+Render_Synthetic_Views::set_use_average_global_feature (bool global_feature_avg)
 {
 	global_feature_avg_ = global_feature_avg;
 }
@@ -225,7 +225,7 @@ Render_synthetic_views::set_use_average_global_feature (bool global_feature_avg)
   @param cloud The point cloud
 */
 void 
-Render_synthetic_views::demean_cloud (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::demean_cloud (PointCloudT::Ptr cloud)
 {
 	Eigen::Vector4f centroid;
     pcl::compute3DCentroid (*cloud, centroid);
@@ -237,7 +237,7 @@ Render_synthetic_views::demean_cloud (PointCloudT::Ptr cloud)
   @param cloud The point cloud
 */
 void 
-Render_synthetic_views::euclidean_cluster_extraction (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::euclidean_cluster_extraction (PointCloudT::Ptr cloud)
 {
 	pcl::search::KdTree<PointT>::Ptr tree (new pcl::search::KdTree<PointT>);
 	tree->setInputCloud (cloud);
@@ -290,7 +290,7 @@ Render_synthetic_views::euclidean_cluster_extraction (PointCloudT::Ptr cloud)
   @param cloud The point cloud
 */
 void 
-Render_synthetic_views::downsample_cloud (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::downsample_cloud (PointCloudT::Ptr cloud)
 {
 	pcl::VoxelGrid<PointT> sor;
 	sor.setInputCloud (cloud);
@@ -303,7 +303,7 @@ Render_synthetic_views::downsample_cloud (PointCloudT::Ptr cloud)
   @param cloud The point cloud
 */
 void 
-Render_synthetic_views::smooth_cloud (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::smooth_cloud (PointCloudT::Ptr cloud)
 {
 	// Create a KD-Tree
 	pcl::search::KdTree<PointT>::Ptr tree (new pcl::search::KdTree<PointT>);
@@ -332,7 +332,7 @@ Render_synthetic_views::smooth_cloud (PointCloudT::Ptr cloud)
   @param cloud The point cloud
 */
 void 
-Render_synthetic_views::sor_filter (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::sor_filter (PointCloudT::Ptr cloud)
 {
 	pcl::StatisticalOutlierRemoval<PointT> sor;
 	sor.setInputCloud (cloud);
@@ -350,7 +350,7 @@ Render_synthetic_views::sor_filter (PointCloudT::Ptr cloud)
   @param vp_z Sensor viewpoint z position
 */
 void 
-Render_synthetic_views::estimate_normals (	PointCloudT::Ptr cloud_xyz,  
+Render_Synthetic_Views::estimate_normals (	PointCloudT::Ptr cloud_xyz,  
 											PointCloud_N::Ptr cloud_N,
 											float vp_x,
 											float vp_y,
@@ -383,7 +383,7 @@ Render_synthetic_views::estimate_normals (	PointCloudT::Ptr cloud_xyz,
   @return model_name The model name
 */
 std::string 
-Render_synthetic_views::load_obj (vtkSmartPointer<vtkPolyData> &polydata, int argc, char** argv)
+Render_Synthetic_Views::load_obj (vtkSmartPointer<vtkPolyData> &polydata, int argc, char** argv)
 {
 	std::vector<int> obj_file_indices = pcl::console::parse_file_extension_argument (argc, argv, ".obj");
 	if (obj_file_indices.size () != 1)
@@ -416,7 +416,7 @@ Render_synthetic_views::load_obj (vtkSmartPointer<vtkPolyData> &polydata, int ar
   @return model_name The model name
 */
 std::string
-Render_synthetic_views::load_polydata (vtkSmartPointer<vtkPolyData> &polydata, int argc, char** argv)
+Render_Synthetic_Views::load_polydata (vtkSmartPointer<vtkPolyData> &polydata, int argc, char** argv)
 {	
 	if (argc > 2)
 	{
@@ -480,7 +480,7 @@ Render_synthetic_views::load_polydata (vtkSmartPointer<vtkPolyData> &polydata, i
   @param cam_pos The camera positions
 */
 void 
-Render_synthetic_views::render_views (	vtkSmartPointer<vtkPolyData> &polydata, 
+Render_Synthetic_Views::render_views (	vtkSmartPointer<vtkPolyData> &polydata, 
 										std::vector<PointCloudT::Ptr> &views_xyz, 
 										std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > &poses, 
 										std::vector <Eigen::Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > &cam_pos )
@@ -534,7 +534,7 @@ Render_synthetic_views::render_views (	vtkSmartPointer<vtkPolyData> &polydata,
   @param views_N The processed point clouds with estimated normals
 */
 void 
-Render_synthetic_views::process_clouds (std::vector<PointCloudT::Ptr> views_xyz, std::vector<PointCloud_N::Ptr> &views_N)
+Render_Synthetic_Views::process_clouds (std::vector<PointCloudT::Ptr> views_xyz, std::vector<PointCloud_N::Ptr> &views_N)
 {	
 	for (int i = 0; i < views_xyz.size(); i++)
 	{
@@ -592,7 +592,7 @@ Render_synthetic_views::process_clouds (std::vector<PointCloudT::Ptr> views_xyz,
   @param views_original_pose_N The processed point clouds with estimated normals in origianl pose
 */
 void 
-Render_synthetic_views::process_clouds_original_pose (	std::vector<PointCloudT::Ptr> views_xyz, 
+Render_Synthetic_Views::process_clouds_original_pose (	std::vector<PointCloudT::Ptr> views_xyz, 
 														std::vector<PointCloud_N::Ptr> &views_original_pose_N, 
 														std::vector<Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses,
 														std::vector<Eigen::Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > cam_pos ) 
@@ -664,7 +664,7 @@ Render_synthetic_views::process_clouds_original_pose (	std::vector<PointCloudT::
   @param cloud The point cloud of the complete model
 */
 void 
-Render_synthetic_views::process_complete_model (PointCloudT::Ptr cloud)
+Render_Synthetic_Views::process_complete_model (PointCloudT::Ptr cloud)
 {	
 	// Downsample the cloud
 	downsample_cloud (cloud);
@@ -681,8 +681,8 @@ Render_synthetic_views::process_complete_model (PointCloudT::Ptr cloud)
   @param vec Vector containing the ESF features
   @return f_avg The average ESF feature
 */
-Render_synthetic_views::FeatureG 
-Render_synthetic_views::average_feature (std::vector<FeatureCloudG::Ptr> vec)
+Render_Synthetic_Views::FeatureG 
+Render_Synthetic_Views::average_feature (std::vector<FeatureCloudG::Ptr> vec)
 {
 	FeatureG f_avg;
 	for (int i = 0; i < 640; i++)
@@ -707,7 +707,7 @@ Render_synthetic_views::average_feature (std::vector<FeatureCloudG::Ptr> vec)
   @param features Point cloud containing all the global ESF features
 */
 void 
-Render_synthetic_views::estimate_features_esf (std::vector<PointCloud_N::Ptr> views_original_pose_N, FeatureCloudG::Ptr features)
+Render_Synthetic_Views::estimate_features_esf (std::vector<PointCloud_N::Ptr> views_original_pose_N, FeatureCloudG::Ptr features)
 {
 	for (int i = 0; i < views_original_pose_N.size(); i++)
 	{
@@ -747,7 +747,7 @@ Render_synthetic_views::estimate_features_esf (std::vector<PointCloud_N::Ptr> vi
   @param views_N The processed point clouds
 */
 void 
-Render_synthetic_views::processed_cloud_viewer (std::vector<PointCloudT::Ptr> views_xyz, std::vector<PointCloud_N::Ptr> views_N)
+Render_Synthetic_Views::processed_cloud_viewer (std::vector<PointCloudT::Ptr> views_xyz, std::vector<PointCloud_N::Ptr> views_N)
 {
 	pcl::visualization::PCLVisualizer viewer ("Viewer");
 	int vp_1;
@@ -782,7 +782,7 @@ Render_synthetic_views::processed_cloud_viewer (std::vector<PointCloudT::Ptr> vi
   @param views_original_pose_N The processed point clouds with normals in original pose
 */
 void 
-Render_synthetic_views::normals_viewer (std::vector<PointCloud_N::Ptr> views_N, std::vector<PointCloud_N::Ptr> views_original_pose_N)
+Render_Synthetic_Views::normals_viewer (std::vector<PointCloud_N::Ptr> views_N, std::vector<PointCloud_N::Ptr> views_original_pose_N)
 {
 	//View point clouds
 	pcl::visualization::PCLVisualizer viewer ("Virtual scene rendering");
@@ -829,7 +829,7 @@ Render_synthetic_views::normals_viewer (std::vector<PointCloud_N::Ptr> views_N, 
   @param merged_cloud_processed 
 */
 void 
-Render_synthetic_views::merge_views (	std::vector<PointCloudT::Ptr> views_xyz, 
+Render_Synthetic_Views::merge_views (	std::vector<PointCloudT::Ptr> views_xyz, 
 										std::vector<Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses,
 										std::vector<Eigen::Vector3d, Eigen::aligned_allocator<Eigen::Vector3d> > cam_pos, 
 										PointCloudT::Ptr merged_cloud_processed )
@@ -880,7 +880,7 @@ Render_synthetic_views::merge_views (	std::vector<PointCloudT::Ptr> views_xyz,
   @param vec The vector to be normalized
 */
 void 
-Render_synthetic_views::normalize (std::vector<float> &vec)
+Render_Synthetic_Views::normalize (std::vector<float> &vec)
 {			
 	// Sort vec
 	std::vector<float> temp = vec;
@@ -900,7 +900,7 @@ Render_synthetic_views::normalize (std::vector<float> &vec)
   @param utilities The utility vector containing a view-utility value for each view
 */
 void 
-Render_synthetic_views::get_utilities (std::vector<PointCloud_N::Ptr> views_original_pose_N, std::vector<float> &utilities)
+Render_Synthetic_Views::get_utilities (std::vector<PointCloud_N::Ptr> views_original_pose_N, std::vector<float> &utilities)
 {
 	// Measure utility by calculating how many points that are visible in the processed point clouds
 	for (int i = 0; i < views_original_pose_N.size(); i++)
@@ -918,7 +918,7 @@ Render_synthetic_views::get_utilities (std::vector<PointCloud_N::Ptr> views_orig
   @param graph The resulting graph
 */
 void 
-Render_synthetic_views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_graph &graph )
+Render_Synthetic_Views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::aligned_allocator<Eigen::Matrix4d> > poses, View_graph &graph )
 {
 	// Extract viewpoints
 	PointCloudT::Ptr viewpoint_cloud (new PointCloudT);
@@ -983,7 +983,7 @@ Render_synthetic_views::generate_graph (std::vector <Eigen::Matrix4d, Eigen::ali
   @param complete_model The complete point cloud model
 */
 void
-Render_synthetic_views::graph_viewer (View_graph graph, PointCloudT::Ptr complete_model)
+Render_Synthetic_Views::graph_viewer (View_graph graph, PointCloudT::Ptr complete_model)
 {
 	// Add graph to viewer
 	pcl::visualization::PCLVisualizer viewer ("Viewer");
@@ -1001,7 +1001,7 @@ Render_synthetic_views::graph_viewer (View_graph graph, PointCloudT::Ptr complet
   @param local_features The FPFH features
 */
 void
-Render_synthetic_views::generate_local_features (std::vector<PointCloud_N::Ptr> views_original_pose_N, std::vector<FeatureCloudL::Ptr> &local_features)
+Render_Synthetic_Views::generate_local_features (std::vector<PointCloud_N::Ptr> views_original_pose_N, std::vector<FeatureCloudL::Ptr> &local_features)
 {
 	for (int i = 0; i < views_original_pose_N.size(); i++)
 	{
@@ -1024,7 +1024,7 @@ Render_synthetic_views::generate_local_features (std::vector<PointCloud_N::Ptr> 
   @param argv Input argument string
 */
 void
-Render_synthetic_views::start_rendering (int argc, char** argv)
+Render_Synthetic_Views::start_rendering (int argc, char** argv)
 {
 	/*
 	// Load .obj file

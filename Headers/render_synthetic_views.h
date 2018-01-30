@@ -27,13 +27,13 @@
 #include <unistd.h>
 
 
-class Render_synthetic_views
+class Render_Synthetic_Views
 {
 	public:	
 		/** 
 		  Constructor. 
 	  	*/
-		Render_synthetic_views (void);
+		Render_Synthetic_Views (void);
 		
 		/**
 		  Sets the resolution (window size)
