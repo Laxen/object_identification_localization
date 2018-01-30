@@ -7,7 +7,7 @@
 #include "pose_data.h"
 #include <pcl/common/transforms.h>
 #include <pcl/kdtree/kdtree_flann.h>
-#include "../Headers/hint_system_data.h"
+#include "../headers/hint_system_data.h"
 #include <vtkOBJExporter.h>
 #include <vtkRenderWindow.h>
 #include "hint_system_data.h"
