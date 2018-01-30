@@ -1,4 +1,4 @@
-#include "RDF_Connector.hpp"
+#include "rdf_connector.hpp"
 
 /**
 	Create the RDF_Connector object without specifying class_path. You will need to call set_class_path before the object is usable.

@@ -13,7 +13,7 @@
 #include "../Headers/cloud_segmentation.h"
 #include "../Headers/hint_system_class.h"
 #include "../Headers/cloud_merging.h"
-#include "../Headers/RDF_Connector.hpp"
+#include "../Headers/rdf_connector.hpp"
 #include "../Headers/pose_data.h"
 #include "../Headers/config_reader.h"
 

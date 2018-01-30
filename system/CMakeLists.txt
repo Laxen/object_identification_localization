@@ -31,7 +31,7 @@ add_library(Cloud_Segmentation ../Headers/cloud_segmentation.cpp)
 add_library(Hint_System_Class ../Headers/hint_system_class.cpp)
 add_library(Cloud_Merging ../Headers/cloud_merging.cpp)
 add_library(JNI_Helper ../Headers/jni_helper.cpp)
-add_library(RDF_Connector ../Headers/RDF_Connector.cpp)
+add_library(RDF_Connector ../Headers/rdf_connector.cpp)
 add_library(Config ../Headers/config_reader.cpp)
 
 target_link_libraries (system ${PCL_LIBRARIES})
