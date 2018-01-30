@@ -8,6 +8,8 @@
 #include <pcl/common/transforms.h>
 #include <pcl/kdtree/kdtree_flann.h>
 #include "../Headers/hint_system_data.h"
+#include <vtkOBJExporter.h>
+#include <vtkRenderWindow.h>
 
 class Hint_system_class
 {
