@@ -1,4 +1,4 @@
-#include "Cloud_Merging.h"
+#include "cloud_merging.h"
 
 /**
 	Merges a vector of clouds into the same coordinate system as the first cloud in the vector, using the corresponding vector of robot data. The result is saved in the latest segmentation data folder. 

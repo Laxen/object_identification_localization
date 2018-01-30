@@ -12,7 +12,7 @@
 #include "../Headers/Robot_Data_Fetcher.h"
 #include "../Headers/Cloud_Segmentation.h"
 #include "../Headers/Hint_system_class.h"
-#include "../Headers/Cloud_Merging.h"
+#include "../Headers/cloud_merging.h"
 #include "../Headers/RDF_Connector.hpp"
 #include "../Headers/pose_data.h"
 #include "../Headers/Robot_Data_Fetcher.h"
