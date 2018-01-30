@@ -1,4 +1,4 @@
-#include "Config_reader.h"
+#include "config_reader.h"
 
 namespace pt = boost::property_tree;
 
@@ -7,7 +7,7 @@ namespace pt = boost::property_tree;
 	@param filename The name of the config file (.ini)
  */
 void
-Config_reader::add_model_load_config (const std::string &filename)
+Config_Reader::add_model_load_config (const std::string &filename)
 {
 	// Create empty property tree object
 	pt::ptree tree;
@@ -59,7 +59,7 @@ Config_reader::add_model_load_config (const std::string &filename)
 	@param filename The name of the config file (.ini)
  */
 void
-Config_reader::system_load_config (const std::string &filename)
+Config_Reader::system_load_config (const std::string &filename)
 {
 	// Create empty property tree object
 	pt::ptree tree;

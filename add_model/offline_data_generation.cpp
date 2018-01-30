@@ -1,6 +1,6 @@
 
 #include "../Headers/Render_synthetic_views.h"
-#include "../Headers/Config_reader.h"
+#include "../Headers/config_reader.h"
 
 /**
 TODO:
@@ -13,7 +13,7 @@ TODO:
 int main (int argc, char** argv)
 {
 	// Read configuration file
-	Config_reader cr;
+	Config_Reader cr;
 	cr.add_model_load_config ("../../config.ini");
 	
 	// Create render object

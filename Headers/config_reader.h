@@ -9,7 +9,7 @@
 #include <exception>
 #include <iostream>
 
-class Config_reader
+class Config_Reader
 {
 	public:
 		// Add_Model

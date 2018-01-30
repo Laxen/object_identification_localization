@@ -16,7 +16,7 @@
 #include "../Headers/RDF_Connector.hpp"
 #include "../Headers/pose_data.h"
 #include "../Headers/Robot_Data_Fetcher.h"
-#include "../Headers/Config_reader.h"
+#include "../Headers/config_reader.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointXYZ Point_XYZ;
@@ -42,7 +42,7 @@ main(int argc, char** argv) {
 
 	pcl::visualization::PCLVisualizer visu("Visu");
 
-	Config_reader conf;
+	Config_Reader conf;
 	conf.system_load_config("../../config.ini");
 
 	Pose_Class pc;
