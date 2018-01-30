@@ -3,19 +3,19 @@
 #include <pcl/io/pcd_io.h>
 #include <pcl/visualization/pcl_visualizer.h>
 #include <signal.h>
-#include "../Headers/access_results.h"
-#include "../Headers/access_model_data.h"
-#include "../Headers/identification_class.h"
-#include "../Headers/manipulation.h"
-#include "../Headers/pose_class.h"
-#include "../Headers/linker.h"
-#include "../Headers/robot_data_fetcher.h"
-#include "../Headers/cloud_segmentation.h"
-#include "../Headers/hint_system_class.h"
-#include "../Headers/cloud_merging.h"
-#include "../Headers/rdf_connector.hpp"
-#include "../Headers/pose_data.h"
-#include "../Headers/config_reader.h"
+#include "../headers/access_results.h"
+#include "../headers/access_model_data.h"
+#include "../headers/identification_class.h"
+#include "../headers/manipulation.h"
+#include "../headers/pose_class.h"
+#include "../headers/linker.h"
+#include "../headers/robot_data_fetcher.h"
+#include "../headers/cloud_segmentation.h"
+#include "../headers/hint_system_class.h"
+#include "../headers/cloud_merging.h"
+#include "../headers/rdf_connector.hpp"
+#include "../headers/pose_data.h"
+#include "../headers/config_reader.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointXYZ Point_XYZ;
@@ -70,7 +70,7 @@ main(int argc, char** argv) {
 
 	RDF_Connector rdf;
 	if(conf.rdf_enabled) {
-		rdf.set_class_path("../../Headers/rdf4j_connector.jar");
+		rdf.set_class_path("../../headers/rdf4j_connector.jar");
 		rdf.set_class("Connector");
 		rdf.initialize(conf.rdf_url, conf.rdf_repo_name);
 	}

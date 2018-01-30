@@ -1,7 +1,7 @@
 
-#include "../../Headers/access_model_data.h"
-#include "../../Headers/view_graph.h"
-#include "../../Headers/normal_utility.h"
+#include "../../headers/access_model_data.h"
+#include "../../headers/view_graph.h"
+#include "../../headers/normal_utility.h"
 #include <pcl/visualization/pcl_visualizer.h>
 
 typedef pcl::PointXYZ PointT;

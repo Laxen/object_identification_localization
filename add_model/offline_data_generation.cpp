@@ -1,6 +1,6 @@
 
-#include "../Headers/render_synthetic_views.h"
-#include "../Headers/config_reader.h"
+#include "../headers/render_synthetic_views.h"
+#include "../headers/config_reader.h"
 
 /**
 TODO:

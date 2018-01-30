@@ -8,9 +8,9 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_library(Access_Model_Data ../../../Headers/access_model_data.cpp)
-add_library(View_Graph ../../../Headers/view_graph.cpp)
-add_library(View_Feature_Score ../../../Headers/view_feature_score.cpp)
+add_library(Access_Model_Data ../../../headers/access_model_data.cpp)
+add_library(View_Graph ../../../headers/view_graph.cpp)
+add_library(View_Feature_Score ../../../headers/view_feature_score.cpp)
 
 add_executable (generate_feature_utilities generate_feature_utilities.cpp)
 target_link_libraries (generate_feature_utilities ${PCL_LIBRARIES})

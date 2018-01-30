@@ -1,6 +1,6 @@
 
-#include "../Headers/hint_system_class.h"
-#include "../Headers/pose_data.h"
+#include "../headers/hint_system_class.h"
+#include "../headers/pose_data.h"
 
 
 int main (int argc, char** argv)

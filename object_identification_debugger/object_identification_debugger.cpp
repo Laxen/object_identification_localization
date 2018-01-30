@@ -1,6 +1,6 @@
 
-#include "../Headers/identification_class.h"
-#include "../Headers/access_results.h"
+#include "../headers/identification_class.h"
+#include "../headers/access_results.h"
 
 typedef pcl::PointNormal Point_N;
 typedef pcl::PointCloud<Point_N> PointCloud_N;

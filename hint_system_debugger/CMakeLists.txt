@@ -10,10 +10,10 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (hint_system_debugger hint_system_debugger.cpp)
-add_library (Hint_System_Class ../Headers/hint_system_class.cpp)
-add_library (View_Graph ../Headers/view_graph.cpp)
-add_library (Access_Model_Data ../Headers/access_model_data.cpp)
-add_library (Access_Results ../Headers/access_results.cpp)
+add_library (Hint_System_Class ../headers/hint_system_class.cpp)
+add_library (View_Graph ../headers/view_graph.cpp)
+add_library (Access_Model_Data ../headers/access_model_data.cpp)
+add_library (Access_Results ../headers/access_results.cpp)
 
 
 target_link_libraries (hint_system_debugger ${PCL_LIBRARIES})

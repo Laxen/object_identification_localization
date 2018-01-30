@@ -11,8 +11,8 @@ link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
 add_executable (generate_new_distinguish_utilities generate_new_distinguish_utilities.cpp)
-add_library (Similar_Object_Recognition ../../Headers/similar_object_recognition.cpp)
-add_library (Access_Model_Data ../../Headers/access_model_data.cpp)
+add_library (Similar_Object_Recognition ../../headers/similar_object_recognition.cpp)
+add_library (Access_Model_Data ../../headers/access_model_data.cpp)
 
 target_link_libraries (generate_new_distinguish_utilities ${PCL_LIBRARIES})
 target_link_libraries (generate_new_distinguish_utilities Similar_Object_Recognition)

@@ -1,6 +1,6 @@
 
-#include "../../../Headers/access_model_data.h"
-#include "../../../Headers/view_graph.h"
+#include "../../../headers/access_model_data.h"
+#include "../../../headers/view_graph.h"
 
 typedef pcl::PointXYZ PointT;
 typedef pcl::PointNormal Point_N;

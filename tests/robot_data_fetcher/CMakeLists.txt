@@ -7,7 +7,7 @@ set(CURL_LIBRARY "-lcurl")
 
 find_package(CURL REQUIRED) 
 
-add_library(Robot_Data_Fetcher ../../Headers/robot_data_fetcher.cpp)
+add_library(Robot_Data_Fetcher ../../headers/robot_data_fetcher.cpp)
 
 include_directories(${CURL_INCLUDE_DIR})
 

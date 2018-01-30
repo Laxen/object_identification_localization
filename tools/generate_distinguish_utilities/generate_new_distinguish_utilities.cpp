@@ -1,6 +1,6 @@
 
-#include "../../Headers/similar_object_recognition.h"
-#include "../../Headers/access_model_data.h"
+#include "../../headers/similar_object_recognition.h"
+#include "../../headers/access_model_data.h"
 
 typedef pcl::ESFSignature640 FeatureT;
 typedef pcl::PointCloud<FeatureT> FeatureCloudT;
