@@ -20,7 +20,7 @@ add_definitions(${PCL_DEFINITIONS})
 
 add_executable (system system.cpp)
 add_library(Access_Results ../Headers/access_results.cpp)
-add_library(Identification_Class ../Headers/Identification_class.cpp)
+add_library(Identification_Class ../Headers/identification_class.cpp)
 add_library(Access_Model_Data ../Headers/access_model_data.cpp)
 add_library(View_Graph ../Headers/View_graph.cpp)
 add_library(Manipulation ../Headers/Manipulation.cpp)

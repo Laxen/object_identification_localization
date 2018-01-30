@@ -10,7 +10,7 @@
 #include "access_results.h"
 #include "View_graph.h"
 
-class Identification_class
+class Identification_Class
 {
 	public:
 		typedef pcl::PointXYZ PointT;
@@ -24,7 +24,7 @@ class Identification_class
 		/**
 		  Constructor
 		*/
-		Identification_class (void);
+		Identification_Class (void);
 		
 		/**
 		  Identifies an unknown cluster 

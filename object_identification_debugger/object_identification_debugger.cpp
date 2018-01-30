@@ -1,5 +1,5 @@
 
-#include "../Headers/Identification_class.h"
+#include "../Headers/identification_class.h"
 #include "../Headers/access_results.h"
 
 typedef pcl::PointNormal Point_N;
@@ -8,7 +8,7 @@ typedef pcl::PointCloud<Point_N> PointCloud_N;
 int main (int argc, char** argv)
 {
 	// Create identification object
-	Identification_class ident;
+	Identification_Class ident;
 	ident.show_results (true);
 	ident.set_save_results (false);
 	

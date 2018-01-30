@@ -5,7 +5,7 @@
 #include <signal.h>
 #include "../Headers/access_results.h"
 #include "../Headers/access_model_data.h"
-#include "../Headers/Identification_class.h"
+#include "../Headers/identification_class.h"
 #include "../Headers/Manipulation.h"
 #include "../Headers/Pose_Class.h"
 #include "../Headers/Linker.h"
@@ -176,7 +176,7 @@ main(int argc, char** argv) {
 
 		// Run object identification on latest cloud
 		std::cout << "Running object identification..." << '\n';
-		Identification_class ident;
+		Identification_Class ident;
 		for(int i = 0; i < single_clusters.size(); i++) {
 			ident.identify(scene_name, i, single_clusters[i]);
 		}

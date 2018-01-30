@@ -1,11 +1,11 @@
 
-#include "Identification_class.h"
+#include "identification_class.h"
 
 /**
   Loads all model data  
 */
 void
-Identification_class::load_model_data ()
+Identification_Class::load_model_data ()
 {
 	Access_Model_Data access;
 	
@@ -40,7 +40,7 @@ Identification_class::load_model_data ()
 /**
   Constructor
 */
-Identification_class::Identification_class (void)
+Identification_Class::Identification_Class (void)
 {
 	show_res_ = false;
 	save_identification_results_ = true;
@@ -67,7 +67,7 @@ Identification_class::Identification_class (void)
   @param show_res True if show results, false otherwise
 */
 void
-Identification_class::show_results (bool show_res)
+Identification_Class::show_results (bool show_res)
 {
 	show_res_ = true;
 }
@@ -77,7 +77,7 @@ Identification_class::show_results (bool show_res)
   @param save_identification_results True if save resutls, false otherwise
 */
 void 
-Identification_class::set_save_results (bool save_identification_results)
+Identification_Class::set_save_results (bool save_identification_results)
 {
 	save_identification_results_ = save_identification_results;
 }	
@@ -87,7 +87,7 @@ Identification_class::set_save_results (bool save_identification_results)
   @param cluster The cluster object containing the point cloud
 */
 void 
-Identification_class::estimate_feature (cluster_data &cluster)
+Identification_Class::estimate_feature (cluster_data &cluster)
 {	
 	// Estimate global ESF feature for cluster
 	FeatureEstimationT feature_estimator;
@@ -104,7 +104,7 @@ Identification_class::estimate_feature (cluster_data &cluster)
   @param f2 the second histogram 
 */
 float 
-Identification_class::l1_norm (FeatureT f1, FeatureT f2)
+Identification_Class::l1_norm (FeatureT f1, FeatureT f2)
 {
 	float sum = 0.0f;
 	for (int i = 0; i < 640; i++)
@@ -119,7 +119,7 @@ Identification_class::l1_norm (FeatureT f1, FeatureT f2)
   @param cluster The cluster object containing the point cloud
 */
 void 
-Identification_class::best_matching_features (cluster_data &cluster)
+Identification_Class::best_matching_features (cluster_data &cluster)
 {	
 	for (int i = 0; i < models.size(); i++)
 	{
@@ -162,7 +162,7 @@ Identification_class::best_matching_features (cluster_data &cluster)
   @param cluster The cluster object containing the point cloud
 */
 void 
-Identification_class::results_console (cluster_data cluster)
+Identification_Class::results_console (cluster_data cluster)
 {
 	for (int i = models.size()-1; i >= 0 ; i--)
 	{
@@ -223,7 +223,7 @@ Identification_class::results_console (cluster_data cluster)
   @param cluster The cluster object containing the point cloud
 */
 void 
-Identification_class::results_viewer (cluster_data cluster)
+Identification_Class::results_viewer (cluster_data cluster)
 {
 	//
 	// Create a viewer with graph information
@@ -278,7 +278,7 @@ Identification_class::results_viewer (cluster_data cluster)
   @param cluster The cluster object containing the point cloud
 */
 void
-Identification_class::save_results (cluster_data cluster)
+Identification_Class::save_results (cluster_data cluster)
 {
 	// Save identification results to CSV file. Only the 10 best models are saved along with their 10 best views and score (feature distance)
 	Access_Results access;
@@ -310,7 +310,7 @@ Identification_class::save_results (cluster_data cluster)
   @param cluster_cloud The point cloud of the unknown cluster
 */
 void
-Identification_class::identify (std::string scene_name, int cluster_index, PointCloud_N::Ptr cluster_cloud)
+Identification_Class::identify (std::string scene_name, int cluster_index, PointCloud_N::Ptr cluster_cloud)
 {			
 	std::cout << "Identifying scene: " << scene_name << ", cluster: " << cluster_index << "\n" << std::endl;
 	
