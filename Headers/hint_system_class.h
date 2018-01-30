@@ -9,14 +9,14 @@
 #include <pcl/kdtree/kdtree_flann.h>
 #include "hint_system_data.h"
 
-class Hint_system_class
+class Hint_System_Class
 {
 	public:
 	
 		/** 
 		  Constructor. 
 		*/
-	  	Hint_system_class (void);
+	  	Hint_System_Class (void);
 	  	
 	  	/**
 	  	  Sets the weights used for summing up the utilities

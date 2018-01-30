@@ -11,7 +11,7 @@
 #include "../Headers/Linker.h"
 #include "../Headers/Robot_Data_Fetcher.h"
 #include "../Headers/cloud_segmentation.h"
-#include "../Headers/Hint_system_class.h"
+#include "../Headers/hint_system_class.h"
 #include "../Headers/cloud_merging.h"
 #include "../Headers/RDF_Connector.hpp"
 #include "../Headers/pose_data.h"
@@ -53,7 +53,7 @@ main(int argc, char** argv) {
 	Cloud_Segmentation cs;
 	cs.set_visualizer(&visu);
 
-	Hint_system_class hs;
+	Hint_System_Class hs;
 	float weights[] = {conf.hint_view_weight, conf.hint_normal_weight, conf.hint_feature_weight, conf.hint_distinguish_weight};
 	hs.set_weights (weights);
 	hs.set_below_plane_threshold(conf.hint_below_plane_threshold);

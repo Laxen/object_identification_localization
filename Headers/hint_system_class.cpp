@@ -1,9 +1,9 @@
-#include "Hint_system_class.h"
+#include "hint_system_class.h"
 
 /** 
   Constructor. 
 */
-Hint_system_class::Hint_system_class (void)
+Hint_System_Class::Hint_System_Class (void)
 {
 	view_search_results_ = false;
 	normalize_search_results_ = false;
@@ -57,7 +57,7 @@ Hint_system_class::Hint_system_class (void)
   @param weights Array containing the weights. Default is equal weights.
 */
 void
-Hint_system_class::set_weights (float weights[4])
+Hint_System_Class::set_weights (float weights[4])
 {
 	for (int i = 0; i < 4; i++)
 	{
@@ -70,7 +70,7 @@ Hint_system_class::set_weights (float weights[4])
   @param value The value of the threshold in meters
 */
 void
-Hint_system_class::set_below_plane_threshold (double value)
+Hint_System_Class::set_below_plane_threshold (double value)
 {
 	BELOW_PLANE_THRESHOLD = -value;
 }
@@ -80,7 +80,7 @@ Hint_system_class::set_below_plane_threshold (double value)
   @param value The value of the threshold in degrees
 */
 void
-Hint_system_class::set_misalignment_angle_threshold (double value)
+Hint_System_Class::set_misalignment_angle_threshold (double value)
 {
 	MISALIGNMENT_ANGLE_THRESHOLD = value;
 	Z_AXIS_MISALIGNMENT_THRESHOLD = cos (MISALIGNMENT_ANGLE_THRESHOLD * PI_CONST / 180);
@@ -91,7 +91,7 @@ Hint_system_class::set_misalignment_angle_threshold (double value)
   @param value The value of the threshold in degrees
 */
 void
-Hint_system_class::set_valid_axis_threshold (float value)
+Hint_System_Class::set_valid_axis_threshold (float value)
 {
 	VALID_AXIS_THR = value;
 }
@@ -101,7 +101,7 @@ Hint_system_class::set_valid_axis_threshold (float value)
   @param view_valid_nodes Set this to true to show the valid nodes
 */
 void 
-Hint_system_class::set_view_valid_nodes (bool view_valid_nodes)
+Hint_System_Class::set_view_valid_nodes (bool view_valid_nodes)
 {
 	view_valid_nodes_ = view_valid_nodes;
 }	
@@ -112,7 +112,7 @@ Hint_system_class::set_view_valid_nodes (bool view_valid_nodes)
   @param view_search_results Set this to true to normalize the weighted sum of the utilities
 */
 void
-Hint_system_class::set_view_search_results (bool view_search_results, bool normalize_search_results)
+Hint_System_Class::set_view_search_results (bool view_search_results, bool normalize_search_results)
 {
 	view_search_results_ = view_search_results;
 	normalize_search_results_ = normalize_search_results;
@@ -123,7 +123,7 @@ Hint_system_class::set_view_search_results (bool view_search_results, bool norma
   @param print_info Set this to true to show info in terminal
 */
 void
-Hint_system_class::set_print_info (bool print_info)
+Hint_System_Class::set_print_info (bool print_info)
 {
 	print_info_ = print_info;
 }
@@ -133,7 +133,7 @@ Hint_system_class::set_print_info (bool print_info)
   @param print_info Set this to true to show utilities
 */
 void
-Hint_system_class::set_show_utilities (bool show_utilities)
+Hint_System_Class::set_show_utilities (bool show_utilities)
 {
 	show_utilities_ = show_utilities;
 }
@@ -143,7 +143,7 @@ Hint_system_class::set_show_utilities (bool show_utilities)
   @param visu The visualizer pointer
  */
 void
-Hint_system_class::set_visualizer(pcl::visualization::PCLVisualizer* visu) 
+Hint_System_Class::set_visualizer(pcl::visualization::PCLVisualizer* visu) 
 {
 	visu_ptr_set = true;
 	visu_ptr = visu;
@@ -154,8 +154,8 @@ Hint_system_class::set_visualizer(pcl::visualization::PCLVisualizer* visu)
   @param model_name The name of the model
   @return A pair object where the first value indicates if the complete model has been loaded and the second value contains the center of mass of the model (if any)
 */
-std::pair<bool, Hint_system_class::PointT>
-Hint_system_class::complete_model_loaded (std::string model_name)
+std::pair<bool, Hint_System_Class::PointT>
+Hint_System_Class::complete_model_loaded (std::string model_name)
 {
 	std::pair<bool, PointT> p;
 	
@@ -192,8 +192,8 @@ Hint_system_class::complete_model_loaded (std::string model_name)
   @param pose The estimated pose
   @return The center of mass of the complete model
 */
-Hint_system_class::PointT
-Hint_system_class::compute_model_center (std::string model_name, Eigen::Matrix<float,4,4,Eigen::DontAlign> pose)
+Hint_System_Class::PointT
+Hint_System_Class::compute_model_center (std::string model_name, Eigen::Matrix<float,4,4,Eigen::DontAlign> pose)
 {
 	std::pair<bool, PointT> loaded = complete_model_loaded (model_name);
 	PointT center_of_mass;
@@ -241,7 +241,7 @@ Hint_system_class::compute_model_center (std::string model_name, Eigen::Matrix<f
   @param pose_results Vector containing all the data from pose estimation
 */
 int
-Hint_system_class::load_pose_estimation_results (	std::string scene_name, 
+Hint_System_Class::load_pose_estimation_results (	std::string scene_name, 
 													int cluster_index, 
 													Access_Results access_results, 
 													std::vector<Pose_estimation_results> &pose_results )
@@ -296,7 +296,7 @@ Hint_system_class::load_pose_estimation_results (	std::string scene_name,
   @return The plane coefficients
 */
 pcl::ModelCoefficients
-Hint_system_class::load_plane (std::string scene_name)
+Hint_System_Class::load_plane (std::string scene_name)
 {
 	Access_Results access_results;
 	pcl::ModelCoefficients plane;
@@ -322,7 +322,7 @@ Hint_system_class::load_plane (std::string scene_name)
   @param plane The plane coefficients
 */
 void
-Hint_system_class::view_valid_nodes (	std::string scene_name, 
+Hint_System_Class::view_valid_nodes (	std::string scene_name, 
 										Pose_estimation_results per, 
 										pcl::ModelCoefficients plane )
 {	
@@ -392,7 +392,7 @@ Hint_system_class::view_valid_nodes (	std::string scene_name,
   @return True if the model is below the plane and false otherwise
 */
 bool
-Hint_system_class::model_below_plane (Pose_estimation_results per, pcl::ModelCoefficients plane)
+Hint_System_Class::model_below_plane (Pose_estimation_results per, pcl::ModelCoefficients plane)
 {
 	// Load and transform complete model
 	Access_Model_Data access_model_data;
@@ -421,7 +421,7 @@ Hint_system_class::model_below_plane (Pose_estimation_results per, pcl::ModelCoe
   @return The correctly aligned z-axis viewpoint 
 */
 Eigen::Vector3f
-Hint_system_class::align_axis_to_cluster_center (PointT camera_center, PointT model_center)
+Hint_System_Class::align_axis_to_cluster_center (PointT camera_center, PointT model_center)
 {
 	Eigen::Vector3f correct_z_axis;
 	correct_z_axis (0) = model_center.x - camera_center.x;
@@ -443,7 +443,7 @@ Hint_system_class::align_axis_to_cluster_center (PointT camera_center, PointT mo
   @param per The pose estimation result
 */
 void
-Hint_system_class::find_aligned_views (Pose_estimation_results &per)
+Hint_System_Class::find_aligned_views (Pose_estimation_results &per)
 {
 	for (int i = 0; i < (previous_positions.size() + 1); i++)
 	{
@@ -486,7 +486,7 @@ Hint_system_class::find_aligned_views (Pose_estimation_results &per)
   @param per The pose estimation result
 */
 double
-Hint_system_class::get_inlier_fraction (PointCloud_N::Ptr source, PointCloud_N::Ptr target)
+Hint_System_Class::get_inlier_fraction (PointCloud_N::Ptr source, PointCloud_N::Ptr target)
 {
 	/*
 	// Find inlier fraction from source to target
@@ -608,7 +608,7 @@ Hint_system_class::get_inlier_fraction (PointCloud_N::Ptr source, PointCloud_N::
   @return True if the model has low inlier fraction and false otherwise
 */
 bool
-Hint_system_class::low_inlier_fraction (Pose_estimation_results &per, std::string scene_name, int cluster_index)
+Hint_System_Class::low_inlier_fraction (Pose_estimation_results &per, std::string scene_name, int cluster_index)
 {
 	Access_Results ar;
 	Access_Model_Data amd;
@@ -643,7 +643,7 @@ Hint_system_class::low_inlier_fraction (Pose_estimation_results &per, std::strin
   @param invalid_pose_results Vector containing all invalid results from pose estimation
 */
 int
-Hint_system_class::camera_validation_test (	std::string scene_name,
+Hint_System_Class::camera_validation_test (	std::string scene_name,
 											int cluster_index,
 											std::vector<Pose_estimation_results> &pose_results, 
 											std::vector<Pose_estimation_results> &valid_pose_results,
@@ -715,7 +715,7 @@ Hint_system_class::camera_validation_test (	std::string scene_name,
   @param per2 The second Pose_estimation_results object
 */
 bool
-Hint_system_class::poses_comparator (const Pose_estimation_results& per1, const Pose_estimation_results& per2) 
+Hint_System_Class::poses_comparator (const Pose_estimation_results& per1, const Pose_estimation_results& per2) 
 {
   	return per1.inlier_fraction > per2.inlier_fraction;
 }
@@ -726,7 +726,7 @@ Hint_system_class::poses_comparator (const Pose_estimation_results& per1, const 
   @param vec2 The second vector with Pose_estimation_results object
 */
 bool
-Hint_system_class::poses_comparator_2 (const std::vector<Pose_estimation_results>& vec1, const std::vector<Pose_estimation_results>& vec2) 
+Hint_System_Class::poses_comparator_2 (const std::vector<Pose_estimation_results>& vec1, const std::vector<Pose_estimation_results>& vec2) 
 {
   	return vec1[0].inlier_fraction > vec2[0].inlier_fraction;
 }
@@ -738,7 +738,7 @@ Hint_system_class::poses_comparator_2 (const std::vector<Pose_estimation_results
   @return vector containing all the (similar) models
 */
 std::vector<std::string>
-Hint_system_class::sort_valid_pose_results (std::vector<Pose_estimation_results> &valid_pose_results, std::vector<Pose_Data> &return_vec)
+Hint_System_Class::sort_valid_pose_results (std::vector<Pose_estimation_results> &valid_pose_results, std::vector<Pose_Data> &return_vec)
 {
 	// Extract all models present in the valid results
 	std::vector<std::string> models;
@@ -808,7 +808,7 @@ Hint_system_class::sort_valid_pose_results (std::vector<Pose_estimation_results>
   @param vec The vector to normalize
 */	
 void 
-Hint_system_class::normalize (std::vector<float> &vec)
+Hint_System_Class::normalize (std::vector<float> &vec)
 {			
 	// Sort vec
 	std::vector<float> temp = vec;
@@ -828,7 +828,7 @@ Hint_system_class::normalize (std::vector<float> &vec)
   @return Vector containing the combined and normalized distinguish-utilities
 */
 std::vector<float> 
-Hint_system_class::combine_distinguish_utilities (std::vector<std::vector<float> > distinguish_utilities_vec)
+Hint_System_Class::combine_distinguish_utilities (std::vector<std::vector<float> > distinguish_utilities_vec)
 {
 	std::vector<float> combined_utilities;
 	for (int i = 0; i < distinguish_utilities_vec[0].size(); i++)
@@ -855,7 +855,7 @@ Hint_system_class::combine_distinguish_utilities (std::vector<std::vector<float>
   @return Vector containing the summed utilities
 */
 std::vector<float>
-Hint_system_class::sum_utilities ()
+Hint_System_Class::sum_utilities ()
 {
 	std::vector<float> summed_utilities (view_utilities_.size());
 	if (distinguish_utilities_.size() == 0)
@@ -893,7 +893,7 @@ Hint_system_class::sum_utilities ()
   @param scene_name the name of the scene
 */
 void
-Hint_system_class::compute_new_positions (View_graph graph, std::string scene_name)
+Hint_System_Class::compute_new_positions (View_graph graph, std::string scene_name)
 {
 	Eigen::Matrix<float,4,4,Eigen::DontAlign> t_next;
 	Eigen::Matrix3d rotation1 = graph.get_rotation (next_view_);
@@ -933,7 +933,7 @@ Hint_system_class::compute_new_positions (View_graph graph, std::string scene_na
   @param scene_name The name of the scene
 */
 void
-Hint_system_class::load_T_HtoB (std::string scene_name)
+Hint_System_Class::load_T_HtoB (std::string scene_name)
 {
 	// Load T_HtoB
 	Access_Results ar;
@@ -976,7 +976,7 @@ Hint_system_class::load_T_HtoB (std::string scene_name)
   @param scene_name The name of the scene
 */
 void
-Hint_system_class::load_previous_camera_position (std::string scene_name)
+Hint_System_Class::load_previous_camera_position (std::string scene_name)
 {
 	Access_Results ar;
 	int scene_index = std::strtol (scene_name.c_str(), NULL, 10) - 1;
@@ -1013,7 +1013,7 @@ Hint_system_class::load_previous_camera_position (std::string scene_name)
   Computes the current camera position in robot base coordinates
 */
 void
-Hint_system_class::compute_current_camera_position ()
+Hint_System_Class::compute_current_camera_position ()
 {
 	current_position = T_HtoB * T_CtoH;
 }
@@ -1024,7 +1024,7 @@ Hint_system_class::compute_current_camera_position ()
   @param cluster_index The cluster index
 /  
 void 
-Hint_system_class::cluster_center_of_mass (std::string scene_name, int cluster_index)
+Hint_System_Class::cluster_center_of_mass (std::string scene_name, int cluster_index)
 {
 	// Load cluster
 	Access_Results ar;
@@ -1047,7 +1047,7 @@ Hint_system_class::cluster_center_of_mass (std::string scene_name, int cluster_i
   @param per The pose estimation results 
 */
 void
-Hint_system_class::add_segmentation_results_to_viewer (pcl::visualization::PCLVisualizer &viewer, std::string scene_name, Pose_estimation_results per)
+Hint_System_Class::add_segmentation_results_to_viewer (pcl::visualization::PCLVisualizer &viewer, std::string scene_name, Pose_estimation_results per)
 {
 	Access_Results access_results;
 	Access_Model_Data access_model_data;
@@ -1156,7 +1156,7 @@ Hint_system_class::add_segmentation_results_to_viewer (pcl::visualization::PCLVi
   @param per The pose estimation results
 */
 void
-Hint_system_class::view_search_results (std::string scene_name, Pose_estimation_results &per)
+Hint_System_Class::view_search_results (std::string scene_name, Pose_estimation_results &per)
 {
 	Access_Model_Data access_model_data;
 	std::vector<float> r_vec_search (per.graph.get_size (), 0.1);
@@ -1507,7 +1507,7 @@ Hint_system_class::view_search_results (std::string scene_name, Pose_estimation_
   @param scene_name The name of the scene
 */
 void 
-Hint_system_class::save_current_camera_position (std::string scene_name)
+Hint_System_Class::save_current_camera_position (std::string scene_name)
 {
 	// Add content of the current camera position
 	std::stringstream ss;
@@ -1559,7 +1559,7 @@ Hint_system_class::save_current_camera_position (std::string scene_name)
   @param flag A flag telling the function which variables to save
 */
 void
-Hint_system_class::save_results ( 	std::string scene_name, 
+Hint_System_Class::save_results ( 	std::string scene_name, 
 									int cluster_index, 
 									std::vector<Pose_estimation_results> valid_pose_results, 
 									std::vector<Pose_estimation_results> invalid_pose_results,
@@ -1683,7 +1683,7 @@ Hint_system_class::save_results ( 	std::string scene_name,
   @return  containing all identified models with their best pose and the next position for the robot hand
 */
 Hint_System_Data
-Hint_system_class::find_new_view (std::string scene_name, int cluster_index)
+Hint_System_Class::find_new_view (std::string scene_name, int cluster_index)
 {
 	Hint_System_Data hs_data;
 	
