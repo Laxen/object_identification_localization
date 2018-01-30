@@ -329,6 +329,17 @@ class Access_Results
 		get_T_CtoH();
 		
 		/**
+		  Saves the current camera position
+		  @param scene_name The name of the scene
+		  @param T_HtoB The transformation from robot hand to robot base
+		  @param T_CtoH The transformation from camera to robot hand
+		*/
+		void 
+		save_current_camera_position (	std::string scene_name, 
+										Eigen::Matrix<float,4,4,Eigen::DontAlign> T_HtoB,
+										Eigen::Matrix<float,4,4,Eigen::DontAlign> T_CtoH );
+		
+		/**
 		  Clears all results 
 		*/
 		void

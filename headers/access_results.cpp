@@ -1311,6 +1311,57 @@ Access_Results::get_T_CtoH() {
 }
 
 /**
+  Saves the current camera position
+  @param scene_name The name of the scene
+  @param T_HtoB The transformation from robot hand to robot base
+  @param T_CtoH The transformation from camera to robot hand
+*/
+void 
+Access_Results::save_current_camera_position (	std::string scene_name, 
+												Eigen::Matrix<float,4,4,Eigen::DontAlign> T_HtoB,
+												Eigen::Matrix<float,4,4,Eigen::DontAlign> T_CtoH )
+{
+	// Compute current camera posisiton
+	Eigen::Matrix<float,4,4,Eigen::DontAlign> current_position = T_HtoB * T_CtoH;
+
+	// Add content of the current camera position
+	std::stringstream ss;
+	for (int row = 0; row < 4; row++)
+	{
+		for (int col = 0; col < 4; col++)
+		{
+			ss << current_position (row,col) << ",";
+		}
+	}
+	
+	// Add path to Hint_system_results in Results
+	boost::filesystem::path p = path_to_hint_system_results ();
+
+	// Add path to scene
+	p /= scene_name;
+
+	// Check if such path exists
+	if (!boost::filesystem::exists(p))
+	{
+		// Path does not exist, create directory for scene
+		if (!boost::filesystem::create_directory(p))
+		{
+			ss.str ("");
+			ss << "ERROR: Could not create directory for " << scene_name << " in Hint_system_results!\n\n";
+			pcl::console::print_error(ss.str().c_str());
+			std::exit (EXIT_FAILURE);
+		}
+	}
+	
+	// Save current camera position
+	p /= "current_camera_position.csv";
+	std::ofstream csv_file;
+	csv_file.open (p.string().c_str());
+	csv_file << ss.str ();
+	csv_file.close();
+}
+
+/**
   Clears all results 
 */
 void

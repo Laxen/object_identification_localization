@@ -334,12 +334,6 @@ class Hint_System_Class
 		load_previous_camera_position (std::string scene_name);
 		
 		/**
-		  Computes the current camera position in robot base coordinates
-		*/
-		void
-		compute_current_camera_position ();
-		
-		/**
 		  Loads and computes the cluster center of mass
 		  @param scene_name The name of the scene
 		  @param cluster_index The cluster index
@@ -366,12 +360,6 @@ class Hint_System_Class
 		*/
 		void
 		view_search_results (std::string scene_name, Pose_estimation_results &per);
-		
-		/**
-		  Saves the current camera position
-		*/
-		void 
-		save_current_camera_position (std::string scene_name);
 		
 		/**
 		  Saves the results

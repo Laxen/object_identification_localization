@@ -1010,15 +1010,6 @@ Hint_System_Class::load_previous_camera_position (std::string scene_name)
 }
 
 /**
-  Computes the current camera position in robot base coordinates
-*/
-void
-Hint_System_Class::compute_current_camera_position ()
-{
-	current_position = T_HtoB * T_CtoH;
-}
-
-/**
   Loads and computes the cluster center of mass
   @param scene_name The name of the scene
   @param cluster_index The cluster index
@@ -1510,54 +1501,6 @@ Hint_System_Class::view_search_results (std::string scene_name, Pose_estimation_
 }
 
 /**
-  Saves the current camera position
-  @param scene_name The name of the scene
-*/
-void 
-Hint_System_Class::save_current_camera_position (std::string scene_name)
-{
-	// Add content of the current camera position
-	std::stringstream ss;
-	Access_Results ar;
-	for (int row = 0; row < 4; row++)
-	{
-		for (int col = 0; col < 4; col++)
-		{
-			ss << current_position (row,col) << ",";
-		}
-	}
-	
-	// Add path to Hint_system_results in Results
-	boost::filesystem::path p = ar.path_to_hint_system_results ();
-
-	// Add path to scene
-	p /= scene_name;
-
-	// Check if such path exists
-	if (!boost::filesystem::exists(p))
-	{
-		// Path does not exist, create directory for scene
-		if (!boost::filesystem::create_directory(p))
-		{
-			ss.str ("");
-			ss << "ERROR: Could not create directory for " << scene_name << " in Hint_system_results!\n\n";
-			pcl::console::print_error(ss.str().c_str());
-			std::exit (EXIT_FAILURE);
-		}
-	}
-	
-	p /= "current_camera_position.csv";
-	if (!boost::filesystem::exists(p))
-	{
-		// Save current camera position
-		std::ofstream csv_file;
-		csv_file.open (p.string().c_str());
-		csv_file << ss.str ();
-		csv_file.close();
-	}
-}
-
-/**
   Saves the results
   @param scene_name The name of the scene
   @param cluster_index The cluster index
@@ -1697,10 +1640,6 @@ Hint_System_Class::find_new_view (std::string scene_name, int cluster_index)
 	// Load current robot hand position and previous camera positions in robot base coordinates
 	load_T_HtoB (scene_name);
 	load_previous_camera_position (scene_name);
-	
-	// Compute and save current camera position in robot base coordinates
-	compute_current_camera_position ();
-	save_current_camera_position (scene_name);
 	
 	/*
 	// Load the cluster point cloud and compute the center of mass for it
