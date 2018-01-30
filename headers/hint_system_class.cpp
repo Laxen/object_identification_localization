@@ -1497,6 +1497,13 @@ Hint_System_Class::view_search_results (std::string scene_name, Pose_estimation_
 		std::cin >> input;
 	}
 	
+	// Save scene as polydata
+	//save_scene();
+	vtkOBJExporter * exporter = vtkOBJExporter::New(); 
+	exporter->SetRenderWindow (visu_ptr->getRenderWindow()); 
+	exporter->SetFilePrefix ("test");
+	exporter->Write ();
+	
 	visu_ptr->removeAllPointClouds();
 	visu_ptr->removeAllShapes ();
 	visu_ptr->removeAllCoordinateSystems ();
