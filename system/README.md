@@ -1,4 +1,5 @@
 # system
+This is the entire system that runs the complete pipeline involving object identification, localization, point cloud merging and hint generation. The results are visualized and saved in the data/results/ folder, as well as optionally (specified in the config.ini file) uploaded to an RDF database. 
 
 ## Compile and run
 Execute the following command in the system directory to compile the program
