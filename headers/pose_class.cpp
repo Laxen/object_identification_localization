@@ -1,19 +1,17 @@
 #include "pose_class.h"
 
-Pose_Class::Pose_Class() {
-	LEAF_SIZE = 0.003; // Used for downsampling (0.003 for small objects, 0.010 for large)
+Pose_Class::Pose_Class(Config_Reader conf) {
+	POSE_MAX_ITERATIONS = conf.pose_max_iterations;
+	POSE_MAX_CORRESPONDENCE_DISTANCE = conf.pose_max_correspondence_distance;
+	POSE_CORRESPONDENCE_RANDOMNESS = conf.pose_correspondence_randomness;
+	POSE_SIMILARITY_THRESHOLD = conf.pose_similarity_threshold;
+	POSE_INLIER_FRACTION = conf.pose_inlier_fraction;
+	POSE_INVERSE_INLIER_FRACTION = conf.pose_inverse_inlier_fraction;
 
-	POSE_MAX_ITERATIONS = 10000; // THIS WAS 25000 BEFORE 2017-11-06
-	POSE_MAX_CORRESPONDENCE_DISTANCE = 1.5 * LEAF_SIZE; // THIS WAS 1.1 BEFORE 2017-11-06
-	POSE_CORRESPONDENCE_RANDOMNESS = 5;
-	POSE_SIMILARITY_THRESHOLD = 0.8;
-	POSE_INLIER_FRACTION = 0.1;
-	POSE_INVERSE_INLIER_FRACTION = 0.5;
+	FEATURE_RADIUS_SEARCH = conf.pose_feature_radius_search;
 
-	FEATURE_RADIUS_SEARCH = 0.015; // Radius for feature estimation (was 0.010 before 2017-11-28)
-
-	visualization_mode = 0;
-	print_mode = 0;
+	visualization_mode = conf.pose_visualization_mode;
+	print_mode = conf.pose_print_mode;
 }
 
 /**
@@ -333,7 +331,7 @@ Pose_Class::estimate_full_pose(Point_Cloud_N::Ptr object, Point_Cloud_N::Ptr clu
 	// Sort filtered poses in regards to inliers
 	std::sort(filtered_poses.begin(), filtered_poses.end(), filtered_poses_compare);
 
-	if(visualization_mode == 1 || visualization_mode == 3 || visualization_mode == 4 || visualization_mode == 5) {
+	if(visualization_mode == 1 || visualization_mode == 3 || visualization_mode == 4) {
 		// Visualize filtered poses
 		for(int i = 0; i < filtered_poses.size(); i++) {
 			Eigen::Matrix<float,4,4,Eigen::DontAlign> pose = filtered_poses[i].first.first;
@@ -349,42 +347,6 @@ Pose_Class::estimate_full_pose(Point_Cloud_N::Ptr object, Point_Cloud_N::Ptr clu
 			pcl::transformPointCloudWithNormals(*object, *object_transformed, pose);
 
 			if(visualization_mode == 3) {
-				// Compute occlusion
-				Point_Cloud_N::Ptr visible_object (new Point_Cloud_N);
-				Point_Cloud_N::Ptr occluded_object (new Point_Cloud_N);
-				std::vector<int> occluded_indices;
-				Eigen::Vector3d viewpoint (0,0,0);
-				manipulation.compute_occlusion(object_transformed, LEAF_SIZE, viewpoint, visible_object, occluded_object, &occluded_indices);
-
-				// Compute points with persistent features
-				boost::shared_ptr<std::vector<int> > persistent_indices (new std::vector<int>);
-				compute_persistent_features(object, persistent_indices);
-
-				// Find both occluded and persistent points
-				boost::shared_ptr<std::vector<int> > occluded_persistent_indices (new std::vector<int>);
-				for(int k = 0; k < occluded_indices.size(); k++) {
-					for(int n = 0; n < (*persistent_indices).size(); n++) {
-						if(occluded_indices[k] == (*persistent_indices)[n]) {
-							occluded_persistent_indices->push_back(occluded_indices[k]);
-							break;
-						}
-					}
-				}
-
-				// Extract occluded persistent points into cloud
-				pcl::ExtractIndices<Point_N> extract_filter;
-				extract_filter.setInputCloud(object_transformed);
-				extract_filter.setIndices(occluded_persistent_indices);
-				Point_Cloud_N::Ptr occluded_persistent_cloud (new Point_Cloud_N);
-				extract_filter.filter(*occluded_persistent_cloud);
-
-				visu_ptr->addPointCloud(visible_object, ColorHandler_N(visible_object, 0.0, 255.0, 0.0), "visible_object");
-				visu_ptr->addPointCloud(occluded_object, ColorHandler_N(occluded_object, 255, 48, 48), "occluded_object");
-				visu_ptr->addPointCloud(occluded_persistent_cloud, ColorHandler_N(occluded_persistent_cloud, 255, 157, 0), "occluded_persistent_cloud");
-				visu_ptr->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 7, "visible_object");
-				visu_ptr->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 7, "occluded_object");
-				visu_ptr->setPointCloudRenderingProperties(pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 7, "occluded_persistent_cloud");
-			} else if(visualization_mode == 4) {
 				std::vector<int> inliers;
 				std::vector<int> outliers;
 				manipulation.compute_inliers(cluster_original, object_transformed, POSE_MAX_CORRESPONDENCE_DISTANCE, &inliers, &outliers);
@@ -612,7 +574,7 @@ Pose_Class::estimate_pose_merged_views(	std::vector<Point_Cloud_N::Ptr> views,
 			double accuracy = (double) inliers.size() / (double) tr_full_model->points.size();
 			p.accuracy = accuracy;
 
-			if(visualization_mode == 5) {
+			if(visualization_mode == 4) {
 				pcl::PointIndices::Ptr inlier_cloud (new pcl::PointIndices);
 				inlier_cloud->indices = inliers;
 

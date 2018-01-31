@@ -43,7 +43,7 @@ main(int argc, char** argv) {
 	Config_Reader conf;
 	conf.system_load_config("../../config.ini");
 
-	Pose_Class pc;
+	Pose_Class pc (conf);
 	pc.set_visualizer(&visu);
 	pc.set_visualization_mode(conf.pose_visualization_mode);
 	pc.set_print_mode(conf.pose_print_mode);

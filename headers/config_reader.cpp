@@ -70,9 +70,6 @@ Config_Reader::system_load_config (const std::string &filename)
 	// Read all config parameters associated with the system
 	save_path = tree.get<std::string> ("System-Default.save_path");
 
-	pose_visualization_mode = tree.get<int> ("System-Advanced.pose_visualization_mode");
-	pose_print_mode = tree.get<int> ("System-Advanced.pose_print_mode");
-	
 	hint_view_weight = tree.get<float> ("System-Default.hint_view_weight");
 	hint_normal_weight = tree.get<float> ("System-Default.hint_normal_weight");
 	hint_feature_weight = tree.get<float> ("System-Default.hint_feature_weight");
@@ -99,6 +96,17 @@ Config_Reader::system_load_config (const std::string &filename)
 	web_service_username = tree.get<std::string> ("System-Default.web_service_username");
 	web_service_password = tree.get<std::string> ("System-Default.web_service_password");
 	hand_web_service_url = tree.get<std::string> ("System-Default.hand_web_service_url");
+
+	// Pose
+	pose_max_iterations = tree.get<int> ("System-Advanced.pose_max_iterations");
+	pose_max_correspondence_distance = tree.get<double> ("System-Advanced.pose_max_correspondence_distance");
+	pose_correspondence_randomness = tree.get<double> ("System-Advanced.pose_correspondence_randomness");
+	pose_similarity_threshold = tree.get<double> ("System-Advanced.pose_similarity_threshold");
+	pose_inlier_fraction = tree.get<double> ("System-Advanced.pose_inlier_fraction");
+	pose_inverse_inlier_fraction = tree.get<double> ("System-Advanced.pose_inverse_inlier_fraction");
+	pose_feature_radius_search = tree.get<double> ("System-Advanced.pose_feature_radius_search");
+	pose_visualization_mode = tree.get<int> ("System-Advanced.pose_visualization_mode");
+	pose_print_mode = tree.get<int> ("System-Advanced.pose_print_mode");
 }
 
 /**

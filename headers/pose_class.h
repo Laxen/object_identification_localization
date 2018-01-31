@@ -4,14 +4,15 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 #include <pcl/console/print.h>
-#include "sample_consensus_prerejective.h"
 #include <pcl/common/time.h>
 #include <pcl/features/fpfh_omp.h>
-#include "manipulation.h"
-#include "access_results.h"
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/features/multiscale_feature_persistence.h>
+#include "sample_consensus_prerejective.h"
+#include "manipulation.h"
+#include "access_results.h"
 #include "pose_data.h"
+#include "config_reader.h"
 
 class Pose_Class {
 	private:
@@ -27,8 +28,6 @@ class Pose_Class {
 
 		int VISUALIZE_CLUSTERS_REALTIME;
 
-		double LEAF_SIZE; // Used for downsampling (0.003 for small objects, 0.010 for large)
-
 		int POSE_MAX_ITERATIONS;
 		double POSE_MAX_CORRESPONDENCE_DISTANCE;
 		double POSE_CORRESPONDENCE_RANDOMNESS;
@@ -36,23 +35,10 @@ class Pose_Class {
 		double POSE_INLIER_FRACTION;
 		double POSE_INVERSE_INLIER_FRACTION;
 
-		double POSE_FINAL_SIMILARITY_THRESHOLD;
-
-		double FEATURE_RADIUS_SEARCH; // Radius for feature estimation
-
-		double PLANE_DISTANCE_THRESHOLD; // Distance from point to plane to count as inlier to plane
-		int PLANE_MAX_ITERATIONS; // Max RANSAC iterations for finding plane
-		double BACKGROUND_SEGMENTATION_DISTANCE; // Max distance between two points when subtracting clouds
-
-		double CLUSTER_TOLERANCE;
-		int CLUSTER_MIN_SIZE;
-		int CLUSTER_MAX_SIZE;
-
-		double NORMAL_RADIUS_SEARCH; // Radius for nearest neighbors
+		double FEATURE_RADIUS_SEARCH;
 
 		pcl::visualization::PCLVisualizer* visu_ptr;
 		int visualization_mode;
-
 		int print_mode;
 
 		/**
@@ -163,7 +149,7 @@ class Pose_Class {
 		write_pose_data(std::string scene_name, int cluster_index, std::vector<Pose_Data> poses);
 
 	public:
-		Pose_Class();
+		Pose_Class(Config_Reader conf);
 		Pose_Class(std::string config_path);
 
 		/**
@@ -226,8 +212,8 @@ class Pose_Class {
 			0 = No visualization
 			1 = Visualize clustered and filtered poses
 			2 = Visualize clustered poses
-			3 = Visualize clustered and filtered poses with occlusion
-			4 = Visualize clustered and filtered poses with inliers
+			3 = Visualize clustered and filtered poses with inliers
+			4 = Visualize clustered and filtered poses, and each pose applied to the full model
 			@param vis_mode The visualization mode
 		 */
 		void

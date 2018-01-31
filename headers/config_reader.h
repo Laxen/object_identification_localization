@@ -69,6 +69,17 @@ class Config_Reader
 		std::string web_service_password;
 		std::string hand_web_service_url;
 
+		// Pose
+		int pose_max_iterations;
+		double pose_max_correspondence_distance;
+		double pose_correspondence_randomness;
+		double pose_similarity_threshold;
+		double pose_inlier_fraction;
+		double pose_inverse_inlier_fraction;
+		double pose_feature_radius_search;
+		int visualization_mode;
+		int print_mode;
+
 		/**
 		  Loads all parameters associated with adding a new model to the system (Rendering views)
 		  @param filename The name of the config file (.ini)
