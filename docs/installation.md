@@ -64,4 +64,4 @@ The following hardware requirements are needed in order to run the entire system
 * Download and install version 9.2 from the [MATLAB Runtime Compiler page](https://www.mathworks.com/products/compiler/matlab-runtime.html)
 
 # Compiling and running the system
-Each part of the system has its own instruction for compiling and running. An overview of all the parts can be found here [LINK NEEDED]. 
+Each part of the system has its own instruction for compiling and running. An overview of all the parts can be found [here](https://github.com/Laxen/object_identification_localization/tree/master/docs).
