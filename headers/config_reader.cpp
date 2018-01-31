@@ -107,6 +107,16 @@ Config_Reader::system_load_config (const std::string &filename)
 	pose_feature_radius_search = tree.get<double> ("System-Advanced.pose_feature_radius_search");
 	pose_visualization_mode = tree.get<int> ("System-Advanced.pose_visualization_mode");
 	pose_print_mode = tree.get<int> ("System-Advanced.pose_print_mode");
+
+	// Segmentation
+	segmentation_leaf_size = tree.get<double> ("System-Advanced.segmentation_leaf_size");
+	segmentation_plane_distance_threshold = tree.get<double> ("System-Advanced.segmentation_plane_distance_threshold");
+	segmentation_plane_max_iterations = tree.get<int> ("System-Advanced.segmentation_plane_max_iterations");
+	segmentation_background_segmentation_distance = tree.get<double> ("System-Advanced.segmentation_background_segmentation_distance");
+	segmentation_normal_radius_search = tree.get<double> ("System-Advanced.segmentation_normal_radius_search");
+	segmentation_cluster_tolerance = tree.get<double> ("System-Advanced.segmentation_cluster_tolerance");
+	segmentation_cluster_min_size = tree.get<int> ("System-Advanced.segmentation_cluster_min_size");
+	segmentation_cluster_max_size = tree.get<int> ("System-Advanced.segmentation_cluster_max_size");
 }
 
 /**
@@ -145,3 +155,4 @@ Config_Reader::background_load_config (const std::string &filename)
 	web_service_password = tree.get<std::string> ("System-Default.web_service_password");
 	hand_web_service_url = tree.get<std::string> ("System-Default.hand_web_service_url");
 }
+

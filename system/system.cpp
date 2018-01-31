@@ -48,7 +48,7 @@ main(int argc, char** argv) {
 	pc.set_visualization_mode(conf.pose_visualization_mode);
 	pc.set_print_mode(conf.pose_print_mode);
 
-	Cloud_Segmentation cs;
+	Cloud_Segmentation cs(conf);
 	cs.set_visualizer(&visu);
 
 	Hint_System_Class hs;

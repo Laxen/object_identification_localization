@@ -149,8 +149,11 @@ class Pose_Class {
 		write_pose_data(std::string scene_name, int cluster_index, std::vector<Pose_Data> poses);
 
 	public:
+		/**
+			Constructor
+			@param conf A Config_Reader object used to load settings
+		*/
 		Pose_Class(Config_Reader conf);
-		Pose_Class(std::string config_path);
 
 		/**
 			Estimates the pose of an object in a scene using the full cluster->object->cluster pipeline, with pose clustering and pose cluster filtering

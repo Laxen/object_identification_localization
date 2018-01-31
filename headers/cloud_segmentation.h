@@ -2,10 +2,11 @@
 #define CLOUD_SEGMENTATION_H_
 
 #include <pcl/io/pcd_io.h>
-#include "manipulation.h"
-#include "access_results.h"
 #include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/common/transforms.h>
+#include "manipulation.h"
+#include "access_results.h"
+#include "config_reader.h"
 
 class Cloud_Segmentation {
 	private:
@@ -63,7 +64,11 @@ class Cloud_Segmentation {
 		visualize_cloud(Point_Cloud_N::Ptr cloud);
 
 	public:
-		Cloud_Segmentation();
+		/**
+		  Constructor
+		  @param conf A Config_Reader object used to load settings
+		*/
+		Cloud_Segmentation(Config_Reader conf);
 
 		/**
 		  Segments a cloud into clusters

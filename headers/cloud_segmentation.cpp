@@ -1,17 +1,17 @@
 #include "cloud_segmentation.h"
 
-Cloud_Segmentation::Cloud_Segmentation() {
-	LEAF_SIZE = 0.003; // Used for downsampling (0.003 for small objects, 0.010 for large)
+Cloud_Segmentation::Cloud_Segmentation(Config_Reader conf) {
+	LEAF_SIZE = conf.segmentation_leaf_size;
 
-	PLANE_DISTANCE_THRESHOLD = 0.003; // Distance from point to plane to count as inlier to plane
-	PLANE_MAX_ITERATIONS = 200; // Max RANSAC iterations for finding plane
-	BACKGROUND_SEGMENTATION_DISTANCE = 0.006; // Max distance between two points when subtracting clouds (was 0.003 before 2017-11-28)
+	PLANE_DISTANCE_THRESHOLD = conf.segmentation_plane_distance_threshold;
+	PLANE_MAX_ITERATIONS = conf.segmentation_plane_max_iterations;
+	BACKGROUND_SEGMENTATION_DISTANCE = conf.segmentation_background_segmentation_distance;
 
-	NORMAL_RADIUS_SEARCH = 0.004; // Radius for nearest neighbors
+	NORMAL_RADIUS_SEARCH = conf.segmentation_normal_radius_search;
 
-	CLUSTER_TOLERANCE = 1.1 * LEAF_SIZE;
-	CLUSTER_MIN_SIZE = 200;
-	CLUSTER_MAX_SIZE = 700000; // Basically no limit on max size
+	CLUSTER_TOLERANCE = conf.segmentation_cluster_tolerance;
+	CLUSTER_MIN_SIZE = conf.segmentation_cluster_min_size;
+	CLUSTER_MAX_SIZE = conf.segmentation_cluster_max_size;
 
 	background_set = false;
 

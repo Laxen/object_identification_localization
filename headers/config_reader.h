@@ -80,6 +80,16 @@ class Config_Reader
 		int visualization_mode;
 		int print_mode;
 
+		// Segmentation
+		double segmentation_leaf_size;
+		double segmentation_plane_distance_threshold;
+		int segmentation_plane_max_iterations;
+		double segmentation_background_segmentation_distance;
+		double segmentation_normal_radius_search;
+		double segmentation_cluster_tolerance;
+		int segmentation_cluster_min_size;
+		int segmentation_cluster_max_size;
+
 		/**
 		  Loads all parameters associated with adding a new model to the system (Rendering views)
 		  @param filename The name of the config file (.ini)
