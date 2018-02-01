@@ -1,5 +1,5 @@
 # system
-This is the entire system that runs the complete pipeline involving object identification, localization, point cloud merging and hint generation. The results are visualized and saved in the data/results/ folder, as well as optionally (specified in the config.ini file) uploaded to an RDF database. 
+This is the entire system that runs the complete pipeline involving object identification, localization, point cloud merging and hint generation. The results are visualized and saved in the data/results/ folder, as well as optionally (specified in the config.ini file) uploaded to an RDF database. The connection to the RDF database is handled by Java code, which is accessible through C++ code using [JNI](https://docs.oracle.com/javase/8/docs/technotes/guides/jni/). The Java code is stored in a jar file in the "headers" directory. This Java code can be found in [this repository](https://github.com/Andreas93S/rdf4j_project), it can be changed and recompiled into a jar file and then used in this project. 
 
 ## Compile and run
 Execute the following command in the system directory to compile the program
