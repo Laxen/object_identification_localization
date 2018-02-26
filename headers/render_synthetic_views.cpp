@@ -220,6 +220,16 @@ Render_Synthetic_Views::set_use_average_global_feature (bool global_feature_avg)
 }
 
 /**
+  Set if program should use a small delay before rendering the first view. 
+  @param use_delay True if use small delay, false otherwise
+*/
+void
+Render_Synthetic_Views::set_use_delay(bool use_delay)
+{
+	use_delay_ = use_delay;
+}
+
+/**
   Demeans the point cloud
   @param cloud The point cloud
 */
@@ -491,6 +501,8 @@ Render_Synthetic_Views::render_views (	vtkSmartPointer<vtkPolyData> &polydata,
 	view_render.setRadiusSphere (radius_tessellated_sphere_);
 	view_render.setComputeEntropies (false);
 	view_render.setTessellationLevel (tessellation_level_);
+	if(use_delay_)
+		view_render.setUseDelay(use_delay_);
 
 	// Create a bounding box that encloses the object. Use the diagonals of the bounding box to get the object radius.
 	double bounds[6];

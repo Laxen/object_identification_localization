@@ -44,6 +44,7 @@ int main (int argc, char** argv)
 	render.set_view_complete_model (cr.view_complete_model);
 	render.set_view_graph (cr.view_graph);
 	render.set_use_average_global_feature (cr.avg_glb_feature); 
+	render.set_use_delay(cr.use_delay);
 	
 	if (cr.use_k_search && cr.use_radius_search)
 	{

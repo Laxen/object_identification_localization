@@ -67,6 +67,7 @@ private:
   (const Eigen::Vector3f &)> campos_constraints_func_;
   double scale_factor_;
   double object_radius_;
+  bool use_delay_;
 
   struct camPosConstraintsAllTrue
   {
@@ -234,6 +235,24 @@ public:
   {
     entropies = entropies_;
   }
+  
+  //
+  // MODIFIED CODE BEGINS
+  //
+  
+  /**
+    Set if program should use a small delay before rendering the first view. 
+    @param use_delay True if use small delay, false otherwise
+  */
+  void
+  setUseDelay(bool use_delay)
+  {
+  	use_delay_ = use_delay;
+  }
+  
+  //
+  // MODIFIED CODE ENDS
+  //
 };
 
 #endif /* RENDER_VIEWS_TESSELATED_SPHERE_MODIFIED_H_ */

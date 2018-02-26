@@ -264,7 +264,10 @@ Render_Views_Tesselated_Sphere_Modified::generateViews() {
     renderer->SetActiveCamera (cam_tmp);
     renderer->AddActor (actor_view);
     renderer->Modified ();
-    render_win->Render ();
+
+    if(i == 0 && use_delay_)
+    	sleep(1); 
+	render_win->Render ();
 
     pcl::PointCloud<pcl::PointXYZ>::Ptr cloud (new pcl::PointCloud<pcl::PointXYZ>);
     cloud->points.resize (resolution_ * resolution_);

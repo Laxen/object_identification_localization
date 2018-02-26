@@ -52,6 +52,7 @@ Config_Reader::add_model_load_config (const std::string &filename)
 	view_complete_model = tree.get<bool> ("Add_Model-Advanced.view_complete_model");
 	view_graph = tree.get<bool> ("Add_Model-Advanced.view_graph");
 	avg_glb_feature = tree.get<bool> ("Add_Model-Advanced.avg_glb_feature");
+	use_delay = tree.get<bool> ("Add_Model-Advanced.use_delay");
 }
 
 /**

@@ -42,6 +42,7 @@ class Config_Reader
 		bool view_complete_model;
 		bool view_graph;
 		bool avg_glb_feature;
+		bool use_delay;
 
 		// System
 		std::string save_path;
