@@ -11,11 +11,34 @@ typedef pcl::PointCloud<Point_N> PointCloud_N;
 int 
 main (int argc, char** argv)
 {
+	if (argc > 2)
+	{
+		pcl::console::print_error ("\nOnly one input file is allowed!\n");
+		std::exit (EXIT_FAILURE);
+	}
+	else if (argc == 1)
+	{
+		pcl::console::print_error ("Please select an input file!\n\n");
+		std::cout << "Usage: normal_utility_display INPUT\n\nINPUT is the specified added CAD model placed in the CAD_models folder.\n\n" << std::endl;
+		std::exit (EXIT_FAILURE);
+	}
+	
 	Access_Model_Data amd;
 	View_Graph graph;
 	
-	// Load normal utilities 
+	// Check if model exists (has been added)
+	std::vector<std::string> names = amd.get_model_names();
 	std::string model_name (argv[1]);
+	if (std::find(names.begin(), names.end(), model_name) == names.end())
+	{
+		std::stringstream ss;
+		ss << "The model " << model_name << " could not be found!\n\n";
+		pcl::console::print_error (ss.str().c_str());
+		std::cout << "Make sure that the model is added before using this program!\n\n" << std::endl;
+		std::exit (EXIT_FAILURE);
+	}
+	
+	// Load normal utilities 
 	std::vector<float> utilities = amd.load_normal_utilities (model_name);
 	
 	// Load view-graph
@@ -76,7 +99,6 @@ main (int argc, char** argv)
 		{
 			int vp = j + i*5 + 1;
 			viewer2.createViewPort (x_min, y_min, x_max, y_max, vp);
-			printf ("(%3.3f, %3.3f, %3.3f, %3.3f)  %d\n", x_min, y_min, x_max, y_max, vp);
 			x_min += delta;
 			x_max += delta;
 		}

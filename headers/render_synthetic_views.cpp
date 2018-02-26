@@ -1037,17 +1037,10 @@ Render_Synthetic_Views::generate_local_features (std::vector<PointCloud_N::Ptr> 
 void
 Render_Synthetic_Views::start_rendering (int argc, char** argv)
 {
-	/*
-	// Load .obj file
-	vtkSmartPointer<vtkPolyData> polydata = vtkSmartPointer<vtkPolyData>::New ();
-	std::string model_name = load_obj (polydata, argc, argv);
-	*/
-	
-	//*
 	// Load CAD model as polydata
 	vtkSmartPointer<vtkPolyData> polydata = vtkSmartPointer<vtkPolyData>::New ();
 	std::string model_name = load_polydata (polydata, argc, argv);
-	//*/
+
 
 	// Render virtuall 2.5D views of CAD model
 	std::vector<PointCloudT::Ptr> views_xyz;

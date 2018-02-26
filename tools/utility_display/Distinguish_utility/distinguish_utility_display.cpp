@@ -1,6 +1,7 @@
 
 #include "../../../headers/access_model_data.h"
 #include "../../../headers/view_graph.h"
+#include <pcl/console/parse.h>
 
 typedef pcl::PointXYZ PointT;
 typedef pcl::PointNormal Point_N;
@@ -28,23 +29,64 @@ normalize (std::vector<float> vec)
 int 
 main (int argc, char** argv)
 {
+	if (argc < 3)
+	{
+		pcl::console::print_error ("Please select two input files!\n\n");
+		std::cout << "Usage: distinguish_utility_display INPUT1 INPUT2\n\nINPUT1 is the primary model and INPUT2 is the secondary (similar) model\n\n" << std::endl;
+		std::exit (EXIT_FAILURE);
+	}
+	
 	Access_Model_Data amd;
 	View_Graph graph;
 	
+	// Check if models exists (has been added)
+	std::vector<std::string> names = amd.get_model_names();
+	std::string primary_model (argv[1]);
+	std::string secondary_model (argv[2]);
+	if (std::find(names.begin(), names.end(), primary_model) == names.end())
+	{
+		std::stringstream ss;
+		ss << "The model " << primary_model << " could not be found!\n\n";
+		pcl::console::print_error (ss.str().c_str());
+		std::cout << "Make sure that the model is added before using this program!\n\n" << std::endl;
+		std::exit (EXIT_FAILURE);
+	} 
+	else if (std::find(names.begin(), names.end(), secondary_model) == names.end())
+	{
+		std::stringstream ss;
+		ss << "The model " << secondary_model << " could not be found!\n\n";
+		pcl::console::print_error (ss.str().c_str());
+		std::cout << "Make sure that the model is added before using this program!\n\n" << std::endl;
+		std::exit (EXIT_FAILURE);
+	}
+	else if(primary_model == secondary_model)
+	{		
+		pcl::console::print_error ("The input files must be different!\n\n");
+		std::exit (EXIT_FAILURE);
+	}
+	
+	bool normalize_vec = pcl::console::find_switch (argc, argv, "-normalize");
+	
 	// Load distinguish utilities 
-	std::string model_name (argv[1]);
 	std::vector<std::string> similar_models;
-	similar_models.push_back (argv[2]);
-	std::vector<std::vector<float> > utilities_vec = amd.load_distinguish_utilities (model_name, similar_models);
-	//std::vector<float> utilities = normalize (utilities_vec[0]);
-	std::vector<float> utilities = utilities_vec[0];
+	similar_models.push_back (secondary_model);
+	std::vector<std::vector<float> > utilities_vec = amd.load_distinguish_utilities (primary_model, similar_models);
+	std::vector<float> utilities;
+	if(normalize_vec)
+	{
+		utilities = normalize (utilities_vec[0]);
+	} 
+	else
+	{
+		utilities = utilities_vec[0];
+	}
 	
 	// Load view-graph
-	graph.load_graph (model_name);
+	graph.load_graph (primary_model);
 	
 	// Load complete model
 	PointCloudT::Ptr complete_model (new PointCloudT);
-	amd.load_complete_model (model_name, complete_model);
+	amd.load_complete_model (primary_model, complete_model);
 	
 	//
 	// Display view utilities with view_graph
@@ -85,7 +127,7 @@ main (int argc, char** argv)
 	}
 	
 	std::vector<PointCloud_N::Ptr> views;
-	amd.load_model_views (model_name, views, indices);
+	amd.load_model_views (primary_model, views, indices);
 	
 	// Create viewer with 25 viewports (5x5)
 	pcl::visualization::PCLVisualizer viewer2 ("viewer2");
@@ -97,7 +139,6 @@ main (int argc, char** argv)
 		{
 			int vp = j + i*5 + 1;
 			viewer2.createViewPort (x_min, y_min, x_max, y_max, vp);
-			printf ("(%3.3f, %3.3f, %3.3f, %3.3f)  %d\n", x_min, y_min, x_max, y_max, vp);
 			x_min += delta;
 			x_max += delta;
 		}
