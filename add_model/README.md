@@ -24,3 +24,6 @@ execute the following command to run the program
 * The configuration parameters under Add_Model-Advanced are just a recommendation and does not need to be modified. 
 * However, If you are familiar with PCL and point cloud processing then feel free to change the configuration parameters under Add_Model-Advanced 
 
+## Issue
+It has been reported that using a NVIDIA GTX 1080 graphics card will sometimes cause problem when rendering the synthetic views. See [this](https://github.com/PointCloudLibrary/pcl/issues/2188) issue for more information. Unfortunately, as of this moment there does not exists any solution for this problem. We suggest just re-rendering all views until no "visual error" can be seen in the merged point cloud (enable the view_complete_model to inspect the final merged point cloud. If there are strange looking points then it is adviced to re-render all views).
+
