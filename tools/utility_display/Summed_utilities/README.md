@@ -1,4 +1,4 @@
-# view_utility
+# summed_utility
 This program is used to graphically display the Summed-utility values
 
 ## Compile and run
