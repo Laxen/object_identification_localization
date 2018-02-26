@@ -2,6 +2,7 @@
 #define RDF_CONNECTOR_H
 
 #include "jni_helper.hpp"
+#include <cstdlib>
 
 class RDF_Connector : public JNI_Helper {
 	private:

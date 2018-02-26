@@ -57,8 +57,8 @@ Robot_Data_Fetcher::fetch_data(std::string save_path) {
 	curl = curl_easy_init();
 	if(curl) {
 		curl_easy_setopt (curl, CURLOPT_HTTPAUTH, (long)CURLAUTH_ANY);
-		curl_easy_setopt (curl, CURLOPT_USERPWD, username + ":" + password);
-		curl_easy_setopt(curl, CURLOPT_URL, curl_url);
+		curl_easy_setopt (curl, CURLOPT_USERPWD, (username + ":" + password).c_str());
+		curl_easy_setopt(curl, CURLOPT_URL, curl_url.c_str());
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
 		res = curl_easy_perform(curl);
