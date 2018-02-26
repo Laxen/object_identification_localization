@@ -37,6 +37,13 @@ main(int argc, char** argv) {
 	bool merge = false;
 
 	ar.clear_results();
+	
+	std::vector<std::string> temp = amd.get_model_names();
+	if (temp.size() == 0)
+	{
+		pcl::console::print_error("ERROR: No models have been added! Please add model data using add_model before using the system.\n\n");
+		std::exit (EXIT_FAILURE);
+	}
 
 	pcl::visualization::PCLVisualizer visu("Visu");
 
