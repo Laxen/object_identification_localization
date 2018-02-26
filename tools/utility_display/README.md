@@ -1,2 +1,2 @@
 # utility_display
-These programs are used to graphically display the utility values. 
+These programs are used to graphically display the utility values. The first image displays the view-graph where each node is given a color based on its utility value. A green node indicates a high utility value and a red node indicates a low utility value. The second image displays 25 randomly selected rendered point clouds (from 25 views). A green point cloud indicates a high utility value and a red point cloud indicates a low utility value.
