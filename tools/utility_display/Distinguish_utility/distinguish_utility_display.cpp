@@ -32,7 +32,7 @@ main (int argc, char** argv)
 	if (argc < 3)
 	{
 		pcl::console::print_error ("Please select two input files!\n\n");
-		std::cout << "Usage: distinguish_utility_display INPUT1 INPUT2\n\nINPUT1 is the primary model and INPUT2 is the secondary (similar) model\n\n" << std::endl;
+		std::cout << "Usage: distinguish_utility_display INPUT1 INPUT2 <options>\n\nINPUT1 is the primary model and INPUT2 is the secondary (similar) model.\n<options> -normalize = flag telling the program to normalize the distinguish utilities.\n\n" << std::endl;
 		std::exit (EXIT_FAILURE);
 	}
 	
@@ -105,6 +105,7 @@ main (int argc, char** argv)
 	pcl::visualization::PCLVisualizer viewer ("viewer");
 	graph.add_graph_to_viewer (viewer, 0.015, r_vec, g_vec, b_vec, 0, false);
 	viewer.addPointCloud<PointT> (complete_model);
+	std::cout << "\nPress Q to continue\n" << std::endl;
 	viewer.spin ();
 	
 	//

@@ -65,6 +65,7 @@ main (int argc, char** argv)
 	pcl::visualization::PCLVisualizer viewer ("viewer");
 	graph.add_graph_to_viewer (viewer, 0.015, r_vec, g_vec, b_vec, 0, false);
 	viewer.addPointCloud<PointT> (complete_model);
+	std::cout << "\nPress Q to continue\n" << std::endl;
 	viewer.spin ();
 	
 	//
