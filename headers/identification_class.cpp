@@ -214,7 +214,7 @@ Identification_Class::results_console (cluster_data cluster)
 		{
 			std::cout << "\t" << cluster.similar_models[i] << std::endl;
 		}
-		std::cout << "\n\n" << std::endl;
+		std::cout << "\n\nPress Q to continue\n\n" << std::endl;
 	}
 }
 
