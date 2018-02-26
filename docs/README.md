@@ -15,5 +15,8 @@ The program for adding new models to be identified/localized.
 ## [system](https://github.com/Laxen/object_identification_localization/tree/master/system)
 The main program that starts the system. 
 
+## [object_identification_debugger](https://github.com/Laxen/object_identification_localization/tree/master/object_identification_debugger)
+Program for debugging the object identification subsystem
+
 ## [tools](https://github.com/Laxen/object_identification_localization/tree/master/tools)
 Contains different programs for e.g. visualization
