@@ -21,3 +21,4 @@ where \<input\> is the name of the model for which to display the feature-utilit
     ```
 * Note: Do not include the file extension for the CAD model in the input, just include the model name
 * The model must be added before this program can be used (see [add_model](https://github.com/Laxen/object_identification_localization/tree/master/add_model)) 
+* A green node/pointcloud represents a high feature-utility value and a red node/pointcloud represents a low feature-utility value. 
