@@ -1162,7 +1162,7 @@ Render_Synthetic_Views::start_rendering (int argc, char** argv)
 	v_p.x = 0.0;
 	v_p.y = 0.0;
 	v_p.z = -radius_tessellated_sphere_;
-	normal_utilities = nu.generate_normal_utilities (views_N, v_p, bad_normals_threshold_, 1);
+	normal_utilities = nu.generate_normal_utilities (views_N, v_p, bad_normals_threshold_);
 	std::cout << "Done\n" << std::endl;
 	
 	// Save normal utilities
