@@ -104,12 +104,6 @@ class View_Graph
 		find_valid_nodes (pcl::ModelCoefficients plane, std::vector<Eigen::Matrix<float,4,4,Eigen::DontAlign> > previous_positions, PointT model_center, float angle_thr);
 		
 		/**
-		  Set manualy if a view-node is valid or not
-		  @param index The view index
-		  @param value True if the node is valid and false otherwise
-		*/
-		
-		/**
 		  Determines if two views are neighbors
 		  @param view_index1 The first view 
 		  @param view_index2 The second view 
@@ -118,6 +112,11 @@ class View_Graph
 		bool
 		is_neighbor (int view_index1, int view_index2);
 
+		/**
+		  Set manualy if a view-node is valid or not
+		  @param index The view index
+		  @param value True if the node is valid and false otherwise
+		*/
 		void
 		set_valid_node (int index, bool value);
 	  	

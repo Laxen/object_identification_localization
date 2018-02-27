@@ -54,10 +54,6 @@ class Similar_Object_Recognition
 		float
 		l1_norm (FeatureT f1, FeatureT f2);
 		
-		/*
-		void 
-		normalize (sim_mod &sm);
-		*/
 		
 		void
 		search_for_similar_views (model_data &m_source, std::vector<model_data> &m_targets);

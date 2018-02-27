@@ -46,24 +46,6 @@ Similar_Object_Recognition::l1_norm (FeatureT f1, FeatureT f2)
 	return sum;
 }
 
-/*
-void 
-Similar_Object_Recognition::normalize (sim_mod &sm)
-{
-	sim_mod sm_temp = sm;	
-		
-	// Sort similar views in ascending order with respect to the feature distance
-	std::sort(sm_temp.similar_views.begin(), sm_temp.similar_views.end(), less_than_key());
-	
-	float max_value = sm_temp.similar_views.back().distance;
-	float min_value = sm_temp.similar_views.front().distance;
-	for (int i = 0; i < sm.similar_views.size(); i++)
-	{
-		sm.similar_views[i].distance = (sm.similar_views[i].distance - min_value) / (max_value - min_value);
-	}
-}
-*/
-
 void 
 Similar_Object_Recognition::search_for_similar_views (model_data &m_source, std::vector<model_data> &m_targets)
 {	
@@ -103,9 +85,6 @@ Similar_Object_Recognition::search_for_similar_views (model_data &m_source, std:
 			}
 		}
 		sm.nbr_of_similar_views = similar_view_count / (float)sm.similar_views.size();
-		
-		// Normalize
-		//normalize (sm);
 	
 		m_source.similar_models.push_back (sm);
 	}	
@@ -146,9 +125,6 @@ Similar_Object_Recognition::search_for_similar_views (model_data &m_source, std:
 			}
 		}
 		sm.nbr_of_similar_views = similar_view_count / (float)sm.similar_views.size();
-		
-		// Normalize
-		//normalize (sm);
 	
 		m_targets[t_index].similar_models.push_back (sm);
 	}
@@ -187,117 +163,7 @@ Similar_Object_Recognition::save_similar_models_data (model_data m_source, std::
 		}
 		
 		access.save_similar_model_data (m_targets[i].name, m_source.name, sim_views_vec);
-	}
-	
-	/*
-
-	//
-	// Save similar object data in m_source
-	//
-	
-	// Get path to m_source in Model_data
-	fs::path p_source = access.path_to_model_in_model_data (m_source.name);
-	
-	// Add path to similar_models
-	p_source /= "similar_models";
-	
-	// Check if such path exists
-	if (!fs::exists(p_source))
-	{
-		// Path does not exist, create directory for "similar_models"
-		if (!fs::create_directory(p_source))
-		{
-			std::cout << "Could not create directory for similar_models in " << m_source.name << std::endl;
-			std::exit (EXIT_FAILURE);
-		}
-	}
-	
-	for (int i = 0; i < m_source.similar_models.size(); i++)
-	{
-		std::stringstream ss;
-		ss << p_source.string () << "/" << m_source.similar_models[i].name << "_similar_views.csv";
-		
-		std::ofstream similar_views_file;
-		similar_views_file.open (ss.str().c_str());
-		
-		if (!similar_views_file.is_open ())
-		{
-			std::cerr << "\nCould not open file " << ss.str () << std::endl;
-		}
-
-		std::vector<std::string> string_vec;
-		for (int k = 0; k < m_source.similar_models[i].similar_views.size(); k++)
-		{
-			std::ostringstream ss;
-			ss << k << ",";
-			ss << m_source.similar_models[i].similar_views[k].distance << ",";
-			
-			string_vec.push_back (ss.str ());
-		}
-
-		for (int k = 0; k < string_vec.size(); k++)
-		{
-			similar_views_file << string_vec[k] << "\n";
-		}
-
-		similar_views_file.close();
-	}
-	
-	//
-	// Save similar object data in m_targets
-	//
-	
-	for (int i = 0; i < m_targets.size(); i++)
-	{
-		// Get path to m_target in Model_data
-		fs::path p_target = access.path_to_model_in_model_data (m_targets[i].name);
-	
-		// Add path to similar_models
-		p_target /= "similar_models";
-	
-		// Check if such path exists
-		if (!fs::exists(p_target))
-		{
-			// Path does not exist, create directory for "similar_models"
-			if (!fs::create_directory(p_target))
-			{
-				std::cout << "Could not create directory for similar_models in " << m_targets[i].name << std::endl;
-				std::exit (EXIT_FAILURE);
-			}
-		}
-	
-		for (int j = 0; j < m_targets[i].similar_models.size(); j++)
-		{
-			std::stringstream ss;
-			ss << p_target.string () << "/" << m_target[i].similar_models[j].name << "_similar_views.csv";
-		
-			std::ofstream similar_views_file;
-			similar_views_file.open (ss.str().c_str());
-		
-			if (!similar_views_file.is_open ())
-			{
-				std::cerr << "\nCould not open file " << ss.str () << std::endl;
-			}
-
-			std::vector<std::string> string_vec;
-			for (int k = 0; k < m_targets[i].similar_models[j].similar_views.size(); k++)
-			{
-				std::ostringstream ss;
-				ss << k << ",";
-				ss << m_targets[i].similar_models[j].similar_views[k].distance << ",";
-			
-				string_vec.push_back (ss.str ());
-			}
-
-			for (int k = 0; k < string_vec.size(); k++)
-			{
-				similar_views_file << string_vec[k] << "\n";
-			}
-
-			similar_views_file.close();
-		}
-	}
-	*/
+	}	
 }
 
 void 

@@ -568,12 +568,6 @@ View_Graph::search_for_better_view (int initial_view_node)
 			PointT p2 = graph[next_node].viewpoint_;
 			float utility_cost = (1 - graph[next_node].utility_);
 			float distance_cost = sqrt (pow (p1.x - p2.x, 2) + pow (p1.y - p2.y, 2) + pow (p1.z - p2.z, 2)) / largest_dist; //L1
-			//float distance_cost = (sqrt (pow (p1.x - p2.x, 2) + pow (p1.y - p2.y, 2) + pow (p1.z - p2.z, 2)) - smallest_dist) / (largest_dist - smallest_dist); // Normalize between 1 and 0 L2
-			//printf ("%3.3f\n", distance_cost);
-			
-			//float cost_to_next_node = utility_cost + distance_cost; // Linear cost
-			//float cost_to_next_node = pow (utility_cost, 2) + (exp (distance_cost * 3) - 1); // Non-linear cost THIS WORKS OK WITH L1 ABOVE!
-			//float cost_to_next_node = pow (utility_cost, 5) + (exp (distance_cost * 4) - 1); // Non-linear cost
 			float cost_to_next_node = (0.008*exp (utility_cost * 7)) + (exp (distance_cost * 4) - 1); // Non-linear cost
 			if (graph[next_node].cost > graph[current_node].cost + cost_to_next_node)
 			{
@@ -635,12 +629,6 @@ View_Graph::find_aligned_view (Eigen::Vector3f cam_axis)
 		cam_axis.normalize ();
 		node_axis.normalize ();
 		float angle = acos (cam_axis.dot (node_axis)) * (180 / pi_const);
-		/*
-		if (std::abs (angle - 90.0) < 0.01)
-		{
-			printf ("<%3.3f, %3.3f, %3.3f> . <%3.3f, %3.3f, %3.3f>\n", cam_axis(0), cam_axis(1), cam_axis(2), node_axis(0), node_axis(1), node_axis(2));
-		}
-		*/
 		if (angle < min_angle)
 		{
 			best_alignment = i;
