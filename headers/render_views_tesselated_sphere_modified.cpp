@@ -451,6 +451,7 @@ Render_Views_Tesselated_Sphere_Modified::generateViews() {
       cloud->points[j].z *= -1.0f;
     }
     
+    /*
 	// Check if all points lie in the same plane
 	int same_depth_count = 0;
 	for (int k = 0; k < cloud->points.size(); k++)
@@ -472,6 +473,7 @@ Render_Views_Tesselated_Sphere_Modified::generateViews() {
 		//i--;
 		//continue;
 	}
+	*/
 
     renderer->RemoveActor (actor_view);
 
