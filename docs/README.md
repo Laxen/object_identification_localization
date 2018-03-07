@@ -12,6 +12,9 @@ The program for creating point cloud backgrounds. This background is used in the
 ## [add_model](https://github.com/Laxen/object_identification_localization/edit/master/add_model)
 The program for adding new models to be identified/localized. 
 
+## [remove_model](https://github.com/Laxen/object_identification_localization/tree/master/remove_model)
+The program for removing model data from a model.
+
 ## [system](https://github.com/Laxen/object_identification_localization/tree/master/system)
 The main program that starts the system. 
 
