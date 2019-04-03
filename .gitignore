@@ -10,3 +10,5 @@ CAD_models/
 *~
 *.swo
 pointclouds/
+*/.idea
+*/cmake-build-debug

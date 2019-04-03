@@ -3,9 +3,9 @@ cmake_minimum_required(VERSION 2.8 FATAL_ERROR)
 project(offline_data_generation)
 
 find_package(PCL 1.8 REQUIRED)
-
+find_package(Boost COMPONENTS system filesystem REQUIRED)
 #set(CMAKE_BUILD_TYPE Debug)
-include_directories(${PCL_INCLUDE_DIRS})
+include_directories(${PCL_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
@@ -29,7 +29,8 @@ target_link_libraries (offline_data_generation View_Feature_Score)
 target_link_libraries (offline_data_generation Config_Reader)
 target_link_libraries (offline_data_generation Similar_Object_Recognition)
 target_link_libraries (offline_data_generation Normal_Utility)
-
+target_link_libraries (offline_data_generation ${Boost_FILESYSTEM_LIBRARY})
+target_link_libraries (offline_data_generation ${Boost_SYSTEM_LIBRARY})
 
 
 
