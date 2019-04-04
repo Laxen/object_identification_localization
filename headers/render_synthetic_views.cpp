@@ -1016,15 +1016,37 @@ Render_Synthetic_Views::generate_local_features (std::vector<PointCloud_N::Ptr> 
 {
 	for (int i = 0; i < views_original_pose_N.size(); i++)
 	{
+		//save the only point
+		pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>);
+		pcl::copyPointCloud(*views_original_pose_N[i], *cloud);
+		//save the only normal
+		pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
+		pcl::copyPointCloud(*views_original_pose_N[i], *normals);
 		// Estimate local FPFH features
-		FeatureCloudL::Ptr features (new FeatureCloudL);
-		FeatureEstimationL feature_estimator;
+//		FeatureCloudL::Ptr features (new FeatureCloudL);
+//		FeatureEstimationL feature_estimator;
+//
+//		feature_estimator.setRadiusSearch(0.01);
+//		feature_estimator.setInputCloud(views_original_pose_N[i]);
+//		feature_estimator.setInputNormals(views_original_pose_N[i]);
+//		feature_estimator.compute(*features);
 
-		feature_estimator.setRadiusSearch(0.01);
-		feature_estimator.setInputCloud(views_original_pose_N[i]);
-		feature_estimator.setInputNormals(views_original_pose_N[i]);
-		feature_estimator.compute(*features);
-	
+		// FPFH estimation object.
+		pcl::FPFHEstimation<pcl::PointXYZ, pcl::Normal, pcl::FPFHSignature33> fpfh;
+		fpfh.setInputCloud(cloud);
+		fpfh.setInputNormals(normals);
+
+		// A kd-tree is a data structure that makes searches efficient. More about it later.
+		// The normal estimation object will use it to find nearest neighbors.
+		pcl::search::KdTree<pcl::PointXYZ>::Ptr kdTree(new pcl::search::KdTree<pcl::PointXYZ>);
+		fpfh.setSearchMethod(kdTree);
+		// Search radius, to look for neighbors. Note: the value given here has to be
+		// larger than the radius used to estimate the normals.
+		fpfh.setRadiusSearch(0.01);
+		// Object for storing the FPFH descriptors for each point.
+		pcl::PointCloud<pcl::FPFHSignature33>::Ptr features(new pcl::PointCloud<pcl::FPFHSignature33>());
+		fpfh.compute(*features);
+
 		local_features.push_back (features);
 	}
 }
